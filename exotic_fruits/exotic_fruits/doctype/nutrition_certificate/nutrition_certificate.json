@@ -1,0 +1,212 @@
+{
+ "allow_copy": 0, 
+ "allow_import": 0, 
+ "allow_rename": 0, 
+ "autoname": "naming_series:", 
+ "creation": "2014-11-21 16:38:22.822895", 
+ "custom": 0, 
+ "docstatus": 0, 
+ "doctype": "DocType", 
+ "document_type": "Transaction", 
+ "fields": [
+  {
+   "fieldname": "naming_series", 
+   "fieldtype": "Select", 
+   "label": "Series", 
+   "options": "NC-", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "sales_order", 
+   "fieldtype": "Link", 
+   "label": "Sales Order", 
+   "options": "Sales Order", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "delivery_date", 
+   "fieldtype": "Date", 
+   "label": "Date", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "customer_name", 
+   "fieldtype": "Data", 
+   "label": "Name", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "water", 
+   "fieldtype": "Data", 
+   "in_list_view": 1, 
+   "label": "WATER", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "calories", 
+   "fieldtype": "Data", 
+   "in_list_view": 1, 
+   "label": "CALORIES", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "protein", 
+   "fieldtype": "Data", 
+   "label": "PROTEIN", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "fat", 
+   "fieldtype": "Data", 
+   "label": "FAT", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "carbohydrate_total", 
+   "fieldtype": "Data", 
+   "label": "CARBOHYDRATE TOTAL", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "ash", 
+   "fieldtype": "Data", 
+   "label": "ASH", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "calcium", 
+   "fieldtype": "Data", 
+   "label": "CALCIUM", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "phosphorus", 
+   "fieldtype": "Data", 
+   "label": "PHOSPHORUS", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "iron", 
+   "fieldtype": "Data", 
+   "label": "IRON", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "sodium", 
+   "fieldtype": "Data", 
+   "label": "SODIUM", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "potassium", 
+   "fieldtype": "Data", 
+   "label": "POTASSIUM", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "vitamin_a", 
+   "fieldtype": "Data", 
+   "label": "VITAMIN A", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "thiamine", 
+   "fieldtype": "Data", 
+   "label": "THIAMINE", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "riboflavin", 
+   "fieldtype": "Data", 
+   "label": "RIBOFLAVIN", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "niacin", 
+   "fieldtype": "Data", 
+   "label": "NIACIN", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "ascorbic_acid", 
+   "fieldtype": "Data", 
+   "label": "ASCORBIC ACID", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "composition_of_foods_per_100_gms_editable_portion_pulp", 
+   "fieldtype": "Data", 
+   "label": "COMPOSITION OF FOODS PER 100 GMS EDITABLE PORTION PULP", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
+   "fieldname": "amended_from", 
+   "fieldtype": "Link", 
+   "label": "Amended From", 
+   "no_copy": 1, 
+   "options": "Nutrition Certificate", 
+   "permlevel": 0, 
+   "print_hide": 1, 
+   "read_only": 1
+  }
+ ], 
+ "hide_heading": 0, 
+ "hide_toolbar": 0, 
+ "icon": "icon-file-text", 
+ "in_create": 0, 
+ "in_dialog": 0, 
+ "is_submittable": 1, 
+ "issingle": 0, 
+ "istable": 0, 
+ "modified": "2014-11-21 17:11:28.858065", 
+ "modified_by": "Administrator", 
+ "module": "exotic_fruits", 
+ "name": "Nutrition Certificate", 
+ "name_case": "", 
+ "owner": "Administrator", 
+ "permissions": [
+  {
+   "amend": 0, 
+   "apply_user_permissions": 0, 
+   "cancel": 0, 
+   "create": 1, 
+   "delete": 1, 
+   "email": 0, 
+   "export": 0, 
+   "import": 0, 
+   "permlevel": 0, 
+   "print": 1, 
+   "read": 1, 
+   "report": 0, 
+   "role": "All", 
+   "set_user_permissions": 0, 
+   "submit": 1, 
+   "write": 1
+  }
+ ], 
+ "read_only": 0, 
+ "read_only_onload": 0, 
+ "sort_field": "modified", 
+ "sort_order": "DESC"
+}

@@ -1,0 +1,15 @@
+{
+ "creation": "2014-11-21 17:28:01.396501", 
+ "disabled": 0, 
+ "doc_type": "GMO DECLARATION", 
+ "docstatus": 0, 
+ "doctype": "Print Format", 
+ "html": "<p class=\"text-center\"><b>{{ _(\"GMO DECLARATION\") }}</b></p>\n\n<br>\n<table class=\"table table-bordered\">\n\t<tbody>\t\n\t\t<tr>\t<td style=\"width: 3%;\">\nOUR REF:</td>\n\t\t\t<td style=\"width: 20%;\"> Invoice No. {{ doc.sales_order }} dt: {{ doc.get_formatted(\"delivery_date\") }}</td>\n\t\t</tr>\n               <tr>\n\t\t\t<td style=\"width: 3%;\">PRODUCT :  </td>\n\t\t\t<td style=\"width: 20%;\"> {{ doc.product }} </td>\n\t\t</tr>\n\n\t</tbody>\n</table>\n<br>\n\n<p>We hereby declare that the product named above, as supplied to client M/s {{ doc.customer_name }}  << CLIENT ADDRESS >> is not derived from or produced using GMO's or their derivates and all reasonable precautions have been taken to prevent contamination free genetically modified ingredients where used this also applies to Food Additions and Processing aids.</p>\n\n<br>\n<br>\n<br>\n<p><b>For EXOTIC FRUITS PVT. LTD </b></p>\n<br><br>\n<p><b>AUTHORISED SIGNATORY </b></p><br>", 
+ "modified": "2014-11-21 17:28:01.396501", 
+ "modified_by": "Administrator", 
+ "module": "exotic_fruits", 
+ "name": "GMO DECLARATION", 
+ "owner": "Administrator", 
+ "print_format_type": "Server", 
+ "standard": "Yes"
+}

@@ -1,0 +1,15 @@
+{
+ "creation": "2014-11-21 17:41:49.460621", 
+ "disabled": 0, 
+ "doc_type": "CARTON MANIFEST", 
+ "docstatus": 0, 
+ "doctype": "Print Format", 
+ "html": "<p class=\"text-center\"><b>{{ _(\"CARTON MANIFEST\") }}</b></p>\n\n\n<br>\n<p class=\"text-center\"><b>REF: Our Invoice Number {{ doc.sales_order }} dt: {{ doc.get_formatted(\"delivery_date\") }} </b></p><br>\n<br>\n\n\n<p>Container No : {{ doc.container_no }} </p><br>\n\n<p>Batch No. : {{ doc.batch }}  </p><br>\n\n<p>Prod. Date : {{ doc.prod_date }} </p><br>\n\n<p>Carton Nos : {{ doc.carton_nos }} </p><br>\n\n<p>No Of Cartons : {{ doc.no_of_cartons }}  </p><br>\n\n<br>\n\n<p>NET WEIGHT PER CARTON: 20 KGS,      GROSS WEIGHT PER CARTON: 21.50 KGS, <br> TOTAL NET WEIGHT: 18480.00 KGS,\n     TOTAL GROSS WEIGHT 19866.00 KGS</p>\n\n<br>\n<br>\n<br>\n<p><b>For EXOTIC FRUITS PVT. LTD., </b></p>\n<br><br>\n<p><b> MANAGER (Q.A.) </b></p><br>", 
+ "modified": "2014-11-21 17:41:49.460621", 
+ "modified_by": "Administrator", 
+ "module": "exotic_fruits", 
+ "name": "CARTON MANIFEST", 
+ "owner": "Administrator", 
+ "print_format_type": "Server", 
+ "standard": "Yes"
+}

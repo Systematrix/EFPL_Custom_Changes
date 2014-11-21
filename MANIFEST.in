@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include exotic_fruits *.css
+recursive-include exotic_fruits *.csv
+recursive-include exotic_fruits *.html
+recursive-include exotic_fruits *.ico
+recursive-include exotic_fruits *.js
+recursive-include exotic_fruits *.json
+recursive-include exotic_fruits *.md
+recursive-include exotic_fruits *.png
+recursive-include exotic_fruits *.py
+recursive-include exotic_fruits *.svg
+recursive-include exotic_fruits *.txt
+recursive-exclude exotic_fruits *.pyc
