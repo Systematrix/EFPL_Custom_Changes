@@ -1,0 +1,64 @@
+"Data Import Template"
+"Table:","Custom Field"
+""
+""
+"Notes:"
+"Please do not change the template headings."
+"First data column must be blank."
+"If you are uploading new records, leave the ""name"" (ID) column blank."
+"If you are uploading new records, ""Naming Series"" becomes mandatory, if present."
+"Only mandatory fields are necessary for new records. You can delete non-mandatory columns if you wish."
+"For updating, you can update only selective columns."
+"You can only upload upto 5000 records in one go. (may be less in some cases)"
+""
+"DocType:","Custom Field","","","","","","","","","","","","","","","","","","","","","",""
+"Column Labels:","ID","Document","Field Type","Label","Insert After","Precision","Options","Field Description","Fieldname","Permission Level","Is Mandatory Field","Read Only","Ignore User Permissions","Width","Default Value","Hidden","Depends On","Print Hide","No Copy","Allow on Submit","In Report Filter","In List View","Report Hide"
+"Column Name:","name","dt","fieldtype","label","insert_after","precision","options","description","fieldname","permlevel","reqd","read_only","ignore_user_permissions","width","default","hidden","depends_on","print_hide","no_copy","allow_on_submit","in_filter","in_list_view","report_hide"
+"Mandatory:","Yes","Yes","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No"
+"Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
+"Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
+"Start entering data below this line"
+"","""Sales Order-refer_info""","Sales Order","Data","Refer Info","","","","","refer_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Refer""",0,0,0,0,0,0
+"","""Sales Order-other_info""","Sales Order","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Sales Order-fcl_detail""","Sales Order","Select","FCL Detail","","","20 ft
+40 ft
+Dry
+Controlled Temp - What is the temp
+Refer
+Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
+"","""Sales Order-loadability""","Sales Order","Select","Loadability","","","LCL
+FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-sale""","Sales Order","Select","Local/Export Sale","","","Local Sale
+Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-cb""","Sales Order","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-crop_year""","Sales Order","Select","Crop Year","","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-palletization""","Sales Order","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-empty_drums_return""","Sales Order","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-quote_validate_to""","Sales Order","Date","Quote Validate To","","","","","quote_validate_to",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-quotation_details""","Sales Order","Section Break","Quotation Details","","","","","quotation_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-other_info""","Quotation","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Quotation-refer_info""","Quotation","Data","Refer Info","","","","","refer_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Refer""",0,0,0,0,0,0
+"","""Quotation-fcl_detail""","Quotation","Select","FCL Detail","","","20 ft
+40 ft
+Dry
+Controlled Temp - What is the temp
+Refer
+Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
+"","""Quotation-loadability""","Quotation","Select","Loadability","","","LCL
+FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-sale""","Quotation","Select","Local/Export Sale","","","Local Sale
+Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-cb""","Quotation","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-crop_year""","Quotation","Select","Crop Year","ignore_pricing_rule","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-palletization""","Quotation","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-empty_drums_return""","Quotation","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-quote_expires_on""","Quotation","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-quotation_detail""","Quotation","Section Break","Quotation Detail","ignore_pricing_rule","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0

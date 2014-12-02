@@ -7,6 +7,8 @@ app_color = "#589494"
 app_email = "kolate.sambhaji@gmail.com"
 app_url = "https://frappe.io/apps/exotic_fruits"
 app_version = "0.0.1"
+fixtures = ["Custom Field",
+"Property Setter"]
 
 # Includes in <head>
 # ------------------
