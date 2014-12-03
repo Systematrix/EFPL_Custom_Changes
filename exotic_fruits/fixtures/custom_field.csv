@@ -18,6 +18,23 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
+"","""Delivery Note-etd_mother_vessel_i""","Delivery Note","Date","ETD","","","","ETD Mother Vessel - I","etd_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel_i""","Delivery Note","Date","ETA","","","","ETA Mother Vessel - I","eta_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel_ii""","Delivery Note","Date","ETD Mother Vessel II","","","","ETD Mother Vessel II","etd_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel_ii""","Delivery Note","Date","ETA Mother Vessel II","","","","ETA Mother Vessel - II","eta_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel_ii""","Delivery Note","Data","Mother Vessel II","","","","","mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel_i""","Delivery Note","Data","Mother Vessel I","","","","","mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-feeder_vessel""","Delivery Note","Data","Feeder Vessel","","","","","feeder_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-tsp""","Delivery Note","Select","TSP","","","
+Yes
+No","Trans-shipment","tsp",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel""","Delivery Note","Data","ETD","","","","ETD Mother Vessel","etd_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel""","Delivery Note","Data","ETA","","","","ETA Mother Vessel","eta_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-pol""","Delivery Note","Data","POL","","","","Port Of Loading","pol",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-eta""","Delivery Note","Date","ETA","","","","Expected Time Of Arrival","eta",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-pod""","Delivery Note","Data","POD","","","","Port Of Discharge","pod",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel""","Delivery Note","Data","Mother Vessel","","","","","mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-etd""","Delivery Note","Date","ETD","","","","Expected Time Of Departure","etd",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Contact-work_fax""","Contact","Data","Work Fax","","","","","work_fax",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Contact-work_telephone""","Contact","Data","Work Telephone","","","","","work_telephone",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Contact-others""","Contact","Data","Others","","","","","others",0,0,0,0,"","",0,"",0,0,0,0,0,0
