@@ -18,6 +18,11 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
+"","""Contact-work_fax""","Contact","Data","Work Fax","","","","","work_fax",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-work_telephone""","Contact","Data","Work Telephone","","","","","work_telephone",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-others""","Contact","Data","Others","","","","","others",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-alternate_number""","Contact","Data","Alternate Number","","","","","alternate_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-home_number""","Contact","Data","Home Number","","","","","home_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-refer_info""","Sales Order","Data","Refer Info","","","","","refer_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Refer""",0,0,0,0,0,0
 "","""Sales Order-other_info""","Sales Order","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
 "","""Sales Order-fcl_detail""","Sales Order","Select","FCL Detail","","","20 ft
