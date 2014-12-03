@@ -5,6 +5,7 @@
  "autoname": "naming_series:", 
  "creation": "2014-11-21 16:29:04.213046", 
  "custom": 0, 
+ "default_print_format": "Bank Set Doc", 
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Transaction", 
@@ -150,6 +151,7 @@
    "label": "Amended From", 
    "no_copy": 1, 
    "options": "Bank Set Of Documents", 
+   "permlevel": 0, 
    "print_hide": 1, 
    "read_only": 1
   }
@@ -162,7 +164,7 @@
  "is_submittable": 1, 
  "issingle": 0, 
  "istable": 0, 
- "modified": "2014-11-21 16:29:04.213046", 
+ "modified": "2014-12-03 11:20:59.762596", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "Bank Set Of Documents", 

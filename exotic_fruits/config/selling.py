@@ -72,6 +72,17 @@ def get_data():
 					"name": "Invoice",
 					"description": _("Factory Invoice. Factory Export Document"),
 				},
+				{
+					"type": "doctype",
+					"name": "Packing List",
+					"description": _("Packing List. Factory Export Document"),
+				},
+				{
+					"type": "doctype",
+					"name": "Excise Certificate",
+					"description": _("Excise Certificate. Factory Export Document"),
+				},
+				
 				]
 		},
 	]
