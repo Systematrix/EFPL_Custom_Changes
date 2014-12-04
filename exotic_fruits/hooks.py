@@ -1,10 +1,10 @@
 app_name = "exotic_fruits"
-app_title = "exotic_fruits"
+app_title = "Exotic Fruits Pvt. Ltd."
 app_publisher = "Systematrix"
-app_description = "appp for managing exotic customization"
+app_description = "EFPL Custom App"
 app_icon = "icon-book"
 app_color = "#589494"
-app_email = "kolate.sambhaji@gmail.com"
+app_email = "info@systematrix.co.in"
 app_url = "https://frappe.io/apps/exotic_fruits"
 app_version = "0.0.1"
 fixtures = ["Custom Field",
