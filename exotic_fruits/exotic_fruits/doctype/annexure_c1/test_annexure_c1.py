@@ -4,7 +4,7 @@
 import frappe
 import unittest
 
-test_records = frappe.get_test_records('ANNEXTURE C1')
+test_records = frappe.get_test_records('ANNEXURE C1')
 
-class TestANNEXTUREC1(unittest.TestCase):
+class TestANNEXUREC1(unittest.TestCase):
 	pass
