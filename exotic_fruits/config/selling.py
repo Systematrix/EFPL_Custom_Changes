@@ -69,8 +69,8 @@ def get_data():
 			"items": [
 				{
 					"type": "doctype",
-					"name": "Invoice",
-					"description": _("Factory Invoice. Factory Export Document"),
+					"name": "Commercial Invoice",
+					"description": _("Commercial Invoice. Factory Export Document"),
 				},
 				{
 					"type": "doctype",
@@ -82,7 +82,29 @@ def get_data():
 					"name": "Excise Certificate",
 					"description": _("Excise Certificate. Factory Export Document"),
 				},
+				{
+					"type": "doctype",
+					"name": "Loading Supervision Report",
+					"description": _("Loading Supervision Report. Factory Export Document"),
+				},
+				{
+					"type": "doctype",
+					"name": "ANNEXTURE C1",
+					"description": _("ANNEXTURE C1. Factory Export Document"),
+				},
+				{
+					"type": "doctype",
+					"name": "Certificate Of Analysis",
+					"description": _("Certificate Of Analysis. Factory Export Document"),
+
+				},
+{
+                                        "type": "doctype",
+                                        "name": "Bill Of Loading",
+                                        "description": _("Bill Of Loading. Factory Export Document"),
+                                },
 				
 				]
 		},
 	]
+
