@@ -98,12 +98,34 @@ def get_data():
 					"description": _("Certificate Of Analysis. Factory Export Document"),
 
 				},
-{
-                                        "type": "doctype",
-                                        "name": "Bill Of Loading",
-                                        "description": _("Bill Of Loading. Factory Export Document"),
-                                },
+                {
+                    "type": "doctype",
+                    "name": "Bill Of Loading",
+                    "description": _("Bill Of Loading. Factory Export Document"),
+                },
 				
+				]
+		},
+			{
+			"label": _("Local Sale Documents"),
+			"icon": "icon-list",
+			"items": [
+				{
+					"type": "doctype",
+					"name": "Local Sale Invoice",
+					"description": _("Local Sale Invoice. Local Sale Export Document"),
+				},
+				{
+					"type": "doctype",
+					"name": "Delivery Challan",
+					"description": _("Delivery Challan. Local Sale Export Document"),
+				},
+				{
+					"type": "doctype",
+					"name": "Certificate Of Analysis",
+					"description": _("Certificate Of Analysis. Local Sale Export Document"),
+
+				},
 				]
 		},
 	]
