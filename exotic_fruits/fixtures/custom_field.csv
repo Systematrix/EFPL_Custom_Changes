@@ -18,28 +18,7 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
-"","""Delivery Note-etd_mother_vessel_i""","Delivery Note","Date","ETD","","","","ETD Mother Vessel - I","etd_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-eta_mother_vessel_i""","Delivery Note","Date","ETA","","","","ETA Mother Vessel - I","eta_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-etd_mother_vessel_ii""","Delivery Note","Date","ETD Mother Vessel II","","","","ETD Mother Vessel II","etd_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-eta_mother_vessel_ii""","Delivery Note","Date","ETA Mother Vessel II","","","","ETA Mother Vessel - II","eta_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-mother_vessel_ii""","Delivery Note","Data","Mother Vessel II","","","","","mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-mother_vessel_i""","Delivery Note","Data","Mother Vessel I","","","","","mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-feeder_vessel""","Delivery Note","Data","Feeder Vessel","","","","","feeder_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-tsp""","Delivery Note","Select","TSP","","","
-Yes
-No","Trans-shipment","tsp",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-etd_mother_vessel""","Delivery Note","Data","ETD","","","","ETD Mother Vessel","etd_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-eta_mother_vessel""","Delivery Note","Data","ETA","","","","ETA Mother Vessel","eta_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-pol""","Delivery Note","Data","POL","","","","Port Of Loading","pol",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-eta""","Delivery Note","Date","ETA","","","","Expected Time Of Arrival","eta",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-pod""","Delivery Note","Data","POD","","","","Port Of Discharge","pod",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-mother_vessel""","Delivery Note","Data","Mother Vessel","","","","","mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-etd""","Delivery Note","Date","ETD","","","","Expected Time Of Departure","etd",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-work_fax""","Contact","Data","Work Fax","","","","","work_fax",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-work_telephone""","Contact","Data","Work Telephone","","","","","work_telephone",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-others""","Contact","Data","Others","","","","","others",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-alternate_number""","Contact","Data","Alternate Number","","","","","alternate_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-home_number""","Contact","Data","Home Number","","","","","home_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-s""","Sales Order","Section Break","","","","","","s",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-refer_info""","Sales Order","Data","Refer Info","","","","","refer_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Refer""",0,0,0,0,0,0
 "","""Sales Order-other_info""","Sales Order","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
 "","""Sales Order-fcl_detail""","Sales Order","Select","FCL Detail","","","20 ft
@@ -62,25 +41,55 @@ No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
 No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-quote_validate_to""","Sales Order","Date","Quote Validate To","","","","","quote_validate_to",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-quotation_details""","Sales Order","Section Break","Quotation Details","","","","","quotation_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-other_info""","Quotation","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
-"","""Quotation-refer_info""","Quotation","Data","Refer Info","","","","","refer_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Refer""",0,0,0,0,0,0
+"","""Sales Order-sampling_details""","Sales Order","Section Break","Sampling Details","","","","","sampling_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-cb33b""","Sales Order","Column Break","cb33b","","","","","cb33b",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-cb33a""","Sales Order","Column Break","cb33a","","","","","cb33a",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-bill_number""","Sales Order","Data","Bill Number","","","","","bill_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-sampling_region""","Sales Order","Data","Sampling Region","","","","","sampling_region",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-order_reference""","Sales Order","Link","Order Reference","","","Sales Order","","order_reference",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-awb_dispatch_date""","Sales Order","Date","AWB Dispatch Date","","","","Air Waybill Dispatch Date","awb_dispatch_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-awb_receive_date""","Sales Order","Date","AWB Receive Date","","","","Air Waybill Receive Date","awb_receive_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-quotation_detail""","Quotation","Section Break","Quotation Detail","ignore_pricing_rule","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-quote_expires_on""","Quotation","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-empty_drums_return""","Quotation","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-palletization""","Quotation","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-crop_year""","Quotation","Select","Crop Year","ignore_pricing_rule","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-cb""","Quotation","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-sale""","Quotation","Select","Local/Export Sale","","","Local Sale
+Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-loadability""","Quotation","Select","Loadability","","","LCL
+FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Quotation-fcl_detail""","Quotation","Select","FCL Detail","","","20 ft
 40 ft
 Dry
 Controlled Temp - What is the temp
 Refer
 Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
-"","""Quotation-loadability""","Quotation","Select","Loadability","","","LCL
-FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-sale""","Quotation","Select","Local/Export Sale","","","Local Sale
-Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-cb""","Quotation","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-crop_year""","Quotation","Select","Crop Year","ignore_pricing_rule","","2013
-2014
-2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-palletization""","Quotation","Select","Palletization","","","Yes
-No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-empty_drums_return""","Quotation","Select","Empty Drums Return","","","Yes
-No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-quote_expires_on""","Quotation","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-quotation_detail""","Quotation","Section Break","Quotation Detail","ignore_pricing_rule","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-refer_info""","Quotation","Data","Refer Info","","","","","refer_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Refer""",0,0,0,0,0,0
+"","""Quotation-other_info""","Quotation","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Contact-home_number""","Contact","Data","Home Number","","","","","home_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-alternate_number""","Contact","Data","Alternate Number","","","","","alternate_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-others""","Contact","Data","Others","","","","","others",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-work_telephone""","Contact","Data","Work Telephone","","","","","work_telephone",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-work_fax""","Contact","Data","Work Fax","","","","","work_fax",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-etd""","Delivery Note","Date","ETD","","","","Expected Time Of Departure","etd",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel""","Delivery Note","Data","Mother Vessel","","","","","mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-pod""","Delivery Note","Data","POD","","","","Port Of Discharge","pod",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-eta""","Delivery Note","Date","ETA","","","","Expected Time Of Arrival","eta",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-pol""","Delivery Note","Data","POL","","","","Port Of Loading","pol",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel""","Delivery Note","Data","ETA","","","","ETA Mother Vessel","eta_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel""","Delivery Note","Data","ETD","","","","ETD Mother Vessel","etd_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-tsp""","Delivery Note","Select","TSP","","","Yes
+No","Trans-shipment","tsp",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-feeder_vessel""","Delivery Note","Data","Feeder Vessel","","","","","feeder_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel_i""","Delivery Note","Data","Mother Vessel I","","","","","mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel_ii""","Delivery Note","Data","Mother Vessel II","","","","","mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel_ii""","Delivery Note","Date","ETA Mother Vessel II","","","","ETA Mother Vessel - II","eta_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel_ii""","Delivery Note","Date","ETD Mother Vessel II","","","","ETD Mother Vessel II","etd_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel_i""","Delivery Note","Date","ETA","","","","ETA Mother Vessel - I","eta_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel_i""","Delivery Note","Date","ETD","","","","ETD Mother Vessel - I","etd_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Sales Order-awb_vendor""","Sales Order","Data","AWB Vendor","","","","Air Waybill Vendor Name","awb_vendor",0,0,0,0,"","",0,"",0,0,0,0,0,0
