@@ -27,6 +27,13 @@
    "precision": ""
   }, 
   {
+   "fieldname": "product", 
+   "fieldtype": "Data", 
+   "label": "Product", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
    "fieldname": "delivery_date", 
    "fieldtype": "Date", 
    "label": "Date", 
@@ -180,7 +187,7 @@
  "is_submittable": 1, 
  "issingle": 0, 
  "istable": 0, 
- "modified": "2014-12-03 11:21:28.557002", 
+ "modified": "2015-01-06 12:49:47.082563", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "Nutrition Certificate", 

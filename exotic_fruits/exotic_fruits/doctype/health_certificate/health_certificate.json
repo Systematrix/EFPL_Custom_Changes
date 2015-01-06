@@ -5,6 +5,7 @@
  "autoname": "naming_series:", 
  "creation": "2014-11-21 17:38:58.839932", 
  "custom": 0, 
+ "default_print_format": "Health Certificate", 
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Transaction", 
@@ -19,7 +20,7 @@
    "in_list_view": 1, 
    "label": "Series", 
    "no_copy": 0, 
-   "options": "GMO-", 
+   "options": "HS-", 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
@@ -169,6 +170,7 @@
    "label": "Amended From", 
    "no_copy": 1, 
    "options": "Health Certificate", 
+   "permlevel": 0, 
    "print_hide": 1, 
    "read_only": 1
   }
@@ -181,7 +183,7 @@
  "is_submittable": 1, 
  "issingle": 0, 
  "istable": 0, 
- "modified": "2014-11-21 17:38:58.839932", 
+ "modified": "2015-01-06 15:47:15.701616", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "Health Certificate", 
