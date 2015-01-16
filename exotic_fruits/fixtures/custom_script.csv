@@ -1,0 +1,57 @@
+"Data Import Template"
+"Table:","Custom Script"
+""
+""
+"Notes:"
+"Please do not change the template headings."
+"First data column must be blank."
+"If you are uploading new records, leave the ""name"" (ID) column blank."
+"If you are uploading new records, ""Naming Series"" becomes mandatory, if present."
+"Only mandatory fields are necessary for new records. You can delete non-mandatory columns if you wish."
+"For updating, you can update only selective columns."
+"You can only upload upto 5000 records in one go. (may be less in some cases)"
+""
+"DocType:","Custom Script","",""
+"Column Labels:","ID","DocType","Script"
+"Column Name:","name","dt","script"
+"Mandatory:","Yes","No","No"
+"Type:","Data (text)","Link","Code"
+"Info:","","Valid DocType",""
+"Start entering data below this line"
+"","""Sales Invoice-Client""","Sales Invoice","cur_frm.cscript.bank_address_name=function() {
+		erpnext.utils.get_address_display(this.frm, ""bank_address_name"", ""bank_address"");
+	}
+cur_frm.cscript.same_as_customer=function(doc) {
+		if(doc.same_as_customer){
+                   doc.buyer=doc.customer;
+                   doc.consignee=doc.customer;
+                   doc.notify_party=doc.customer;
+                }
+	}"
+"","""Delivery Note-Client""","Delivery Note","cur_frm.cscript.bank_address_name=function() {
+		erpnext.utils.get_address_display(this.frm, ""bank_address_name"", ""bank_address"");
+	}
+cur_frm.cscript.same_as_customer=function(doc) {
+		if(doc.same_as_customer){
+                   doc.buyer=doc.customer;
+                   doc.consignee=doc.customer;
+                   doc.notify_party=doc.customer;
+                }
+	}"
+"","""Sales Order-Client""","Sales Order","cur_frm.cscript.bank_address_name=function() {
+		erpnext.utils.get_address_display(this.frm, ""bank_address_name"", ""bank_address"");
+	}
+cur_frm.cscript.same_as_customer=function(doc) {
+		if(doc.same_as_customer){
+                   doc.buyer=doc.customer;
+                   doc.consignee=doc.customer;
+                   doc.notify_party=doc.customer;
+                }
+	}"
+"","""Quotation-Client""","Quotation","cur_frm.cscript.custom_refresh=function(doc) {
+		if(doc.same_as_customer){
+                   doc.buyer=doc.customer;
+                   doc.consignee=doc.customer;
+                   doc.notify_party=doc.customer;
+                }
+	}"

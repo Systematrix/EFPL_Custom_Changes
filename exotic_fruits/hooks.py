@@ -8,7 +8,9 @@ app_email = "info@systematrix.co.in"
 app_url = "https://frappe.io/apps/exotic_fruits"
 app_version = "0.0.1"
 fixtures = ["Custom Field",
-"Property Setter"]
+"Property Setter",
+"Custom Script",
+"Print Format"]
 
 # Includes in <head>
 # ------------------
