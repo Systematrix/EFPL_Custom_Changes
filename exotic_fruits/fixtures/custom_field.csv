@@ -18,6 +18,35 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
+"","""Serial No-b_a""","Serial No","Float","B/A","","","","","b_a",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-sample_bag_id""","Serial No","Data","Sample Bag Id","","","","","sample_bag_id",0,0,0,0,"","",0,"eval:doc.sample_bag_drawn == ""Yes""",0,0,0,0,0,0
+"","""Serial No-sample_bag_drawn""","Serial No","Select","Sample Bag Drawn","","","
+Yes
+No","","sample_bag_drawn",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-other""","Serial No","Data","Other","","","","","other",0,0,0,0,"","",0,"eval:doc.color_ == ""Other """,0,0,0,0,0,0
+"","""Serial No-color_""","Serial No","Select","Color ","","","
+Hunter - L
+Hunter - A
+Hunter - B
+Pantone
+Other ","","color_",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-specks""","Serial No","Data","Specks","","","","","specks",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-viscosity""","Serial No","Data","Viscosity","","","","","viscosity",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-consistency""","Serial No","Data","Consistency","","","","","consistency",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-ccb1""","Serial No","Column Break","ccb1","","","","","ccb1",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-ph""","Serial No","Float","pH","","","","","ph",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-acidity""","Serial No","Float","Acidity","","","","","acidity",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-brix""","Serial No","Float","Brix","","","","","brix",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-line_head""","Serial No","Data","Line Head","","","","","line_head",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-manufacturing_line""","Serial No","Data","Manufacturing Line","","","","","manufacturing_line",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-manufacturing_details""","Serial No","Section Break","Manufacturing Details","","","","","manufacturing_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Batch-ecrc_compartment""","Batch","Data","ECRC Compartment","","","","","ecrc_compartment",0,0,0,0,"","",0,"eval:doc.item_type == ""Purchase""",0,0,0,0,0,0
+"","""Batch-ccb01""","Batch","Column Break","ccb01","","","","","ccb01",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Batch-item_type""","Batch","Select","Item Type","","","
+Selling
+Purchase","","item_type",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Purchase Invoice Item-transporter_loss""","Purchase Invoice Item","Float","Transporter Loss","","","","","transporter_loss",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Purchase Invoice Item-natural_loss""","Purchase Invoice Item","Float","Natural Loss","","","","","natural_loss",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-buyer""","Delivery Note","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-notify_party""","Delivery Note","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-consignee""","Delivery Note","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
