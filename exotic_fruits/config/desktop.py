@@ -3,9 +3,9 @@ from frappe import _
 def get_data():
 	return {
 		"exotic_fruits": {
-			"color": "#589494",
+			"color": "#f39c12",
 			"icon": "icon-book",
 			"type": "module",
-			"label": _("exotic_fruits")
+			"label": _("Export Documentation ")
 		}
 	}
