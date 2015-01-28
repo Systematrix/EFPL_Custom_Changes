@@ -33,7 +33,17 @@ cur_frm.cscript.rate_per_mt = function(doc, cdt, cdn) {
     var item = frappe.get_doc(cdt, cdn);
     var rate = item.rate_per_mt * item.quantity_in_mt / item.qty;
     frappe.model.set_value(cdt, cdn, ""rate"", rate);
-}"
+};
+cur_frm.cscript.same_as_customer=function(doc){
+    if(doc.same_as_customer){
+        doc.buyer=doc.customer;
+        doc.consignee=doc.customer;
+        doc.notify_party=doc.customer;
+        refresh_field(""buyer"");
+        refresh_field(""consignee"");
+        refresh_field(""notify_party"");
+    }
+};"
 "","""Delivery Note-Client""","Delivery Note","cur_frm.cscript.bank_address_name=function() {
 		erpnext.utils.get_address_display(this.frm, ""bank_address_name"", ""bank_address"");
 };
@@ -49,7 +59,17 @@ cur_frm.cscript.rate_per_mt = function(doc, cdt, cdn) {
     var item = frappe.get_doc(cdt, cdn);
     var rate = item.rate_per_mt * item.quantity_in_mt / item.qty;
     frappe.model.set_value(cdt, cdn, ""rate"", rate);
-}"
+};
+cur_frm.cscript.same_as_customer=function(doc){
+    if(doc.same_as_customer){
+        doc.buyer=doc.customer;
+        doc.consignee=doc.customer;
+        doc.notify_party=doc.customer;
+        refresh_field(""buyer"");
+        refresh_field(""consignee"");
+        refresh_field(""notify_party"");
+    }
+};"
 "","""Sales Order-Client""","Sales Order","cur_frm.cscript.bank_address_name=function() {
 		erpnext.utils.get_address_display(this.frm, ""bank_address_name"", ""bank_address"");
 };
@@ -65,6 +85,16 @@ cur_frm.cscript.rate_per_mt = function(doc, cdt, cdn) {
     var item = frappe.get_doc(cdt, cdn);
     var rate = item.rate_per_mt * item.quantity_in_mt / item.qty;
     frappe.model.set_value(cdt, cdn, ""rate"", rate);
+};
+cur_frm.cscript.same_as_customer=function(doc){
+    if(doc.same_as_customer){
+        doc.buyer=doc.customer;
+        doc.consignee=doc.customer;
+        doc.notify_party=doc.customer;
+        refresh_field(""buyer"");
+        refresh_field(""consignee"");
+        refresh_field(""notify_party"");
+    }
 };"
 "","""Quotation-Client""","Quotation","cur_frm.add_fetch('item_code','net_weight','net_weight');
 cur_frm.add_fetch('item_code','weight_uom','weight_uom');

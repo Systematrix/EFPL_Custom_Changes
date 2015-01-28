@@ -18,6 +18,13 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
+"","""Sales Invoice-same_as_customer""","Sales Invoice","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-same_as_customer""","Delivery Note","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-sss""","Sales Order","Section Break","","","","","","sss",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Sales Order-documents_required""","Sales Order","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-documents""","Sales Order","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-_documents_required_sec""","Sales Order","Section Break","Documents Required","","","","","_documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-same_as_customer""","Sales Order","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Invoice-buyer""","Sales Invoice","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Invoice-notify_party""","Sales Invoice","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Invoice-consignee""","Sales Invoice","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
@@ -120,10 +127,6 @@ No","Trans-shipment","tsp",0,0,0,0,"","No",0,"",0,0,0,0,0,0
 "","""Delivery Note-pol""","Delivery Note","Data","POL","","","","Port Of Loading","pol",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-bank_address""","Delivery Note","Small Text","Bank Address","","","","","bank_address",0,0,0,0,"","",1,"",1,0,0,0,0,0
 "","""Delivery Note-bank_address_name""","Delivery Note","Link","Bank Address","","","Address","Client's Banker","bank_address_name",0,0,0,0,"","",1,"customer",1,0,0,0,0,0
-"","""Sales Order-sss""","Sales Order","Section Break","","","","","","sss",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Sales Order-documents_required""","Sales Order","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-_documents_required_sec""","Sales Order","Section Break","Documents Required","","","","","_documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-documents""","Sales Order","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-buyer""","Sales Order","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-notify_party""","Sales Order","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-consignee""","Sales Order","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
