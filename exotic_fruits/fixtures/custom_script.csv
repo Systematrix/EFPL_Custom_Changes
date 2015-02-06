@@ -18,7 +18,7 @@
 "Type:","Data (text)","Link","Code"
 "Info:","","Valid DocType",""
 "Start entering data below this line"
-"","""Sales Invoice-Client""","Sales Invoice","cur_frm.cscript.bank_address_name=function() {
+"","""Delivery Note-Client""","Delivery Note","cur_frm.cscript.bank_address_name=function() {
 		erpnext.utils.get_address_display(this.frm, ""bank_address_name"", ""bank_address"");
 };
 cur_frm.add_fetch('item_code','net_weight','net_weight');
@@ -43,8 +43,19 @@ cur_frm.cscript.same_as_customer=function(doc){
         refresh_field(""consignee"");
         refresh_field(""notify_party"");
     }
+};
+cur_frm.cscript.custom_refresh =function(doc){
+        doc.shipping_cost_total=doc.shipping_cost_1+doc.shipping_cost_2+doc.shipping_cost_3
+        +doc.shipping_cost_4+doc.shipping_cost_5;
+        doc.cha_total=doc.cha_cost_1+doc.cha_cost_2+doc.cha_cost_3+doc.cha_cost_4+doc.cha_cost_5;
+        doc.legalization_total=doc.legalization_cost_1+doc.legalization_cost_2;
+        doc.other_cost_total=doc.other_charges_1+doc.other_charges_2+doc.other_charges_3;
+        refresh_field(""shipping_cost_total"");
+        refresh_field(""cha_total"");
+        refresh_field(""other_cost_total"");
+        refresh_field(""legalization_total"");
 };"
-"","""Delivery Note-Client""","Delivery Note","cur_frm.cscript.bank_address_name=function() {
+"","""Sales Invoice-Client""","Sales Invoice","cur_frm.cscript.bank_address_name=function() {
 		erpnext.utils.get_address_display(this.frm, ""bank_address_name"", ""bank_address"");
 };
 cur_frm.add_fetch('item_code','net_weight','net_weight');
