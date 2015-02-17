@@ -18,406 +18,832 @@
 "Type:","Data (text)","Link","Link","Select","Select","Check","Code"
 "Info:","","Valid DocType","Valid Module Def","One of: No, Yes","One of: Server, Client","0 or 1",""
 "Start entering data below this line"
-"","""Shipment Advice""","Shipment Advice","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""SHIPMENT ADVICE"") }}</b></p>
+"","""Cheque Printing Format""","Journal Voucher","Accounts","Yes","Server",0,"<div style=""position: relative"">
+
+	{%- from ""templates/print_formats/standard_macros.html"" import add_header -%}
+<div class=""page-break"">
+    {%- if not doc.get(""print_heading"") and not doc.get(""select_print_heading"") 
+        and doc.set(""select_print_heading"", _(""Payment Advice"")) -%}{%- endif -%}
+    {{ add_header(0, 1, doc, letter_head, no_letterhead) }}
+
+{%- for label, value in (
+        (_(""Voucher Date""), frappe.utils.formatdate(doc.voucher_date)),
+        (_(""Reference / Cheque No.""), doc.cheque_no),
+        (_(""Reference / Cheque Date""), frappe.utils.formatdate(doc.cheque_date))
+    ) -%}
+    <div class=""row"">
+        <div class=""col-sm-4""><label class=""text-right"">{{ label }}</label></div>
+        <div class=""col-sm-8"">{{ value }}</div>
+    </div>
+{%- endfor -%}
+	<hr>
+	<p>{{ _(""This amount is in full / part settlement of the listed bills"") }}:</p>
+{%- for label, value in (
+         (_(""Amount""), ""<strong>"" + (doc.total_amount or """") + ""</strong><br>"" + (doc.total_amount_in_words or """") + ""<br>""),
+        (_(""References""), doc.remark)
+    ) -%}
+    <div class=""row"">
+        <div class=""col-sm-4""><label class=""text-right"">{{ label }}</label></div>
+        <div class=""col-sm-8"">{{ value }}</div>
+    </div>
+    {%- endfor -%}
+    <hr>
+	<div style=""position: absolute; top: 14cm; left: 0cm;"">
+		Prepared By</div>
+	<div style=""position: absolute; top: 14cm; left: 5.5cm;"">
+		Authorised Signatory</div>
+	<div style=""position: absolute; top: 14cm; left: 11cm;"">
+		Received Payment as Above</div>
+	<div style=""position: absolute; top: 16.4cm; left: 5.9cm;"">
+		<strong>_____________</strong></div>
+	<div style=""position: absolute; top: 16.7cm; left: 6cm;"">
+		<strong>A/C Payee</strong></div>
+	<div style=""position: absolute; top: 16.7cm; left: 5.9cm;"">
+		<strong>_____________</strong></div>
+	<div style=""position: absolute; top: 16.9cm; left: 12cm;"">
+		{{ frappe.utils.formatdate(doc.cheque_date) }}</div>
+	<div style=""position: absolute; top: 17.9cm; left: 1cm;"">
+		{{ doc.pay_to_recd_from }}</div>
+	<div style=""position: absolute; top: 18.6cm; left: 1cm; width: 7cm;"">
+		{{ doc.total_amount_in_words }}</div>
+	<div style=""position: absolute; top: 19.7cm; left: 12cm;"">
+		{{ doc.total_amount }}</div>
+</div>"
+"","""Credit Note""","Journal Voucher","Accounts","Yes","Server",0,"{%- from ""templates/print_formats/standard_macros.html"" import add_header -%}
+
+<div class=""page-break"">
+    {%- if not doc.get(""print_heading"") and not doc.get(""select_print_heading"") 
+        and doc.set(""select_print_heading"", _(""Credit Note"")) -%}{%- endif -%}
+    {{ add_header(0, 1, doc, letter_head, no_letterhead) }}
+
+    {%- for label, value in (
+        (_(""Credit To""), doc.pay_to_recd_from),
+        (_(""Date""), frappe.utils.formatdate(doc.voucher_date)),
+        (_(""Amount""), ""<strong>"" + frappe.utils.cstr(doc.total_amount) + ""</strong><br>"" + (doc.total_amount_in_words or """") + ""<br>""),
+        (_(""Remarks""), doc.remark)
+    ) -%}
+
+    <div class=""row"">
+        <div class=""col-sm-3""><label class=""text-right"">{{ label }}</label></div>
+        <div class=""col-sm-9"">{{ value }}</div>
+    </div>
+
+    {%- endfor -%}
+
+    <hr>
+    <br>
+    <p class=""strong"">
+        {{ _(""For"") }} {{ doc.company }},<br>
+        <br>
+        <br>
+        <br>
+        {{ _(""Authorized Signatory"") }}
+    </p>
+</div>"
+"","""Payment Receipt Voucher""","Journal Voucher","Accounts","Yes","Server",0,"{%- from ""templates/print_formats/standard_macros.html"" import add_header -%}
+<div class=""page-break"">
+    {%- if not doc.get(""print_heading"") and not doc.get(""select_print_heading"") 
+        and doc.set(""select_print_heading"", _(""Payment Receipt Note"")) -%}{%- endif -%}
+    {{ add_header(0, 1, doc, letter_head, no_letterhead) }}
+
+    {%- for label, value in (
+        (_(""Received On""), frappe.utils.formatdate(doc.voucher_date)),
+        (_(""Received From""), doc.pay_to_recd_from),
+        (_(""Amount""), ""<strong>"" + doc.total_amount or 0 + ""</strong><br>"" + (doc.total_amount_in_words or """") + ""<br>""),
+        (_(""Remarks""), doc.remark)
+    ) -%}
+    <div class=""row"">
+        <div class=""col-sm-3""><label class=""text-right"">{{ label }}</label></div>
+        <div class=""col-sm-9"">{{ value }}</div>
+    </div>
+
+    {%- endfor -%}
+
+    <hr>
+    <br>
+    <p class=""strong"">
+        {{ _(""For"") }} {{ doc.company }},<br>
+        <br>
+        <br>
+        <br>
+        {{ _(""Authorized Signatory"") }}
+    </p>
+</div>"
+"","""Bill Of exchange""","Bill Of exchange","exotic_fruits","Yes","Server",0,"<p class=""text-center"">{{ _(""DRAWN ON 75 DAYS AFTER DATE OF INVOICE THROUGH RABOBANK NEDERLAND OBS TRADE SERVICES GLIDENKWARTIER 199 3511 DH UTERECHT THE NETHERLANDS."") }}</p>
 
 <br><br>
-<p>SHIPMENT ADVICE- CONTRACT NO-  {{ doc.contract_no }} DATE {{ doc.get_formatted(""contract_date"") }}  </p><br>
-<p>DOHLER HOLLAND BV- Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </p><br>
+<p> Invoice No. {{ doc.sales_order }} dt: {{ doc.get_formatted(""delivery_date"") }} </p><br>
+<p>EXCHANGE FOR << USE 84,240 >> </p><br>
+
+<p>At  << 75>> days after << INVOICE >> date of this FIRST of exchange (Second of the same tenure date being unpaid) pay to the order of << ANDHRA BANK, 9/15, MAMA PARAMANAND MARG, QUEENS ROAD, OPERA HOUSE MUMBAI - 400 004, MAHARASHTRA INDIA - A/C NO. 0402111000001945 >> the sum of << US DOLLARS EIGHTY FOUR THOUSAND TWO HUNDREAD FOURTY ONLY >> value received and charge the same to the account of << 240 Drums >> shipped per vessel << CMA CGM BELLINI V- EPA14W >>  </p><br>
 
 
-<table class=""table table-bordered"">
-	<tbody>	
-		<tr>	<td style=""width: 3%;"">
-PRODUCT </td>
-			<td style=""width: 20%;"">{{ doc.product }} </td>
-		</tr>
-               <tr>
-			<td style=""width: 3%;"">QUANTITY :  </td>
-			<td style=""width: 20%;""> {{ doc.quantity }} </td>
-		</tr>
-<tr>
-			<td style=""width: 3%;"">VALUE :  </td>
-			<td style=""width: 20%;""> {{ doc.value }} </td>
-		</tr>
-<tr>
-			<td style=""width: 3%;"">PORT OF DISCHARGE :  </td>
-			<td style=""width: 20%;""> {{ doc.port_of_discharge }} </td>
-		</tr>
-<tr>
-			<td style=""width: 3%;"">VESSEL NAME :  </td>
-			<td style=""width: 20%;""> {{ doc.vessel_name }} </td>
-		</tr>
-<tr>
-			<td style=""width: 3%;"">B/L NO. & DATE :  </td>
-			<td style=""width: 20%;""> {{ doc.bl_no_and_date }} </td>
-		</tr>
-<tr>
-			<td style=""width: 3%;"">CONTAINER NO :  </td>
-			<td style=""width: 20%;""> {{ doc.container_no }} </td>
-		</tr>
+<p>INVOICE NO<< INVOICE NO >> B/L No.  <<  >>  </p><br>
 
-<tr>
-			<td style=""width: 3%;"">NET WEIGHT :  </td>
-			<td style=""width: 20%;""> {{ doc.net_weight }} </td>
-		</tr>
-<tr>
-			<td style=""width: 3%;"">GROSS WEIGHT :  </td>
-			<td style=""width: 20%;""> {{ doc.gross_weight }} </td>
-		</tr>
+<p>TO <<  >> </p><br>
 
-	</tbody>
+<p>M/s <<FRIESLANDCAMPINA RIEDL B.V. <br>
+FRANKENENG 12, <br>
+THE NETHERLANDS >> </p><br>
+
+
+<br>
+<p class=""text-right""><b>For EXOTIC FRUITS PVT. LTD.</b></p>
+<br><br>
+<p class=""text-right""><b> AUTHORISED SIGNATORY </b></p><br>"
+"","""Factory Invoice""","Invoice","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
+	{% if letter_head and not no_letterhead %}
+	<div class=""letter-head"">{{ letter_head }}</div>
+	{% endif %}
+	{%- if doc.meta.is_submittable and doc.docstatus==0-%}
+	<div class=""alert alert-info text-center"">
+		<h4 style=""margin: 0px;"">{{ _(""DRAFT"") }}</h4></div>
+	{%- endif -%}
+	{%- if doc.meta.is_submittable and doc.docstatus==2-%}
+	<div class=""alert alert-danger text-center"">
+		<h4 style=""margin: 0px;"">{{ _(""CANCELLED"") }}</h4></div>
+	{%- endif -%}
+	{% if max_pages > 1 %}
+	<p class=""text-right"">{{ _(""Page #{0} of {1}"").format(page_num, max_pages) }}</p>
+	{% endif %}
+{%- endmacro -%}
+
+<style>
+	.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+	background-color: #B7CCF2;
+	color:#000000;
+	font-size:16px;
+	}
+	.print-format table, .print-format tr, 
+	.print-format td, .print-format div, .print-format p {
+		font-family: sans-serif;
+		line-height: 90%;
+		vertical-align: middle;
+	}
+	@media screen {
+		.print-format {
+			width: 210mm;
+			padding: 10mm;
+			min-height: 297mm;
+			footer {page-break-after: always;}
+		}
+	}
+</style>
+
+<small>
+{{ add_header(0,1,doc,letter_head, no_letterhead) }}
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td colspan=""2"">
+			<b style=""font-size:16px;"">{{ doc.select_print_heading or (doc.print_heading if doc.print_heading != None
+			else _(doc.doctype)) }}</b>  
+		</td>
+		<td style=""width:34%"">        
+			<b style=""font-size:16px; text-align:left; vertical-align:middle;"">{{ _(""#"") }}{{ doc.name }}</b><br>
+		</td>
+	</tr>
 </table>
 
-
-<br>
-
-<p>This is to certify that above product packed in Aseptic bag in a drum has undergone sufficient sterilization process and that the product is safe for human consumption.</p>
-
-<br>
-<br>
-<br>
-<p><b>YOURS FAITHFULLY,</b></p><br>
-<p><b>For EXOTIC FRUITS PVT. LTD.</b></p>
-<br><br>
-<p><b> AUTHORISED SIGNATORY </b></p><br>"
-"","""CARTON MANIFEST""","CARTON MANIFEST","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CARTON MANIFEST"") }}</b></p>
-
-
-<br>
-<p class=""text-center""><b>REF: Our Invoice Number {{ doc.sales_order }} dt: {{ doc.get_formatted(""delivery_date"") }} </b></p><br>
-<br>
-
-
-<p>Container No : {{ doc.container_no }} </p><br>
-
-<p>Batch No. : {{ doc.batch }}  </p><br>
-
-<p>Prod. Date : {{ doc.prod_date }} </p><br>
-
-<p>Carton Nos : {{ doc.carton_nos }} </p><br>
-
-<p>No Of Cartons : {{ doc.no_of_cartons }}  </p><br>
-
-<br>
-
-<p>NET WEIGHT PER CARTON: 20.00 KGS,      GROSS WEIGHT PER CARTON: 21.50 KGS, <br> TOTAL NET WEIGHT: 18480.00 KGS,
-     TOTAL GROSS WEIGHT 19866.00 KGS</p>
-
-<br>
-<br>
-<br>
-<p><b>For EXOTIC FRUITS PVT. LTD., </b></p>
-<br><br>
-<p><b> MANAGER (Q.A.) </b></p><br>"
-"","""Health Certificate""","Health Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""HEALTH CERTIFICATE"") }}</b></p>
-
-<br><br>
-<table class=""table table-bordered"">
-	<tbody>	
-		<tr>	<td style=""width: 3%;"">
-OUR REF:</td>
-			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
-		</tr>
-               <tr>
-			<td style=""width: 3%;"">PRODUCT :  </td>
-			<td style=""width: 20%;""> {{ doc.product }} </td>
-		</tr>
- <tr>
-			<td style=""width: 3%;"">NO OF PACKAGES :  </td>
-			<td style=""width: 20%;""> {{ doc.no_of_packages }} </td>
-		</tr>
- <tr>
-			<td style=""width: 3%;"">PROCESS :  </td>
-			<td style=""width: 20%;""> {{ doc.process }} </td>
-		</tr>
- <tr>
-			<td style=""width: 3%;"">TOTAL NET WEIGHT :  </td>
-			<td style=""width: 20%;""> {{ doc.total_net_weight }} </td>
-		</tr>
- <tr>
-			<td style=""width: 3%;"">CONTAINER NO. :  </td>
-			<td style=""width: 20%;""> {{ doc.container_no }} </td>
-		</tr>
-
-	</tbody>
-</table>
-
-<br>
-
-<p>This is to certify that above product packed in Aseptic bag in a drum has undergone sufficient sterilization process and the product is safe for human consumption.</p>
-
-<br>
-<br>
-<br>
-<p><b>For EXOTIC FRUITS PVT. LTD.</b></p>
-<br><br>
-<p><b> AUTHORISED SIGNATORY </b></p><br>"
-"","""DRUM MANIFEST""","DRUM MANIFEST","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""DRUM MANIFEST"") }}</b></p>
-
-<br><br>
-<p class=""text-center""><b>REF: Our Invoice Number {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </b></p><br>
-
-<br><br>
-<p>Container No :  {{ doc.container_no }} </p><br>
-
-<p>Batch # :  {{ doc.batch }}  </p><br>
-
-<p>Prod. Date :  {{ doc.prod_date }}</p><br>
-
-<p>DRM Nos : {{ doc.drm_nos }} </p><br>
-
-<p>No Of DRMS : {{ doc.no_of_drms }} </p><br>
-
-<br>
-
-<p>NET WEIGHT PER DRUM: 220 KGS,      GROSS WEIGHT PER DRUM: 240 KGS, <br> TOTAL NET WEIGHT: 17000.00 KGS,
-     TOTAL GROSS WEIGHT 19200.00 KGS</p>
-
-<br>
-<br>
-<br>
-<p><b>For EXOTIC FRUITS PVT. LTD., </b></p>
-<br><br>
-<p><b> MANAGER (Q.A.) </b></p><br>"
-"","""Shelf Life Certificate""","Shelf Life Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""SHELF LIFE CERTIFICATE"") }}</b></p>
-
-<br>
-<table class=""table table-bordered"">
-	<tbody>	
-		<tr>	<td style=""width: 3%;"">
-OUR REF:</td>
-			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
-		</tr>
-               <tr>
-			<td style=""width: 3%;"">PRODUCT :  </td>
-			<td style=""width: 20%;""> {{ doc.product }} </td>
-		</tr>
-
-	</tbody>
-</table>
-<br>
-
-<p>This is to certify that shelf life of the product shipped with reference to the above mentioned invoice is <b> 12 months </b> from the date of production, if kept under ideal storage conditions.</p>
-
-<br>
-<br>
-<br>
-<p><b>For EXOTIC FRUITS PVT. LTD </b></p>
-<br><br>
-<p><b>AUTHORISED SIGNATORY </b></p><br>"
-"","""GMO DECLARATION""","GMO DECLARATION","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""GMO DECLARATION"") }}</b></p>
-
-<br>
-<table class=""table table-bordered"">
-	<tbody>	
-		<tr>	<td style=""width: 3%;"">
-OUR REF:</td>
-			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
-		</tr>
-               <tr>
-			<td style=""width: 3%;"">PRODUCT :  </td>
-			<td style=""width: 20%;""> {{ doc.product }} </td>
-		</tr>
-
-	</tbody>
-</table>
-<br>
-
-<p>We hereby declare that the product named above, as supplied to client M/s {{ doc.customer_name }}  << CLIENT ADDRESS >> is not derived from or produced using GMO's or their derivates and all reasonable precautions have been taken to prevent contamination free genetically modified ingredients where used this also applies to Food Additives and Processing aids.</p>
-
-<br>
-<br>
-<br>
-<p><b>For EXOTIC FRUITS PVT. LTD </b></p>
-<br><br>
-<p><b>AUTHORISED SIGNATORY </b></p><br>"
-"","""Certificate Of Naturalness""","Certificate Of Naturalness","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE OF NATURALNESS"") }}</b></p><br>
-<p class=""text-center""><b>{{ _(""GUARANTEE OF PURITY AS PER USDA STANDERDS"") }}</b></p>
-
-<br>
-<table class=""table table-bordered"">
-	<tbody>	
-		<tr>	<td style=""width: 3%;"">
-OUR REF:</td>
-			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
-		</tr>
-               <tr>
-			<td style=""width: 3%;"">PRODUCT :  </td>
-			<td style=""width: 20%;""> {{ doc.product }} </td>
-		</tr>
-
-	</tbody>
-</table>
-<br><br>
-
-<p>We hereby guarantee that the above product comply in all respect to the Indian food laws i.e. Prevention of Food Adulteration Act (1954) and Fruit Products Order (1955) and all acts, amending or supplementing the same </p>
-<br>
-<p>We further certify and guarantee that the product is 100% natural and is not adulterated or misbranded within the meaning of aforementioned act.  </p>
-<br>
-<p>This certificate shall also constitute a Continuing Guarantee of the matters started above.</p>
-<br>
-<br>
-<br>
-<p><b>For EXOTIC FRUITS PVT. LTD</b></p>
-<br><br>
-<p><b>AUTHORISED SIGNATORY </b></p><br>"
-"","""Certificate Of Authenticity And Conformity""","Certificate Of Authenticity And Conformity","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE OF AUTHENTICITY AND CONFORMITY"") }}</b></p>
-
-<br><br>
-<table class=""table table-bordered"">
-	<tbody>	
-		<tr>	<td style=""width: 3%;"">
-OUR REF:</td>
-			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT. {{ doc.get_formatted(""delivery_date"") }}</td>
-		</tr>
-               <tr>
-			<td style=""width: 3%;"">PRODUCT :  </td>
-			<td style=""width: 20%;""> {{ doc.product }} </td>
-		</tr>
-
-	</tbody>
-</table>
-
-<br>
-<br>
-
-<p>The undersigned guarantees that the product supplied to < CLIENT NAME > < CLIENT ADDRESS > and delivered in one Or more deliveries, is made from 100% sound, mature & wholesome fruit is authentic & is free from any dyestuff and preservatives & is not modified and/or adulterated and/or misbranded and/or enriched in anyway by addition of natural or artificial substances and/or sugars and/or stabilizing agents(Like E.C. Emulsifiers, jellying agents etc), within the meaning of the European Food legislation with special reference to the E.C Flavouring directive and/or E.C. Directive for food additives. </p>
-<br>
-<p>The product is manufactured under highly qualified & sanitary conditions corresponding to International Good Manufacturing Standards and is in conformity with the specifications. As agreed in purchase order, and is suitable for it's intended application in Fruit juice and/or Fruit Nectars in the meaning of E.C. Fruit Juice directive. </p>
-<br>
-
-<p>The undersigned guarantees that these products do not contain any additives or components of which the use is prohibited or restricted by European Food Laws.</p>
-<br>
-
-<p>The producer and/or seller warrants that the product also fully corresponds to the AIJN Code of Practice for the Arsenic and Heavy Metals.</p>
-<br>
-<br>
-<br>
-<p><b>For EXOTIC FRUITS PRIVATE LIMITED</b></p>
-<br><br>
-<p><b>AUTHORISED SIGNATORY </b></p><br>"
-"","""Nutrition Certificate""","Nutrition Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""NUTRITION CERTIFICATE"") }}</b></p>
- 
-<br><br>
-
-<p><b>REFERENCE: OUR INVOICE NUMBER {{ doc.sales_order }} DT. {{ doc.delivery_date}} </b></p>
-
-<br><br>
-<p><b>PRODUCT :  {{ doc.product }} </b></p>
-<br>
-<table class=""table table-bordered"">
-	<tbody>	
-		<tr>	<td style=""width: 3%;"">
-WATER - %</td>
-			<td style=""width: 20%;""> {{ doc.water }}</td>
-		</tr>
-               <tr>
-			<td style=""width: 3%;"">CALORIES Kcal/kg</td>
-			<td style=""width: 20%;""> {{ doc.calories }} </td>
-		</tr>
-<tr>
-			<td style=""width: 3%;"">PROTEIN -gm</td>
-			<td style=""width: 20%;"">{{ doc.protein }} </td>
-		</tr>
-<tr>
-  <td style=""width: 3%;""> FAT -gm </td>
-  <td style=""width: 20%;""> {{ doc.fat }} </td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> CARBOHYDRATE TOTAL -gm</td>
-  <td style=""width: 20%;""> {{ doc.carbohydrate_total }} </td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> ASH -gm</td>
-  <td style=""width: 20%;"">  {{ doc.ash }}</td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> CALCIUM-gm</td>
-  <td style=""width: 20%;""> {{ doc.calcium }}</td>
-</tr>
-<tr>
-  <td style=""width: 3%;"">PHOSPHORUS-gm</td>
-  <td style=""width: 20%;""> {{ doc.phosphorus }} </td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> IRON -gm</td>
-  <td style=""width: 20%;"">{{ doc.iron }} </td>
-</tr>
-<tr>
-  <td style=""width: 3%;"">SODIUM -gm</td>
-  <td style=""width: 20%;"">{{ doc.sodium }} </td>
-</tr>
-<tr>
-  <td style=""width: 3%;"">POTASSIUM -gm </td>
-  <td style=""width: 20%;""> {{ doc.potassium }}</td>
-</tr>
-<tr>
-  <td style=""width: 3%;"">VITAMIN A  -IU/gm </td>
-  <td style=""width: 20%;"">{{ doc.vitamin_a }}  </td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> THIAMINE -mg/100g</td>
-  <td style=""width: 20%;""> {{ doc.thiamine }}</td>
-</tr>
-<tr>
-  <td style=""width: 3%;"">RIBOFLAVIN - mg/100g</td>
-  <td style=""width: 20%;"">{{ doc.riboflavin }}</td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> NIACIN - mg/100g</td>
-  <td style=""width: 20%;"">  {{ doc.niacin }}</td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> ASCORBIC ACID - mg/100g</td>
-  <td style=""width: 20%;""> {{ doc.ascorbic_acid }} </td>
-</tr>
-<tr>
-  <td style=""width: 3%;""> </td>
-  <td style=""width: 20%;""> COMPOSITION OF FOODS PER 100 GMS, EDIBLE PORTION - PULP</td>
-</tr>
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td colspan=""2"">
+			<b style=""font-size:14px;"">
+	 <p><b>{{ _(""EXPORTER"") }}: </b></b>
+		 {{ _(""<br><br>EXOTIC FRUITS PVT. LTD., <br>B-208, ARJUN CENTER,<br>
+		 BKS DEVSHI MARG, GOVANDI(E),<br> MUMBAI-400 088, INDIA."") }}
+			 
+		</p> 
+		</td>
+		
+		<td style=""width:50%"">  
+		 <table class=""table table-condensed"">
+			<td>Invoice No. & Date<br>
+		 EFE{{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </td> 
+		 <td>Exporter's Ref. <br> IEC NO. 0799000531</td> 
 	
+	 </table>
+		<table class=""table table-condensed"">
+			<tr>
+				<td>
+					{{ _(""Buyer's Ref. No. & Date  :"") }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{ _(""PURCHASE CONTRACT NO."") }} <<< 312049 >> {{ _(""DT."") }} << 13/2013 >>
+				</td>
+			</tr>
+			 <tr>
+				<td>
+					{{ _(""Buyer's Other Ref. No."") }} 
+				</td>
+			</tr>
+		 <tr>
+			 <td>
+					{{ _(""Order No."") }} << 312049-R >> 
+				</td>
+			</tr>
+			
+		</table>
+		</td>
+	 
+	</tr>
+</table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+
+	
+     
+    <td style=""width:50%"">  
+    <table class=""table table-condensed"">
+		 <tr><td>
+		        <b style=""font-size:14px;"">
+	         <p><b>{{ _(""Consignee"") }}: </b></b>
+					 {{ _(""<br><br>consign name, <br>Addr,<br>
+		 			 Addr2,<br> State, Country"") }}
+			     </p> 
+		     </td>
+		  </tr>
+	   </table>
+		 <table class=""table table-condensed"">
+			<tr>
+			   <td>Pre-carrige by <br>  </td> 
+		     <td>Place of Receipt by Pre-Carrier <br> </td> 
+	   </tr>
+	   <tr>
+			   <td>Vessel/Voyage No.<br> </td> 
+		     <td>Port of Loading<br> << Chennai Port, India >></td> 
+	   </tr>
+	   <tr>
+			   <td>Port of Discharge<br> << FELIXSTOWE >> </td> 
+		     <td>Final Destination <br> << FELIXSTOWE, U.K. >></td> 
+	   </tr>
+	   </table>
+		</td>
+
+		<td style=""width:50%"">  
+		<table class=""table table-condensed"">
+		 <tr><td>BUYER (IF OTHER THAN CONSIGNEE)</td></tr>
+	   </table>
+
+		 <table class=""table table-condensed"">
+			<td>Country of Origin of goods<br>
+		  << INDIA >> </td> 
+		 <td>Country of Final Destination <br> << UNITED KINGDOM/td>  
+	   </table>
+		<table class=""table table-condensed"">
+			<tr>
+				<td height=""100px""; valign=""top"">
+					<b>{{ _(""Terms of Delivery and payment:"") }}</b>
+				</td>
+			</tr>
+		</table>
+		</td>
+	 
+	</tr>
+  </td>
+
+
+
+<table class = ""table table-condensed table-bordered"">
+	<tr>
+		 
+		<td style=""width: 33%;"">
+			<b>{{ _(""To"") }}:</b> {{ doc.customer_name }}<br>
+				<b>{{ _(""Address"") }}:</b> {{ doc.address_display }}
+		</td>
+		<td style=""width: 33%;"">
+			<b>{{ _(""Ship To"") }}:</b> {{ doc.shipping_address_title }}<br>
+				<b>{{ _(""Address"") }}:</b> {{ doc.shipping_address }}
+		</td>
+		<td style=""width: 34%;"">
+				<b>{{ _(""Date"") }}:</b> {{ doc.get_formatted(""transaction_date"") }}<br>
+				<b>{{ _(""PO #"") }}:</b> {{ doc.po_no }} <br>
+				<b>{{ _(""PO Date"") }}:</b> {{ doc.get_formatted(""po_date"") }}
+		</td>
+	</tr>
+</table>
+
+<table class=""table table-condensed table-hover table-bordered"">
+		<tr>
+			<th>Sr</th>
+			<th>Description</th>
+			<th class=""text-right"">Qty</th>
+			<th class=""text-right"">Rate</th>
+			<th class=""text-right"">Amount</th>
+		</tr>
+		{%- for row in doc.sales_order_details -%}
+		<tr>
+			<td style=""width: 3%;"">{{ row.idx }}</td>
+			<td style=""width: 57%;"">{{ row.description }}</td>
+			<td style=""width: 10%; text-align: right;"">{{ row.qty }} {{ row.uom or row.stock_uom }}</td>
+			<td style=""width: 15%; text-align: right;"">{{
+				row.get_formatted(""rate"", doc) }}</td>
+			<td style=""width: 15%; text-align: right;"">{{
+				row.get_formatted(""amount"", doc) }}</td>
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td width=""50%"">
+			<p>{% if doc.terms %} <b>{{ _(""Auxiliary Information"") }}: </b>{{ doc.terms or """" }}
+				{%- endif -%}
+		</p>
+		<p style=""font-size:12px"">{% if doc.in_words_export %}
+			<b>{{ _(""Total Amount (In Words)"") }}: </b><br>
+					{{ doc.in_words_export }}
+				{%- endif -%}
+		</p><br><br>
+		<table class=""table table-condensed"">
+			<tr>
+				<td height=""100px""; valign=""top"">
+					<b>{{ _(""Received By:"") }}</b>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>{{ _(""Customer Sign"") }}</b>
+				</td>
+			</tr>
+		</table>
+
+		</td>
+<td>
+				<table class=""table table-condensed"">
+						<tr>
+								<td class=""text-right"" style=""width: 30%"">
+										{{ _(""Net Total"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""net_total_export"") }}
+								</td>
+						</tr>
+						{%- for row in doc.other_charges -%}
+						{%- if not row.included_in_print_rate -%}
+						{%- if row.tax_amount -%}
+						<tr height:100%>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ row.description }}
+								</td>
+								<td class=""text-right"">
+										{{ row.get_formatted(""tax_amount"", doc) }}
+								</td>
+						</tr>
+						{%- endif -%}
+						{%- endif -%}
+						{%- endfor -%}
+						{%- if doc.discount_amount -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ _(""Discount"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""discount_amount"") }}
+								</td>
+						</tr>
+						{%- endif -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										<big><b>{{ _(""Grand Total"") }}</b></big>
+								</td>
+								<td class=""text-right"">
+										<big><b>{{ doc.get_formatted(""grand_total_export"") }}</b></big>
+								</td>
+						</tr>
+				</td>
+
+				</table>
+
+		</td>
+	</tr>
+</table>
+{% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
+<hr>
+<p><b>Taxes Included:</b></p>
+<table class=""table table-condensed no-border"">
+	<tbody>
+		{%- for row in doc.other_charges -%}
+		{%- if row.included_in_print_rate -%}
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+
+				{{ row.description }}
+			</td>
+			<td class=""text-right"">
+				{{ row.get_formatted(""tax_amount"", doc) }}
+			</td>
+		<tr>
+		{%- endif -%}
+		{%- endfor -%}
+	</tbody>
+</table>
+{%- endif -%}
+<hr>
+</small>"
+"","""Excise Cerificate""","Excise Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE"") }}</b></p>
+
+
+<br>
+
+<br>
+<p>Verified particulars as per invoice and packing list, inspected container Nos(as declared on invoice) </p>
+
+<p>Verified and found empty,inspected lot, checked marks and nos. examined. Packages after
+selection(details as per annexure I). Checked description,quality,weight,value and of the
+resultand product (export product) stipulated. </p><br><br>
+
+<p>The aforesaid goods have been stuffed in the </p>
+<p>containers at << M/s Exotic Fruits Pvt Ltd, Plot No G-20,MIDC, MIRJOLE,</p>
+
+<p>Ratnagiri-415693, Maharashtra >> and also sealed with </p>
+<p>Vehicle No.   Container No.  Central Excise Seal No.  Shipping Co's Bottle Seal No.</p><br>
+
+<p><table class=""table table-condensed"">
+			<tr>
+                              <td>Vehicle No.</td>
+                              <td>Container No.</td>
+                              <td>Central Excise Seal No.</td>
+                              <td>Shipping Co's Bottle Seal No.</td>
+			</tr>
+                        <tr>
+                              <td>Vehicle No.</td>
+                              <td>Container No.</td>
+                              <td>Central Excise Seal No.</td>
+                              <td>Shipping Co's Bottle Seal No.</td>
+			</tr>
+                        <tr>
+                              <td>Vehicle No.</td>
+                              <td>Container No.</td>
+                              <td>Central Excise Seal No.</td>
+                              <td>Shipping Co's Bottle Seal No.</td>
+			</tr>			
+		</table></p><br>
+<br>
+<p>Followed P/N 112/89(as amended) issued by Commissioner of Customs (Mumbai),<br>
+45/95 read with 52/95 JCH</p><br>
+<p><b>STUFFING PERMSSION NO. & DATE:- F.NO. << F.NO. S/6-FSP-4952/05 EXP(D) DTD. 24/11/2005 <BR>
+REVALIDATED VIDE DATED 23.12.2010, AS PER PUBLIC NTIC NO. 23/10, DT. 26.02.2010<b/></p><br>
+<p></p><br>
+
+
+
+<p>     
+<p><table class=""table table-condensed"">
+			<tr>
+                              <td>INSPECTOR OF CENTRAL EXCISE</td>
+                              <td>SUPERINTENDENT OF CENTRAL EXCISE</td>
+			</tr>			
+		</table></p><br>
+</p>"
+"","""Excise Certificate""","Excise Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE"") }}</b></p>
+
+
+<br>
+
+<br>
+<p>Verified particulars as per invoice and packing list, inspected container Nos(as declared on invoice) </p>
+
+<p>Verified and found empty,inspected lot, checked marks and nos. examined. Packages after
+selection(details as per annexure I). Checked description,quality,weight,value and of the
+resultand product (export product) stipulated. </p><br><br>
+
+<p>The aforesaid goods have been stuffed in the </p>
+<p>containers at << M/s Exotic Fruits Pvt Ltd, Plot No G-20,MIDC, MIRJOLE,</p>
+
+<p>Ratnagiri-415693, Maharashtra >> and also sealed with </p>
+<p>Vehicle No.   Container No.  Central Excise Seal No.  Shipping Co's Bottle Seal No.</p><br>
+
+<p><table class=""table table-condensed"">
+			<tr>
+                              <td>Vehicle No.</td>
+                              <td>Container No.</td>
+                              <td>Central Excise Seal No.</td>
+                              <td>Shipping Co's Bottle Seal No.</td>
+			</tr>
+                        <tr>
+                              <td>Vehicle No.</td>
+                              <td>Container No.</td>
+                              <td>Central Excise Seal No.</td>
+                              <td>Shipping Co's Bottle Seal No.</td>
+			</tr>
+                        <tr>
+                              <td>Vehicle No.</td>
+                              <td>Container No.</td>
+                              <td>Central Excise Seal No.</td>
+                              <td>Shipping Co's Bottle Seal No.</td>
+			</tr>			
+		</table></p><br>
+<br>
+<p>Followed P/N 112/89(as amended) issued by Commissioner of Customs (Mumbai),<br>
+45/95 read with 52/95 JCH</p><br>
+<p><b>STUFFING PERMSSION NO. & DATE:- F.NO. << F.NO. S/6-FSP-4952/05 EXP(D) DTD. 24/11/2005 <BR>
+REVALIDATED VIDE DATED 23.12.2010, AS PER PUBLIC NTIC NO. 23/10, DT. 26.02.2010<b/></p><br>
+<p></p><br>
+
+
+
+<p>     
+<p><table class=""table table-condensed"">
+			<tr>
+                              <td>INSPECTOR OF CENTRAL EXCISE</td>
+                              <td>SUPERINTENDENT OF CENTRAL EXCISE</td>
+			</tr>			
+		</table></p><br>
+</p>"
+"","""Commercial Invoice""","Commercial Invoice","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
+	{% if letter_head and not no_letterhead %}
+	<div class=""letter-head"">{{ letter_head }}</div>
+	{% endif %}
+	{%- if doc.meta.is_submittable and doc.docstatus==0-%}
+	<div class=""alert alert-info text-center"">
+		<h4 style=""margin: 0px;"">{{ _(""DRAFT"") }}</h4></div>
+	{%- endif -%}
+	{%- if doc.meta.is_submittable and doc.docstatus==2-%}
+	<div class=""alert alert-danger text-center"">
+		<h4 style=""margin: 0px;"">{{ _(""CANCELLED"") }}</h4></div>
+	{%- endif -%}
+	{% if max_pages > 1 %}
+	<p class=""text-right"">{{ _(""Page #{0} of {1}"").format(page_num, max_pages) }}</p>
+	{% endif %}
+{%- endmacro -%}
+
+<style>
+	.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+	background-color: #B7CCF2;
+	color:#000000;
+	font-size:16px;
+	}
+	.print-format table, .print-format tr, 
+	.print-format td, .print-format div, .print-format p {
+		font-family: sans-serif;
+		line-height: 90%;
+		vertical-align: middle;
+	}
+	@media screen {
+		.print-format {
+			width: 210mm;
+			padding: 10mm;
+			min-height: 297mm;
+			footer {page-break-after: always;}
+		}
+	}
+</style>
+
+<small>
+{{ add_header(0,1,doc,letter_head, no_letterhead) }}
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td>
+		   <b style=""font-size:14px;"">
+                   <p style=""text-align:center""><b>{{ _(""INVOICE"") }}</b></p></b>
+		</td>
+	</tr>
+</table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td colspan=""2"">
+			<b style=""font-size:14px;"">
+	 <p><b>{{ _(""EXPORTER"") }}: </b></b>
+		 {{ _(""<br><br>EXOTIC FRUITS PVT. LTD., <br>B-208, ARJUN CENTER,<br>
+		 BKS DEVSHI MARG, GOVANDI(E),<br> MUMBAI-400 088, INDIA."") }}
+			 
+		</p> 
+		</td>
+		
+		<td style=""width:50%"">  
+		 <table class=""table table-condensed"">
+			<td>Invoice No. & Date<br>
+		 EFE{{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </td> 
+		 <td>Exporter's Ref. <br> IEC NO. 0799000531</td> 
+	
+	 </table>
+		<table class=""table table-condensed"">
+			<tr>
+				<td>
+					{{ _(""Buyer's Ref. No. & Date  :"") }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{ _(""PURCHASE CONTRACT NO."") }} <<< 312049 >> {{ _(""DT."") }} << 13/2013 >>
+				</td>
+			</tr>
+			 <tr>
+				<td>
+					{{ _(""Buyer's Other Ref. No."") }} 
+				</td>
+			</tr>
+		 <tr>
+			 <td>
+					{{ _(""Order No."") }} << 312049-R >> 
+				</td>
+			</tr>
+			
+		</table>
+		</td>
+	 
+	</tr>
+</table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+
+	
+     
+    <td style=""width:50%"">  
+    <table class=""table table-condensed"">
+		 <tr><td>
+		        <b style=""font-size:14px;"">
+	         <p><b>{{ _(""Consignee"") }}: </b></b>
+					 {{ _(""<br><br>consign name, <br>Addr,<br>
+		 			 Addr2,<br> State, Country"") }}
+			     </p> 
+		     </td>
+		  </tr>
+	   </table>
+		 <table class=""table table-condensed"">
+			<tr>
+			   <td>Pre-carrige by <br>  </td> 
+		     <td>Place of Receipt by Pre-Carrier <br> </td> 
+	   </tr>
+	   <tr>
+			   <td>Vessel/Voyage No.<br> </td> 
+		     <td>Port of Loading<br> << Chennai Port, India >></td> 
+	   </tr>
+	   <tr>
+			   <td>Port of Discharge<br> << FELIXSTOWE >> </td> 
+		     <td>Final Destination <br> << FELIXSTOWE, U.K. >></td> 
+	   </tr>
+	   </table>
+		</td>
+
+		<td style=""width:50%"">  
+			<table class=""table table-condensed"">
+		 		<tr><td>BUYER (IF OTHER THAN CONSIGNEE)</td></tr>
+	   		</table>
+
+		     <table class=""table table-condensed"">
+				<td>Country of Origin of goods<br>
+		  		<< INDIA >> </td> 
+		 		<td>Country of Final Destination <br> << UNITED KINGDOM/td>  
+	   		</table>
+		    <table class=""table table-condensed"">
+			    <tr>
+				<td height=""100px""; valign=""top"">
+					<b>{{ _(""Terms of Delivery and payment:"") }}</b>
+				</td>
+			    </tr>
+		    </table>
+		</td>
+	 
+		</tr>
+  </table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td>
+		   {{ _(""INVOICE"") }}
+		</td>
+		<td>
+		   {{ _(""INVOICE"") }}
+		</td>
+		<td>
+		   {{ _(""INVOICE"") }}
+		</td>
+	</tr>
+</table>
+
+
+<table class=""table table-condensed table-hover table-bordered"">
+		<tr>
+			<th>Sr</th>
+			<th>Description</th>
+			<th class=""text-right"">Qty</th>
+			<th class=""text-right"">Rate</th>
+			<th class=""text-right"">Amount</th>
+		</tr>
+		{%- for row in doc.sales_order_details -%}
+		<tr>
+			<td style=""width: 3%;"">{{ row.idx }}</td>
+			<td style=""width: 57%;"">{{ row.description }}</td>
+			<td style=""width: 10%; text-align: right;"">{{ row.qty }} {{ row.uom or row.stock_uom }}</td>
+			<td style=""width: 15%; text-align: right;"">{{
+				row.get_formatted(""rate"", doc) }}</td>
+			<td style=""width: 15%; text-align: right;"">{{
+				row.get_formatted(""amount"", doc) }}</td>
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td width=""50%"">
+			<p>{% if doc.terms %} <b>{{ _(""Auxiliary Information"") }}: </b>{{ doc.terms or """" }}
+				{%- endif -%}
+		</p>
+		<p style=""font-size:12px"">{% if doc.in_words_export %}
+			<b>{{ _(""Total Amount (In Words)"") }}: </b><br>
+					{{ doc.in_words_export }}
+				{%- endif -%}
+		</p><br><br>
+		<table class=""table table-condensed"">
+			<tr>
+				<td height=""100px""; valign=""top"">
+					<b>{{ _(""Received By:"") }}</b>
+				</td>
+			</tr>
+		</table>
+
+		</td>
+<td>
+				<table class=""table table-condensed"">
+						<tr>
+								<td class=""text-right"" style=""width: 30%"">
+										{{ _(""Net Total"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""net_total_export"") }}
+								</td>
+						</tr>
+						{%- for row in doc.other_charges -%}
+						{%- if not row.included_in_print_rate -%}
+						{%- if row.tax_amount -%}
+						<tr height:100%>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ row.description }}
+								</td>
+								<td class=""text-right"">
+										{{ row.get_formatted(""tax_amount"", doc) }}
+								</td>
+						</tr>
+						{%- endif -%}
+						{%- endif -%}
+						{%- endfor -%}
+						{%- if doc.discount_amount -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ _(""Discount"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""discount_amount"") }}
+								</td>
+						</tr>
+						{%- endif -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										<big><b>{{ _(""Grand Total"") }}</b></big>
+								</td>
+								<td class=""text-right"">
+										<big><b>{{ doc.get_formatted(""grand_total_export"") }}</b></big>
+								</td>
+						</tr>
+				</td>
+
+				</table>
+
+		</td>
+	</tr>
+</table>
+{% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
+<hr>
+<p><b>Taxes Included:</b></p>
+<table class=""table table-condensed no-border"">
+	<tbody>
+		{%- for row in doc.other_charges -%}
+		{%- if row.included_in_print_rate -%}
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+
+				{{ row.description }}
+			</td>
+			<td class=""text-right"">
+				{{ row.get_formatted(""tax_amount"", doc) }}
+			</td>
+		<tr>
+		{%- endif -%}
+		{%- endfor -%}
 	</tbody>
 </table>
 
-<br><br><br>
-<p><b>For EXOTIC FRUITS PVT.LTD.,</b></p>
-<br><br>
-<p><b>MANAGER (Q.A.)</b></p>"
-"","""Bank Set Doc""","Bank Set Of Documents","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""Bank Set Of Documents"") }}</b></p>
 
-<p>Date:</p><br>
+{%- endif -%}
+<hr>
+<div class=""col-sm-9"">
+<p>Declaration:<br>
+We declare that this Invoice shows the actual price of the goods<br>
+described and that all particulars are true and correct. <p>
+</div>
+<div class=""col-sm-3"">
+<p  style=""text-align:right""><b>AUTHORISED SIGNATORY </b></p><br>
+</div>
 
-<p>The Chief Manager</p>
-<p>Andhra Bank,</p>
-<p>Opera House Branch,</p>
-<p>Mumbai - 400 004.</p><br>
 
-<p class=""text-center"">Sub: Submission of Bank Set of documents against Advance Remittance of USD {{ doc.rounded_total }} DT: {{ doc.get_formatted(""delivery_date"") }} from our client {{ doc.customer_name }}
-</p>
-<p>Dear sir,</p>
-<p>With reference to the above,enclosing herewith set of documents including Original Exchange Control copy of
-shipping bill against below shipment:</p><br>
-<p>Invoice No. {{ doc.sales_order }} </p><br>
-<p>Date: {{ doc.get_formatted(""delivery_date"") }}</p><br>
-<p>Amount:  {{ doc.rounded_total }}</p><br>
-<p>Consignee: {{ doc.customer_name }} </p><br>
-<p>Payment Terms: {{ doc.payment_terms }} </p><br>
-<p>We have dispatched the original set of documents directly to the above consignee as usual today, after receipt of
-payment from them.</p><br>
-<p>Kindly acknowledge the receipt of above documents & oblige.</p>
-<br>
-<p>Thanking you,</p>
-<br>
-<br>
-<br>
-<p><b>YOURS FAITHFULLY,</b></p><br>
-<p><b>For EXOTIC FRUITS PVT. LTD.</b></p>
-<br>
-<br>
-<p><b>AUTHORISED SIGNATORY.</b></p><br>
-<br>
-<p><b>Encl:As above</b></p><br>"
-"","""ANNEXURE C1""","ANNEXURE C1","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b style=""font-size:16px;"">{{ _(""ANNEXURE - C1"") }}</b></p>
+</small>"
+"","""ANNEXTURE C1""","ANNEXTURE C1","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b style=""font-size:16px;"">{{ _(""ANNEXURE - C1"") }}</b></p>
 <p class=""text-center""><b>{{ _(""OFFICE OF THIS SUPERINTENDENT OF CENTRAL EXCISE - C1"") }}</b></p>
 <div class=""col-sm-9"">
 <p>RANGE: RATNAGIRI<p>
@@ -553,222 +979,113 @@ INSPECTOR/EXAMINER<p>
 APPRAISER/SUPERINTENDENT<p>
 </div>
 </div>"
-"","""Loading Supervision Report""","Loading Supervision Report","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""LOADING/STUFFING SUPERVISION REPORT"") }}</b></p>
+"","""Certificate Of Analysis""","Certificate Of Analysis","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""Invoice No. ___ Dt ____<br>
+                          Container No. - ___"") }}</b></p>
+<p class=""text-center""><b>{{ _(""PRODUCT ANALUSIS REPORT"") }}</b></p>
 
 
-<br>
 <table class=""table table-condensed table-bordered"">
 	<tr>
-		<td style=""width: 30%;"">   {{ _(""DATE OF LOADING/STUFFING"") }}</td>
-		<td style=""width: 70%"">   {{ _(""<< DAATE >>"") }}</td>
+		<td style=""width: 50%;"">   {{ _(""PRODUCT"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< TOTAPURI MANGO PUREE >>"") }}</td>
 	</tr>
     <tr>
-		<td>  {{ _(""UNIT"") }} </td>
-		<td>  {{ _(""EXOTIC FRUITS PVT. LTD.,RATNAGIRI"") }} </td>
-	</tr>
-     <tr>
-		<td>  {{ _(""OUR PROOF INV NO & DATE"") }} </td>
-		<td>  {{ _(""___"") }} </td>
-	</tr>
-	 <tr>
-		<td>  {{ _(""BUYER"") }} </td>
-		<td>  {{ _(""___"") }} </td>
-	</tr>
-	 <tr>
-		<td>  {{ _(""DESCRIPTION OF GOODS"") }} </td>
-		<td>  {{ _(""___"") }} </td>
-	</tr>
-	 <tr>
-		<td>  {{ _(""DESTINATION"") }} </td>
-		<td>  {{ _(""___"") }} </td>
+		<td style=""width: 50%;"">   {{ _(""BATCH CODE"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< EFTM/M-195 >>"") }}</td>
 	</tr>
 	<tr>
-		<td>  {{ _(""NO OF DRUMS"") }} </td>
-		<td>  {{ _(""___"") }} </td>
-	</tr>
-	<tr>
-		<td>  {{ _(""STUFFING DETAILS"") }} </td>
-		<td>  {{ _(""___"") }} </td>
-	</tr>
-	<tr>
-		<td>  {{ _(""NET WT"") }} </td>
-		<td>  {{ _(""___"") }} </td>
-	</tr>
-	<tr>
-		<td>  {{ _(""GROSS WT"") }} </td>
-		<td>  {{ _(""___"") }} </td>
+		<td style=""width: 50%;"">   {{ _(""DATE OF PRODUCTION"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< 19.01.2014 >>"") }}</td>
 	</tr>
 </table>
 <br>
-<p> </p>
-
+<p class=""text-center""><b>{{ _(""CHEMICAL PARAMETERS"") }}</b></p>
 <table class=""table table-condensed table-bordered"">
-    <tbody>
-		<tr>
-			<th>Sr No.</th>
-        	<th>Container No.</th>
-         	<th>Central Excise Seal No.</th>
-         	<th>BATCH CODE</th>
-        	<th>DOP</th>                          
-         	<th>DOE</th>
-        	<th>NOS OF DRUMS</th>
-		</tr>
-		<tr>
-		    <td>Sr No.</td>
-            <td>Container No.</td>
-            <td>Central Excise Seal No.</td>
-            <td>BATCH CODE</td>
-            <td>DOP</td>                              
-            <td>DOE</td>
-            <td>NOS OF DRUMS</td>
-		</tr>
-		<tr>
-		    <td>Sr No.</td>
-            <td>Container No.</td>
-            <td>Central Excise Seal No.</td>
-            <td>BATCH CODE</td>
-            <td>DOP</td>                              
-            <td>DOE</td>
-            <td>NOS OF DRUMS</td>
-		</tr>
-		<tr>
-		    <td>Sr No.</td>
-            <td>Container No.</td>
-            <td>Central Excise Seal No.</td>
-            <td>BATCH CODE</td>
-            <td>DOP</td>                              
-            <td>DOE</td>
-            <td>NOS OF DRUMS</td>
-		</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""Bx"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< 15.6 >>"") }}</td>
+	</tr>
+    <tr>
+		<td style=""width: 50%;"">   {{ _(""%Acidity (as Citric Acid"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< 0.46 >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""pH"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< 3.59 >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""Bostwick Consistency cm/30 sec."") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< 12.5 >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""Brookfield Viscosity (cPs) by using<br>
+		                           spindle No.4 at 20 RMP"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< 2890 >>"") }}</td>
+	</tr>
 </table>
 <br>
-<p><b>REMARKS:</b></p>
-<p>1. Each drum is sealed with tamper evident proof seal with EF logo.</p>
-<p>2. One sample bag with 2 blank labels is stuffed in the container & kept on first row from door.</p>
-<p>3. Pine wood pallets used are heat treated as ISPM #15.</p>
-<p>4. Four drums on each pallets are tied with PP strap at the top & bottom.</p>
-<p>5. Client approved printed label with one year expiry date pasted on the drum.</p>
-<p>6. Production dates & Best before dates are as mentioned on labels. Shelf life  will remain more than
-50% at the time of receiving to the client.</p>
-<p>7. Kept 8 Nos of bags 0f 500 gms dry air dessicant in each container.</p>
 
-  
-<p class=""text-right""> SIGN OF SUPERVISOR </p>"
-"","""POS Invoice""","Sales Invoice","Accounts","Yes","Server",0,"<style>
-	.print-format table, .print-format tr, 
-	.print-format td, .print-format div, .print-format p {
-		font-family: Monospace;
-		line-height: 200%;
-		vertical-align: middle;
-	}
-	@media screen {
-		.print-format {
-			width: 4in;
-			padding: 0.25in;
-			min-height: 8in;
-		}
-	}
-</style>
+<p class=""text-center""><b>{{ _(""ORGANOLEPTIC PARAMETERS"") }}</b></p>
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""COLOUR"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< GOLDEN YELLOW >>"") }}</td>
+	</tr>
+    <tr>
+		<td style=""width: 50%;"">   {{ _(""FLAVOUR"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< Typical Ripe Totapuri Mango >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""TASTE"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< Characteristic & Wholesome >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""APPEARANCE"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< Homegeneous and Free Flowing >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""BLCK SPECKS/10 gms"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< Nil >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""BROWN SPECKS/10gms"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< 03 >>"") }}</td>
+	</tr>
+</table>
+<br>
 
-<p class=""text-center"">
-	{{ doc.company }}<br>
-	{{ doc.select_print_heading or _(""Invoice"") }}<br>
-</p>
-<p>
-	<b>{{ _(""Receipt No"") }}:</b> {{ doc.name }}<br>
-	<b>{{ _(""Date"") }}:</b> {{ doc.get_formatted(""posting_date"") }}<br>
-	<b>{{ _(""Customer"") }}:</b> {{ doc.customer_name }}
-</p>
+<p class=""text-center""><b>{{ _(""MICROBIOLOGICAL PARAMETERS"") }}</b></p>
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""TOTAL PLATE COUNT CFU/gm"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< NIL >>"") }}</td>
+	</tr>
+    <tr>
+		<td style=""width: 50%;"">   {{ _(""YEAST AND MOLD COUNT CFU/gm"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< NIL >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""TAB / 10gm"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< Absent >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""Coliform / 10gm"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< Absent >>"") }}</td>
+	</tr>
+	<tr>
+		<td style=""width: 50%;"">   {{ _(""Salmonella spp./25gm"") }}</td>
+		<td style=""width: 50%"">   {{ _(""<< Absent >>"") }}</td>
+	</tr>
 
-<hr>
-<table class=""table table-condensed cart no-border"">
-	<thead>
-		<tr>
-			<th width=""60%"">{{ _(""Item"") }}</b></th>
-			<th width=""10%"" class=""text-right"">{{ _(""Qty"") }}</th>
-			<th width=""30%"" class=""text-right"">{{ _(""Rate"") }}</th>
-		</tr>
-	</thead>
-	<tbody>
-		{%- for item in doc.entries -%}
-		<tr>
-			<td>
-				{{ item.item_code }}
-				{%- if item.item_name != item.item_code -%}
-					<br>{{ item.item_name }}{%- endif -%}
-			</td>
-			<td class=""text-right"">{{ item.qty }}</td>
-			<td class=""text-right"">{{ item.amount }}</td>
-		</tr>
-		{%- endfor -%}
-	</tbody>
+
 </table>
-<table class=""table table-condensed no-border"">
-	<tbody>
-		<tr>
-			<td class=""text-right"" style=""width: 70%"">
-				{{ _(""Net Total"") }}
-			</td>
-			<td class=""text-right"">
-				{{ doc.get_formatted(""net_total_export"") }}
-			</td>
-		</tr>
-		{%- for row in doc.other_charges -%}
-		{%- if not row.included_in_print_rate -%}
-		<tr>
-			<td class=""text-right"" style=""width: 70%"">
-				{{ row.description }}
-			</td>
-			<td class=""text-right"">
-				{{ row.get_formatted(""tax_amount"", doc) }}
-			</td>
-		</tr>
-		{%- endif -%}
-		{%- endfor -%}
-		{%- if doc.discount_amount -%}
-		<tr>
-			<td class=""text-right"" style=""width: 70%"">
-				{{ _(""Discount"") }}
-			</td>
-			<td class=""text-right"">
-				{{ doc.get_formatted(""discount_amount"") }}
-			</td>
-		</tr>
-		{%- endif -%}
-		<tr>
-			<td class=""text-right"" style=""width: 70%"">
-				<b>{{ _(""Grand Total"") }}</b>
-			</td>
-			<td class=""text-right"">
-				{{ doc.get_formatted(""grand_total_export"") }}
-			</td>
-		</tr>
-	</tbody>
-</table>
-{% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
-<hr>
-<p><b>Taxes Included:</b></p>
-<table class=""table table-condensed no-border"">
-	<tbody>
-		{%- for row in doc.other_charges -%}
-		{%- if row.included_in_print_rate -%}
-		<tr>
-			<td class=""text-right"" style=""width: 70%"">
-				{{ row.description }}
-			</td>
-			<td class=""text-right"">
-				{{ row.get_formatted(""tax_amount_after_discount_amount"", doc) }}
-			</td>
-		<tr>
-		{%- endif -%}
-		{%- endfor -%}
-	</tbody>
-</table>
-{%- endif -%}
-<hr>
-<p>{{ doc.terms or """" }}</p>
-<p class=""text-center"">{{ _(""Thank you, please visit again."") }}</p>"
-"","""Delivery Challan""","Delivery Challan","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
+<br>
+
+ <div>
+
+<p  style=""text-align:right""><b>QUALITY ASSURANCE DEPT </b></p><br>
+</div>"
+"","""Bill Of Loading""","Bill Of Loading","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
 	{% if letter_head and not no_letterhead %}
 	<div class=""letter-head"">{{ letter_head }}</div>
 	{% endif %}
@@ -813,59 +1130,43 @@ APPRAISER/SUPERINTENDENT<p>
 	<tr>
 		<td>
 		   <b style=""font-size:14px;"">
-                   <p style=""text-align:center""><b>{{ _(""EXOTIC FRUITS PRIVATE LIMITED"") }}</b></p></b>
-                   <p style=""text-align:center"">{{ _(""G-20, MIDC, Mirjole, Ratnagiri- 415 639, Maharashtra, India.  E-mail:- efl-ratna@exotic-fruit.com"") }}</p>
+                   <p style=""text-align:center""><b>{{ _(""BILL OF LOADING FORRMAT"") }}</b></p></b>
 		</td>
 	</tr>
 </table>
 
 <table class=""table table-condensed table-bordered"">
 	<tr>
-		<td>
-		   <b style=""font-size:14px;"">
-                   <p style=""text-align:center""><b>{{ _(""DELIVERY CHALLAN"") }}</b></p></b>
+
+    <td style=""width:50%""> 
+			<b style=""font-size:14px;"">
+	 <p><b>{{ _(""EXPORTER"") }}: </b></b>
+		 {{ _(""<br><br>EXOTIC FRUITS PVT. LTD., <br>B-208, ARJUN CENTER,<br>
+		 BKS DEVSHI MARG, GOVANDI(E),<br> MUMBAI-400 088, INDIA."") }}
+			 
+		</p> 
 		</td>
-	</tr>
-</table>
-
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td colspan=""2"">
-					<p>
-							<b>
-	 					<p><b>{{ _(""Manufacturer:"") }} </b></b>
-		 				{{ _(""<br><br>EXOTIC FRUITS PVT. LTD., </b></p>
-		 				<p><br>G-20,MIDC, Mirjole, Ratnagiri - 415 639, Maharashtra<br>"") }}
-		 				</p>
-
-						<p><b>VAT TIN No. 27970333337V, Dt. 01.04.06</b></p>
-						<p><b>CST TIN No. 27970333337C, Dt. 01.04.06</b></p>
-						<p><b></b></p>
-					
-				</td>
 		
 		<td style=""width:50%"">  
-		 
+		 <table class=""table table-condensed"">
+			<td>BOKING NUMBER & Date<br>
+		 EFE
+		 <br>BILL NUMBER </td> 
+		 <td>Exporter's Ref. <br> IEC NO. 0799000531</td> 
+	
+	 </table>
 		<table class=""table table-condensed"">
 			<tr>
-				<td><b>Goods Delivered From</b>
+				<td>
+					{{ _(""FORWARDING AGENT(REFFERENCE F.M.C NO)"") }}
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p>
-							<b>
-	 				
-		 				{{ _(""<br><br>EXOTIC FRUITS PVT. LTD., </b></p>
-		 				<p><br>G-20,MIDC, Mirjole, Ratnagiri - 415 639, Maharashtra<br>"") }}
-		 				</p>
-						<p><b>C/O Jai Jinendra Cold Storage</b></p>
-						<p>Gat no 1194/95, Haveli, Pune.</p>
-						<p>Tel No.</p>
-						
-					</P
+		 <tr>
+			 <td>
+					{{ _(""__"") }} 
 				</td>
-			</tr>					
+			</tr>
+			
 		</table>
 		</td>
 	 
@@ -874,60 +1175,77 @@ APPRAISER/SUPERINTENDENT<p>
 
 <table class=""table table-condensed table-bordered"">
 	<tr>
-
-	
-     
-    <td style=""width:50%"">  
+	<td style=""width:50%"">  
     <table class=""table table-condensed"">
 		 <tr><td>
-		        <b>
-	         <p><b>{{ _(""Name &address of Consignee : "") }} </b>
-	         
-					 {{ _(""<br><br>Consignee name, <br>Addr,<br>
+		        <b style=""font-size:14px;"">
+	         <p><b>{{ _(""Consignee"") }}: </b></b>
+					 {{ _(""<br><br>consign name, <br>Addr,<br>
 		 			 Addr2,<br> State, Country"") }}
 			     </p> 
-			     <p><b>VAT TIN No. 09707600891C, Dt. 27.01.1998</b></p>
-						<p><b>CST TIN No. BE-5022456 , Dt. 27.01.1998</b></p>
-						<p><b></b></p>
 		     </td>
 		  </tr>
+	   </table>
+		 <table class=""table table-condensed"">
+			<tr>
+			   <td>Pre-carrige by <br>  </td> 
+		     <td>Place of Receipt by Pre-Carrier <br> </td> 
+	   </tr>
+	   <tr>
+			   <td>Vessel/Voyage No.<br> </td> 
+		     <td>Port of Loading<br> << Chennai Port, India >></td> 
+	   </tr>
+	   <tr>
+			   <td>Port of Discharge<br> << FELIXSTOWE >> </td> 
+		     <td>Final Destination <br> << FELIXSTOWE, U.K. >></td> 
+	   </tr>
 	   </table>
 		</td>
 
 		<td style=""width:50%"">  
 			<table class=""table table-condensed"">
-		 		<tr>
-			 <td>
-					<p>Delivery Challan No: </p>
-					
-					<p>Mode Of Tranfport : </p>					
-					<p>Vehicle No. :</p>
-			</td>
-			<td><p>Date :</p>
-			</td> 
-	
-			</tr>
-			 <tr>
-			 <td>
-					
-					
-			</td>
-		 <td><p><b></b></p></td> 
-	
-			</tr>
+		 		<tr><td>BUYER (IF OTHER THAN CONSIGNEE)</td></tr>
 	   		</table>
+
+		     <table class=""table table-condensed"">
+				<td>Country of Origin of goods<br>
+		  		<< INDIA >> </td> 
+		 		<td>Country of Final Destination <br> << UNITED KINGDOM/td>  
+	   		</table>
+		    <table class=""table table-condensed"">
+			    <tr>
+				<td height=""100px""; valign=""top"">
+					{{ _(""Instructions/per Terminal/Onword from point of Destination."") }}
+				</td>
+			    </tr>
+		    </table>
 		</td>
 	 
 		</tr>
   </table>
 
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td>
+		   {{ _(""PARTICULARS FURNISHED BY SHIPPER)"") }}
+		</td>
+		<td>
+		   {{ _(""GROSS WEIGHT"") }}
+		</td>
+		<td>
+		   {{ _(""NET WEIGHT"") }}
+		</td>
+	</tr>
+</table>
+
+
 <table class=""table table-condensed table-hover table-bordered"">
 		<tr>
 			<th>Sr</th>
 			<th>Description</th>
-			<th class=""text-right"">Qty</th>
-			<th class=""text-right"">Rate</th>
-			<th class=""text-right"">Amount</th>
+			<th class=""text-right"">Marks & Nos</th>
+			<th class=""text-right"">No, Of Packages/Contrs</th>
+			<th class=""text-right"">Gross Weight Measurement</th>
 		</tr>
 		{%- for row in doc.sales_order_details -%}
 		<tr>
@@ -943,16 +1261,72 @@ APPRAISER/SUPERINTENDENT<p>
 	</tbody>
 </table>
 <table class=""table table-condensed table-bordered"">
-	<tr height:100%>
-		<td width=""60%"">
+	<tr>
+		<td width=""50%"">
+			<p>{% if doc.terms %} <b>{{ _(""Auxiliary Information"") }}: </b>{{ doc.terms or """" }}
+				{%- endif -%}
+		</p>
+		<p style=""font-size:12px"">{% if doc.in_words_export %}
+			<b>{{ _(""Total Amount (In Words)"") }}: </b><br>
+					{{ doc.in_words_export }}
+				{%- endif -%}
+		</p><br><br>
+		<table class=""table table-condensed"">
+			<tr>
+				<td height=""100px""; valign=""top"">
+					<b>{{ _(""FREIGHT PREPAID"") }}</b>
+				</td>
+			</tr>
+		</table>
 
 		</td>
-	<td>
-		
-		<p  style=""text-align:center ""><b>For EXOTIC FRUITS PVT.LTD 
-        </b></p><p><br><br><br><br><br><br></p>
-		<p  style=""text-align:center "">Authorised Signatory</p><br>
-	</td>
+<td>
+				<table class=""table table-condensed"">
+						<tr>
+								<td class=""text-right"" style=""width: 30%"">
+										{{ _(""Net Total"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""net_total_export"") }}
+								</td>
+						</tr>
+						{%- for row in doc.other_charges -%}
+						{%- if not row.included_in_print_rate -%}
+						{%- if row.tax_amount -%}
+						<tr height:100%>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ row.description }}
+								</td>
+								<td class=""text-right"">
+										{{ row.get_formatted(""tax_amount"", doc) }}
+								</td>
+						</tr>
+						{%- endif -%}
+						{%- endif -%}
+						{%- endfor -%}
+						{%- if doc.discount_amount -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ _(""Discount"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""discount_amount"") }}
+								</td>
+						</tr>
+						{%- endif -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										<big><b>{{ _(""SHIPPED ON BOARD"") }}</b></big>
+								</td>
+								<td class=""text-right"">
+										<big><b>{{ doc.get_formatted(""grand_total_export"") }}</b></big>
+								</td>
+						</tr>
+				</td>
+
+				</table>
+
+		</td>
 	</tr>
 </table>
 {% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
@@ -978,6 +1352,8 @@ APPRAISER/SUPERINTENDENT<p>
 
 
 {%- endif -%}
+<hr>
+
 </small>"
 "","""Local Sale Invoice""","Local Sale Invoice","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
 	{% if letter_head and not no_letterhead %}
@@ -1344,7 +1720,7 @@ APPRAISER/SUPERINTENDENT<p>
 
 
 </small>"
-"","""Bill Of Loading""","Bill Of Loading","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
+"","""Delivery Challan""","Delivery Challan","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
 	{% if letter_head and not no_letterhead %}
 	<div class=""letter-head"">{{ letter_head }}</div>
 	{% endif %}
@@ -1389,43 +1765,59 @@ APPRAISER/SUPERINTENDENT<p>
 	<tr>
 		<td>
 		   <b style=""font-size:14px;"">
-                   <p style=""text-align:center""><b>{{ _(""BILL OF LOADING FORRMAT"") }}</b></p></b>
+                   <p style=""text-align:center""><b>{{ _(""EXOTIC FRUITS PRIVATE LIMITED"") }}</b></p></b>
+                   <p style=""text-align:center"">{{ _(""G-20, MIDC, Mirjole, Ratnagiri- 415 639, Maharashtra, India.  E-mail:- efl-ratna@exotic-fruit.com"") }}</p>
 		</td>
 	</tr>
 </table>
 
 <table class=""table table-condensed table-bordered"">
 	<tr>
-
-    <td style=""width:50%""> 
-			<b style=""font-size:14px;"">
-	 <p><b>{{ _(""EXPORTER"") }}: </b></b>
-		 {{ _(""<br><br>EXOTIC FRUITS PVT. LTD., <br>B-208, ARJUN CENTER,<br>
-		 BKS DEVSHI MARG, GOVANDI(E),<br> MUMBAI-400 088, INDIA."") }}
-			 
-		</p> 
+		<td>
+		   <b style=""font-size:14px;"">
+                   <p style=""text-align:center""><b>{{ _(""DELIVERY CHALLAN"") }}</b></p></b>
 		</td>
+	</tr>
+</table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td colspan=""2"">
+					<p>
+							<b>
+	 					<p><b>{{ _(""Manufacturer:"") }} </b></b>
+		 				{{ _(""<br><br>EXOTIC FRUITS PVT. LTD., </b></p>
+		 				<p><br>G-20,MIDC, Mirjole, Ratnagiri - 415 639, Maharashtra<br>"") }}
+		 				</p>
+
+						<p><b>VAT TIN No. 27970333337V, Dt. 01.04.06</b></p>
+						<p><b>CST TIN No. 27970333337C, Dt. 01.04.06</b></p>
+						<p><b></b></p>
+					
+				</td>
 		
 		<td style=""width:50%"">  
-		 <table class=""table table-condensed"">
-			<td>BOKING NUMBER & Date<br>
-		 EFE
-		 <br>BILL NUMBER </td> 
-		 <td>Exporter's Ref. <br> IEC NO. 0799000531</td> 
-	
-	 </table>
+		 
 		<table class=""table table-condensed"">
 			<tr>
+				<td><b>Goods Delivered From</b>
+				</td>
+			</tr>
+			<tr>
 				<td>
-					{{ _(""FORWARDING AGENT(REFFERENCE F.M.C NO)"") }}
+					<p>
+							<b>
+	 				
+		 				{{ _(""<br><br>EXOTIC FRUITS PVT. LTD., </b></p>
+		 				<p><br>G-20,MIDC, Mirjole, Ratnagiri - 415 639, Maharashtra<br>"") }}
+		 				</p>
+						<p><b>C/O Jai Jinendra Cold Storage</b></p>
+						<p>Gat no 1194/95, Haveli, Pune.</p>
+						<p>Tel No.</p>
+						
+					</P
 				</td>
-			</tr>
-		 <tr>
-			 <td>
-					{{ _(""__"") }} 
-				</td>
-			</tr>
-			
+			</tr>					
 		</table>
 		</td>
 	 
@@ -1434,77 +1826,60 @@ APPRAISER/SUPERINTENDENT<p>
 
 <table class=""table table-condensed table-bordered"">
 	<tr>
-	<td style=""width:50%"">  
+
+	
+     
+    <td style=""width:50%"">  
     <table class=""table table-condensed"">
 		 <tr><td>
-		        <b style=""font-size:14px;"">
-	         <p><b>{{ _(""Consignee"") }}: </b></b>
-					 {{ _(""<br><br>consign name, <br>Addr,<br>
+		        <b>
+	         <p><b>{{ _(""Name &address of Consignee : "") }} </b>
+	         
+					 {{ _(""<br><br>Consignee name, <br>Addr,<br>
 		 			 Addr2,<br> State, Country"") }}
 			     </p> 
+			     <p><b>VAT TIN No. 09707600891C, Dt. 27.01.1998</b></p>
+						<p><b>CST TIN No. BE-5022456 , Dt. 27.01.1998</b></p>
+						<p><b></b></p>
 		     </td>
 		  </tr>
-	   </table>
-		 <table class=""table table-condensed"">
-			<tr>
-			   <td>Pre-carrige by <br>  </td> 
-		     <td>Place of Receipt by Pre-Carrier <br> </td> 
-	   </tr>
-	   <tr>
-			   <td>Vessel/Voyage No.<br> </td> 
-		     <td>Port of Loading<br> << Chennai Port, India >></td> 
-	   </tr>
-	   <tr>
-			   <td>Port of Discharge<br> << FELIXSTOWE >> </td> 
-		     <td>Final Destination <br> << FELIXSTOWE, U.K. >></td> 
-	   </tr>
 	   </table>
 		</td>
 
 		<td style=""width:50%"">  
 			<table class=""table table-condensed"">
-		 		<tr><td>BUYER (IF OTHER THAN CONSIGNEE)</td></tr>
+		 		<tr>
+			 <td>
+					<p>Delivery Challan No: </p>
+					
+					<p>Mode Of Tranfport : </p>					
+					<p>Vehicle No. :</p>
+			</td>
+			<td><p>Date :</p>
+			</td> 
+	
+			</tr>
+			 <tr>
+			 <td>
+					
+					
+			</td>
+		 <td><p><b></b></p></td> 
+	
+			</tr>
 	   		</table>
-
-		     <table class=""table table-condensed"">
-				<td>Country of Origin of goods<br>
-		  		<< INDIA >> </td> 
-		 		<td>Country of Final Destination <br> << UNITED KINGDOM/td>  
-	   		</table>
-		    <table class=""table table-condensed"">
-			    <tr>
-				<td height=""100px""; valign=""top"">
-					{{ _(""Instructions/per Terminal/Onword from point of Destination."") }}
-				</td>
-			    </tr>
-		    </table>
 		</td>
 	 
 		</tr>
   </table>
 
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td>
-		   {{ _(""PARTICULARS FURNISHED BY SHIPPER)"") }}
-		</td>
-		<td>
-		   {{ _(""GROSS WEIGHT"") }}
-		</td>
-		<td>
-		   {{ _(""NET WEIGHT"") }}
-		</td>
-	</tr>
-</table>
-
-
 <table class=""table table-condensed table-hover table-bordered"">
 		<tr>
 			<th>Sr</th>
 			<th>Description</th>
-			<th class=""text-right"">Marks & Nos</th>
-			<th class=""text-right"">No, Of Packages/Contrs</th>
-			<th class=""text-right"">Gross Weight Measurement</th>
+			<th class=""text-right"">Qty</th>
+			<th class=""text-right"">Rate</th>
+			<th class=""text-right"">Amount</th>
 		</tr>
 		{%- for row in doc.sales_order_details -%}
 		<tr>
@@ -1520,72 +1895,16 @@ APPRAISER/SUPERINTENDENT<p>
 	</tbody>
 </table>
 <table class=""table table-condensed table-bordered"">
-	<tr>
-		<td width=""50%"">
-			<p>{% if doc.terms %} <b>{{ _(""Auxiliary Information"") }}: </b>{{ doc.terms or """" }}
-				{%- endif -%}
-		</p>
-		<p style=""font-size:12px"">{% if doc.in_words_export %}
-			<b>{{ _(""Total Amount (In Words)"") }}: </b><br>
-					{{ doc.in_words_export }}
-				{%- endif -%}
-		</p><br><br>
-		<table class=""table table-condensed"">
-			<tr>
-				<td height=""100px""; valign=""top"">
-					<b>{{ _(""FREIGHT PREPAID"") }}</b>
-				</td>
-			</tr>
-		</table>
+	<tr height:100%>
+		<td width=""60%"">
 
 		</td>
-<td>
-				<table class=""table table-condensed"">
-						<tr>
-								<td class=""text-right"" style=""width: 30%"">
-										{{ _(""Net Total"") }}
-								</td>
-								<td class=""text-right"">
-										{{ doc.get_formatted(""net_total_export"") }}
-								</td>
-						</tr>
-						{%- for row in doc.other_charges -%}
-						{%- if not row.included_in_print_rate -%}
-						{%- if row.tax_amount -%}
-						<tr height:100%>
-								<td class=""text-right"" style=""width: 70%"">
-										{{ row.description }}
-								</td>
-								<td class=""text-right"">
-										{{ row.get_formatted(""tax_amount"", doc) }}
-								</td>
-						</tr>
-						{%- endif -%}
-						{%- endif -%}
-						{%- endfor -%}
-						{%- if doc.discount_amount -%}
-						<tr>
-								<td class=""text-right"" style=""width: 70%"">
-										{{ _(""Discount"") }}
-								</td>
-								<td class=""text-right"">
-										{{ doc.get_formatted(""discount_amount"") }}
-								</td>
-						</tr>
-						{%- endif -%}
-						<tr>
-								<td class=""text-right"" style=""width: 70%"">
-										<big><b>{{ _(""SHIPPED ON BOARD"") }}</b></big>
-								</td>
-								<td class=""text-right"">
-										<big><b>{{ doc.get_formatted(""grand_total_export"") }}</b></big>
-								</td>
-						</tr>
-				</td>
-
-				</table>
-
-		</td>
+	<td>
+		
+		<p  style=""text-align:center ""><b>For EXOTIC FRUITS PVT.LTD 
+        </b></p><p><br><br><br><br><br><br></p>
+		<p  style=""text-align:center "">Authorised Signatory</p><br>
+	</td>
 	</tr>
 </table>
 {% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
@@ -1611,116 +1930,223 @@ APPRAISER/SUPERINTENDENT<p>
 
 
 {%- endif -%}
-<hr>
-
 </small>"
-"","""Certificate Of Analysis""","Certificate Of Analysis","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""Invoice No. ___ Dt ____<br>
-                          Container No. - ___"") }}</b></p>
-<p class=""text-center""><b>{{ _(""PRODUCT ANALUSIS REPORT"") }}</b></p>
+"","""POS Invoice""","Sales Invoice","Accounts","Yes","Server",0,"<style>
+	.print-format table, .print-format tr, 
+	.print-format td, .print-format div, .print-format p {
+		font-family: Monospace;
+		line-height: 200%;
+		vertical-align: middle;
+	}
+	@media screen {
+		.print-format {
+			width: 4in;
+			padding: 0.25in;
+			min-height: 8in;
+		}
+	}
+</style>
+
+<p class=""text-center"">
+	{{ doc.company }}<br>
+	{{ doc.select_print_heading or _(""Invoice"") }}<br>
+</p>
+<p>
+	<b>{{ _(""Receipt No"") }}:</b> {{ doc.name }}<br>
+	<b>{{ _(""Date"") }}:</b> {{ doc.get_formatted(""posting_date"") }}<br>
+	<b>{{ _(""Customer"") }}:</b> {{ doc.customer_name }}
+</p>
+
+<hr>
+<table class=""table table-condensed cart no-border"">
+	<thead>
+		<tr>
+			<th width=""60%"">{{ _(""Item"") }}</b></th>
+			<th width=""10%"" class=""text-right"">{{ _(""Qty"") }}</th>
+			<th width=""30%"" class=""text-right"">{{ _(""Rate"") }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%- for item in doc.entries -%}
+		<tr>
+			<td>
+				{{ item.item_code }}
+				{%- if item.item_name != item.item_code -%}
+					<br>{{ item.item_name }}{%- endif -%}
+			</td>
+			<td class=""text-right"">{{ item.qty }}</td>
+			<td class=""text-right"">{{ item.amount }}</td>
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<table class=""table table-condensed no-border"">
+	<tbody>
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+				{{ _(""Net Total"") }}
+			</td>
+			<td class=""text-right"">
+				{{ doc.get_formatted(""net_total_export"") }}
+			</td>
+		</tr>
+		{%- for row in doc.other_charges -%}
+		{%- if not row.included_in_print_rate -%}
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+				{{ row.description }}
+			</td>
+			<td class=""text-right"">
+				{{ row.get_formatted(""tax_amount"", doc) }}
+			</td>
+		</tr>
+		{%- endif -%}
+		{%- endfor -%}
+		{%- if doc.discount_amount -%}
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+				{{ _(""Discount"") }}
+			</td>
+			<td class=""text-right"">
+				{{ doc.get_formatted(""discount_amount"") }}
+			</td>
+		</tr>
+		{%- endif -%}
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+				<b>{{ _(""Grand Total"") }}</b>
+			</td>
+			<td class=""text-right"">
+				{{ doc.get_formatted(""grand_total_export"") }}
+			</td>
+		</tr>
+	</tbody>
+</table>
+{% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
+<hr>
+<p><b>Taxes Included:</b></p>
+<table class=""table table-condensed no-border"">
+	<tbody>
+		{%- for row in doc.other_charges -%}
+		{%- if row.included_in_print_rate -%}
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+				{{ row.description }}
+			</td>
+			<td class=""text-right"">
+				{{ row.get_formatted(""tax_amount_after_discount_amount"", doc) }}
+			</td>
+		<tr>
+		{%- endif -%}
+		{%- endfor -%}
+	</tbody>
+</table>
+{%- endif -%}
+<hr>
+<p>{{ doc.terms or """" }}</p>
+<p class=""text-center"">{{ _(""Thank you, please visit again."") }}</p>"
+"","""Loading Supervision Report""","Loading Supervision Report","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""LOADING/STUFFING SUPERVISION REPORT"") }}</b></p>
 
 
+<br>
 <table class=""table table-condensed table-bordered"">
 	<tr>
-		<td style=""width: 50%;"">   {{ _(""PRODUCT"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< TOTAPURI MANGO PUREE >>"") }}</td>
+		<td style=""width: 30%;"">   {{ _(""DATE OF LOADING/STUFFING"") }}</td>
+		<td style=""width: 70%"">   {{ _(""<< DAATE >>"") }}</td>
 	</tr>
     <tr>
-		<td style=""width: 50%;"">   {{ _(""BATCH CODE"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< EFTM/M-195 >>"") }}</td>
+		<td>  {{ _(""UNIT"") }} </td>
+		<td>  {{ _(""EXOTIC FRUITS PVT. LTD.,RATNAGIRI"") }} </td>
+	</tr>
+     <tr>
+		<td>  {{ _(""OUR PROOF INV NO & DATE"") }} </td>
+		<td>  {{ _(""___"") }} </td>
+	</tr>
+	 <tr>
+		<td>  {{ _(""BUYER"") }} </td>
+		<td>  {{ _(""___"") }} </td>
+	</tr>
+	 <tr>
+		<td>  {{ _(""DESCRIPTION OF GOODS"") }} </td>
+		<td>  {{ _(""___"") }} </td>
+	</tr>
+	 <tr>
+		<td>  {{ _(""DESTINATION"") }} </td>
+		<td>  {{ _(""___"") }} </td>
 	</tr>
 	<tr>
-		<td style=""width: 50%;"">   {{ _(""DATE OF PRODUCTION"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< 19.01.2014 >>"") }}</td>
+		<td>  {{ _(""NO OF DRUMS"") }} </td>
+		<td>  {{ _(""___"") }} </td>
+	</tr>
+	<tr>
+		<td>  {{ _(""STUFFING DETAILS"") }} </td>
+		<td>  {{ _(""___"") }} </td>
+	</tr>
+	<tr>
+		<td>  {{ _(""NET WT"") }} </td>
+		<td>  {{ _(""___"") }} </td>
+	</tr>
+	<tr>
+		<td>  {{ _(""GROSS WT"") }} </td>
+		<td>  {{ _(""___"") }} </td>
 	</tr>
 </table>
 <br>
-<p class=""text-center""><b>{{ _(""CHEMICAL PARAMETERS"") }}</b></p>
+<p> </p>
+
 <table class=""table table-condensed table-bordered"">
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""Bx"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< 15.6 >>"") }}</td>
-	</tr>
-    <tr>
-		<td style=""width: 50%;"">   {{ _(""%Acidity (as Citric Acid"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< 0.46 >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""pH"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< 3.59 >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""Bostwick Consistency cm/30 sec."") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< 12.5 >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""Brookfield Viscosity (cPs) by using<br>
-		                           spindle No.4 at 20 RMP"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< 2890 >>"") }}</td>
-	</tr>
+    <tbody>
+		<tr>
+			<th>Sr No.</th>
+        	<th>Container No.</th>
+         	<th>Central Excise Seal No.</th>
+         	<th>BATCH CODE</th>
+        	<th>DOP</th>                          
+         	<th>DOE</th>
+        	<th>NOS OF DRUMS</th>
+		</tr>
+		<tr>
+		    <td>Sr No.</td>
+            <td>Container No.</td>
+            <td>Central Excise Seal No.</td>
+            <td>BATCH CODE</td>
+            <td>DOP</td>                              
+            <td>DOE</td>
+            <td>NOS OF DRUMS</td>
+		</tr>
+		<tr>
+		    <td>Sr No.</td>
+            <td>Container No.</td>
+            <td>Central Excise Seal No.</td>
+            <td>BATCH CODE</td>
+            <td>DOP</td>                              
+            <td>DOE</td>
+            <td>NOS OF DRUMS</td>
+		</tr>
+		<tr>
+		    <td>Sr No.</td>
+            <td>Container No.</td>
+            <td>Central Excise Seal No.</td>
+            <td>BATCH CODE</td>
+            <td>DOP</td>                              
+            <td>DOE</td>
+            <td>NOS OF DRUMS</td>
+		</tr>
 </table>
 <br>
+<p><b>REMARKS:</b></p>
+<p>1. Each drum is sealed with tamper evident proof seal with EF logo.</p>
+<p>2. One sample bag with 2 blank labels is stuffed in the container & kept on first row from door.</p>
+<p>3. Pine wood pallets used are heat treated as ISPM #15.</p>
+<p>4. Four drums on each pallets are tied with PP strap at the top & bottom.</p>
+<p>5. Client approved printed label with one year expiry date pasted on the drum.</p>
+<p>6. Production dates & Best before dates are as mentioned on labels. Shelf life  will remain more than
+50% at the time of receiving to the client.</p>
+<p>7. Kept 8 Nos of bags 0f 500 gms dry air dessicant in each container.</p>
 
-<p class=""text-center""><b>{{ _(""ORGANOLEPTIC PARAMETERS"") }}</b></p>
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""COLOUR"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< GOLDEN YELLOW >>"") }}</td>
-	</tr>
-    <tr>
-		<td style=""width: 50%;"">   {{ _(""FLAVOUR"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< Typical Ripe Totapuri Mango >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""TASTE"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< Characteristic & Wholesome >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""APPEARANCE"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< Homegeneous and Free Flowing >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""BLCK SPECKS/10 gms"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< Nil >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""BROWN SPECKS/10gms"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< 03 >>"") }}</td>
-	</tr>
-</table>
-<br>
-
-<p class=""text-center""><b>{{ _(""MICROBIOLOGICAL PARAMETERS"") }}</b></p>
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""TOTAL PLATE COUNT CFU/gm"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< NIL >>"") }}</td>
-	</tr>
-    <tr>
-		<td style=""width: 50%;"">   {{ _(""YEAST AND MOLD COUNT CFU/gm"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< NIL >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""TAB / 10gm"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< Absent >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""Coliform / 10gm"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< Absent >>"") }}</td>
-	</tr>
-	<tr>
-		<td style=""width: 50%;"">   {{ _(""Salmonella spp./25gm"") }}</td>
-		<td style=""width: 50%"">   {{ _(""<< Absent >>"") }}</td>
-	</tr>
-
-
-</table>
-<br>
-
- <div>
-
-<p  style=""text-align:right""><b>QUALITY ASSURANCE DEPT </b></p><br>
-</div>"
-"","""ANNEXTURE C1""","ANNEXTURE C1","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b style=""font-size:16px;"">{{ _(""ANNEXURE - C1"") }}</b></p>
+  
+<p class=""text-right""> SIGN OF SUPERVISOR </p>"
+"","""ANNEXURE C1""","ANNEXURE C1","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b style=""font-size:16px;"">{{ _(""ANNEXURE - C1"") }}</b></p>
 <p class=""text-center""><b>{{ _(""OFFICE OF THIS SUPERINTENDENT OF CENTRAL EXCISE - C1"") }}</b></p>
 <div class=""col-sm-9"">
 <p>RANGE: RATNAGIRI<p>
@@ -1856,828 +2282,402 @@ INSPECTOR/EXAMINER<p>
 APPRAISER/SUPERINTENDENT<p>
 </div>
 </div>"
-"","""Commercial Invoice""","Commercial Invoice","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
-	{% if letter_head and not no_letterhead %}
-	<div class=""letter-head"">{{ letter_head }}</div>
-	{% endif %}
-	{%- if doc.meta.is_submittable and doc.docstatus==0-%}
-	<div class=""alert alert-info text-center"">
-		<h4 style=""margin: 0px;"">{{ _(""DRAFT"") }}</h4></div>
-	{%- endif -%}
-	{%- if doc.meta.is_submittable and doc.docstatus==2-%}
-	<div class=""alert alert-danger text-center"">
-		<h4 style=""margin: 0px;"">{{ _(""CANCELLED"") }}</h4></div>
-	{%- endif -%}
-	{% if max_pages > 1 %}
-	<p class=""text-right"">{{ _(""Page #{0} of {1}"").format(page_num, max_pages) }}</p>
-	{% endif %}
-{%- endmacro -%}
+"","""Bank Set Doc""","Bank Set Of Documents","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""Bank Set Of Documents"") }}</b></p>
 
-<style>
-	.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
-	background-color: #B7CCF2;
-	color:#000000;
-	font-size:16px;
-	}
-	.print-format table, .print-format tr, 
-	.print-format td, .print-format div, .print-format p {
-		font-family: sans-serif;
-		line-height: 90%;
-		vertical-align: middle;
-	}
-	@media screen {
-		.print-format {
-			width: 210mm;
-			padding: 10mm;
-			min-height: 297mm;
-			footer {page-break-after: always;}
-		}
-	}
-</style>
+<p>Date:</p><br>
 
-<small>
-{{ add_header(0,1,doc,letter_head, no_letterhead) }}
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td>
-		   <b style=""font-size:14px;"">
-                   <p style=""text-align:center""><b>{{ _(""INVOICE"") }}</b></p></b>
-		</td>
-	</tr>
-</table>
+<p>The Chief Manager</p>
+<p>Andhra Bank,</p>
+<p>Opera House Branch,</p>
+<p>Mumbai - 400 004.</p><br>
 
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td colspan=""2"">
-			<b style=""font-size:14px;"">
-	 <p><b>{{ _(""EXPORTER"") }}: </b></b>
-		 {{ _(""<br><br>EXOTIC FRUITS PVT. LTD., <br>B-208, ARJUN CENTER,<br>
-		 BKS DEVSHI MARG, GOVANDI(E),<br> MUMBAI-400 088, INDIA."") }}
-			 
-		</p> 
-		</td>
-		
-		<td style=""width:50%"">  
-		 <table class=""table table-condensed"">
-			<td>Invoice No. & Date<br>
-		 EFE{{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </td> 
-		 <td>Exporter's Ref. <br> IEC NO. 0799000531</td> 
-	
-	 </table>
-		<table class=""table table-condensed"">
-			<tr>
-				<td>
-					{{ _(""Buyer's Ref. No. & Date  :"") }}
-				</td>
-			</tr>
-			<tr>
-				<td>
-					{{ _(""PURCHASE CONTRACT NO."") }} <<< 312049 >> {{ _(""DT."") }} << 13/2013 >>
-				</td>
-			</tr>
-			 <tr>
-				<td>
-					{{ _(""Buyer's Other Ref. No."") }} 
-				</td>
-			</tr>
-		 <tr>
-			 <td>
-					{{ _(""Order No."") }} << 312049-R >> 
-				</td>
-			</tr>
-			
-		</table>
-		</td>
-	 
-	</tr>
-</table>
-
-<table class=""table table-condensed table-bordered"">
-	<tr>
-
-	
-     
-    <td style=""width:50%"">  
-    <table class=""table table-condensed"">
-		 <tr><td>
-		        <b style=""font-size:14px;"">
-	         <p><b>{{ _(""Consignee"") }}: </b></b>
-					 {{ _(""<br><br>consign name, <br>Addr,<br>
-		 			 Addr2,<br> State, Country"") }}
-			     </p> 
-		     </td>
-		  </tr>
-	   </table>
-		 <table class=""table table-condensed"">
-			<tr>
-			   <td>Pre-carrige by <br>  </td> 
-		     <td>Place of Receipt by Pre-Carrier <br> </td> 
-	   </tr>
-	   <tr>
-			   <td>Vessel/Voyage No.<br> </td> 
-		     <td>Port of Loading<br> << Chennai Port, India >></td> 
-	   </tr>
-	   <tr>
-			   <td>Port of Discharge<br> << FELIXSTOWE >> </td> 
-		     <td>Final Destination <br> << FELIXSTOWE, U.K. >></td> 
-	   </tr>
-	   </table>
-		</td>
-
-		<td style=""width:50%"">  
-			<table class=""table table-condensed"">
-		 		<tr><td>BUYER (IF OTHER THAN CONSIGNEE)</td></tr>
-	   		</table>
-
-		     <table class=""table table-condensed"">
-				<td>Country of Origin of goods<br>
-		  		<< INDIA >> </td> 
-		 		<td>Country of Final Destination <br> << UNITED KINGDOM/td>  
-	   		</table>
-		    <table class=""table table-condensed"">
-			    <tr>
-				<td height=""100px""; valign=""top"">
-					<b>{{ _(""Terms of Delivery and payment:"") }}</b>
-				</td>
-			    </tr>
-		    </table>
-		</td>
-	 
-		</tr>
-  </table>
-
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td>
-		   {{ _(""INVOICE"") }}
-		</td>
-		<td>
-		   {{ _(""INVOICE"") }}
-		</td>
-		<td>
-		   {{ _(""INVOICE"") }}
-		</td>
-	</tr>
-</table>
-
-
-<table class=""table table-condensed table-hover table-bordered"">
-		<tr>
-			<th>Sr</th>
-			<th>Description</th>
-			<th class=""text-right"">Qty</th>
-			<th class=""text-right"">Rate</th>
-			<th class=""text-right"">Amount</th>
-		</tr>
-		{%- for row in doc.sales_order_details -%}
-		<tr>
-			<td style=""width: 3%;"">{{ row.idx }}</td>
-			<td style=""width: 57%;"">{{ row.description }}</td>
-			<td style=""width: 10%; text-align: right;"">{{ row.qty }} {{ row.uom or row.stock_uom }}</td>
-			<td style=""width: 15%; text-align: right;"">{{
-				row.get_formatted(""rate"", doc) }}</td>
-			<td style=""width: 15%; text-align: right;"">{{
-				row.get_formatted(""amount"", doc) }}</td>
-		</tr>
-		{%- endfor -%}
-	</tbody>
-</table>
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td width=""50%"">
-			<p>{% if doc.terms %} <b>{{ _(""Auxiliary Information"") }}: </b>{{ doc.terms or """" }}
-				{%- endif -%}
-		</p>
-		<p style=""font-size:12px"">{% if doc.in_words_export %}
-			<b>{{ _(""Total Amount (In Words)"") }}: </b><br>
-					{{ doc.in_words_export }}
-				{%- endif -%}
-		</p><br><br>
-		<table class=""table table-condensed"">
-			<tr>
-				<td height=""100px""; valign=""top"">
-					<b>{{ _(""Received By:"") }}</b>
-				</td>
-			</tr>
-		</table>
-
-		</td>
-<td>
-				<table class=""table table-condensed"">
-						<tr>
-								<td class=""text-right"" style=""width: 30%"">
-										{{ _(""Net Total"") }}
-								</td>
-								<td class=""text-right"">
-										{{ doc.get_formatted(""net_total_export"") }}
-								</td>
-						</tr>
-						{%- for row in doc.other_charges -%}
-						{%- if not row.included_in_print_rate -%}
-						{%- if row.tax_amount -%}
-						<tr height:100%>
-								<td class=""text-right"" style=""width: 70%"">
-										{{ row.description }}
-								</td>
-								<td class=""text-right"">
-										{{ row.get_formatted(""tax_amount"", doc) }}
-								</td>
-						</tr>
-						{%- endif -%}
-						{%- endif -%}
-						{%- endfor -%}
-						{%- if doc.discount_amount -%}
-						<tr>
-								<td class=""text-right"" style=""width: 70%"">
-										{{ _(""Discount"") }}
-								</td>
-								<td class=""text-right"">
-										{{ doc.get_formatted(""discount_amount"") }}
-								</td>
-						</tr>
-						{%- endif -%}
-						<tr>
-								<td class=""text-right"" style=""width: 70%"">
-										<big><b>{{ _(""Grand Total"") }}</b></big>
-								</td>
-								<td class=""text-right"">
-										<big><b>{{ doc.get_formatted(""grand_total_export"") }}</b></big>
-								</td>
-						</tr>
-				</td>
-
-				</table>
-
-		</td>
-	</tr>
-</table>
-{% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
-<hr>
-<p><b>Taxes Included:</b></p>
-<table class=""table table-condensed no-border"">
-	<tbody>
-		{%- for row in doc.other_charges -%}
-		{%- if row.included_in_print_rate -%}
-		<tr>
-			<td class=""text-right"" style=""width: 70%"">
-
-				{{ row.description }}
-			</td>
-			<td class=""text-right"">
-				{{ row.get_formatted(""tax_amount"", doc) }}
-			</td>
-		<tr>
-		{%- endif -%}
-		{%- endfor -%}
-	</tbody>
-</table>
-
-
-{%- endif -%}
-<hr>
-<div class=""col-sm-9"">
-<p>Declaration:<br>
-We declare that this Invoice shows the actual price of the goods<br>
-described and that all particulars are true and correct. <p>
-</div>
-<div class=""col-sm-3"">
-<p  style=""text-align:right""><b>AUTHORISED SIGNATORY </b></p><br>
-</div>
-
-
-</small>"
-"","""Excise Certificate""","Excise Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE"") }}</b></p>
-
-
+<p class=""text-center"">Sub: Submission of Bank Set of documents against Advance Remittance of USD {{ doc.rounded_total }} DT: {{ doc.get_formatted(""delivery_date"") }} from our client {{ doc.customer_name }}
+</p>
+<p>Dear sir,</p>
+<p>With reference to the above,enclosing herewith set of documents including Original Exchange Control copy of
+shipping bill against below shipment:</p><br>
+<p>Invoice No. {{ doc.sales_order }} </p><br>
+<p>Date: {{ doc.get_formatted(""delivery_date"") }}</p><br>
+<p>Amount:  {{ doc.rounded_total }}</p><br>
+<p>Consignee: {{ doc.customer_name }} </p><br>
+<p>Payment Terms: {{ doc.payment_terms }} </p><br>
+<p>We have dispatched the original set of documents directly to the above consignee as usual today, after receipt of
+payment from them.</p><br>
+<p>Kindly acknowledge the receipt of above documents & oblige.</p>
 <br>
-
+<p>Thanking you,</p>
 <br>
-<p>Verified particulars as per invoice and packing list, inspected container Nos(as declared on invoice) </p>
-
-<p>Verified and found empty,inspected lot, checked marks and nos. examined. Packages after
-selection(details as per annexure I). Checked description,quality,weight,value and of the
-resultand product (export product) stipulated. </p><br><br>
-
-<p>The aforesaid goods have been stuffed in the </p>
-<p>containers at << M/s Exotic Fruits Pvt Ltd, Plot No G-20,MIDC, MIRJOLE,</p>
-
-<p>Ratnagiri-415693, Maharashtra >> and also sealed with </p>
-<p>Vehicle No.   Container No.  Central Excise Seal No.  Shipping Co's Bottle Seal No.</p><br>
-
-<p><table class=""table table-condensed"">
-			<tr>
-                              <td>Vehicle No.</td>
-                              <td>Container No.</td>
-                              <td>Central Excise Seal No.</td>
-                              <td>Shipping Co's Bottle Seal No.</td>
-			</tr>
-                        <tr>
-                              <td>Vehicle No.</td>
-                              <td>Container No.</td>
-                              <td>Central Excise Seal No.</td>
-                              <td>Shipping Co's Bottle Seal No.</td>
-			</tr>
-                        <tr>
-                              <td>Vehicle No.</td>
-                              <td>Container No.</td>
-                              <td>Central Excise Seal No.</td>
-                              <td>Shipping Co's Bottle Seal No.</td>
-			</tr>			
-		</table></p><br>
 <br>
-<p>Followed P/N 112/89(as amended) issued by Commissioner of Customs (Mumbai),<br>
-45/95 read with 52/95 JCH</p><br>
-<p><b>STUFFING PERMSSION NO. & DATE:- F.NO. << F.NO. S/6-FSP-4952/05 EXP(D) DTD. 24/11/2005 <BR>
-REVALIDATED VIDE DATED 23.12.2010, AS PER PUBLIC NTIC NO. 23/10, DT. 26.02.2010<b/></p><br>
-<p></p><br>
-
-
-
-<p>     
-<p><table class=""table table-condensed"">
-			<tr>
-                              <td>INSPECTOR OF CENTRAL EXCISE</td>
-                              <td>SUPERINTENDENT OF CENTRAL EXCISE</td>
-			</tr>			
-		</table></p><br>
-</p>"
-"","""Excise Cerificate""","Excise Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE"") }}</b></p>
-
-
 <br>
-
+<p><b>YOURS FAITHFULLY,</b></p><br>
+<p><b>For EXOTIC FRUITS PVT. LTD.</b></p>
 <br>
-<p>Verified particulars as per invoice and packing list, inspected container Nos(as declared on invoice) </p>
-
-<p>Verified and found empty,inspected lot, checked marks and nos. examined. Packages after
-selection(details as per annexure I). Checked description,quality,weight,value and of the
-resultand product (export product) stipulated. </p><br><br>
-
-<p>The aforesaid goods have been stuffed in the </p>
-<p>containers at << M/s Exotic Fruits Pvt Ltd, Plot No G-20,MIDC, MIRJOLE,</p>
-
-<p>Ratnagiri-415693, Maharashtra >> and also sealed with </p>
-<p>Vehicle No.   Container No.  Central Excise Seal No.  Shipping Co's Bottle Seal No.</p><br>
-
-<p><table class=""table table-condensed"">
-			<tr>
-                              <td>Vehicle No.</td>
-                              <td>Container No.</td>
-                              <td>Central Excise Seal No.</td>
-                              <td>Shipping Co's Bottle Seal No.</td>
-			</tr>
-                        <tr>
-                              <td>Vehicle No.</td>
-                              <td>Container No.</td>
-                              <td>Central Excise Seal No.</td>
-                              <td>Shipping Co's Bottle Seal No.</td>
-			</tr>
-                        <tr>
-                              <td>Vehicle No.</td>
-                              <td>Container No.</td>
-                              <td>Central Excise Seal No.</td>
-                              <td>Shipping Co's Bottle Seal No.</td>
-			</tr>			
-		</table></p><br>
 <br>
-<p>Followed P/N 112/89(as amended) issued by Commissioner of Customs (Mumbai),<br>
-45/95 read with 52/95 JCH</p><br>
-<p><b>STUFFING PERMSSION NO. & DATE:- F.NO. << F.NO. S/6-FSP-4952/05 EXP(D) DTD. 24/11/2005 <BR>
-REVALIDATED VIDE DATED 23.12.2010, AS PER PUBLIC NTIC NO. 23/10, DT. 26.02.2010<b/></p><br>
-<p></p><br>
+<p><b>AUTHORISED SIGNATORY.</b></p><br>
+<br>
+<p><b>Encl:As above</b></p><br>"
+"","""Nutrition Certificate""","Nutrition Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""NUTRITION CERTIFICATE"") }}</b></p>
+ 
+<br><br>
 
-
-
-<p>     
-<p><table class=""table table-condensed"">
-			<tr>
-                              <td>INSPECTOR OF CENTRAL EXCISE</td>
-                              <td>SUPERINTENDENT OF CENTRAL EXCISE</td>
-			</tr>			
-		</table></p><br>
-</p>"
-"","""Factory Invoice""","Invoice","exotic_fruits","Yes","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
-	{% if letter_head and not no_letterhead %}
-	<div class=""letter-head"">{{ letter_head }}</div>
-	{% endif %}
-	{%- if doc.meta.is_submittable and doc.docstatus==0-%}
-	<div class=""alert alert-info text-center"">
-		<h4 style=""margin: 0px;"">{{ _(""DRAFT"") }}</h4></div>
-	{%- endif -%}
-	{%- if doc.meta.is_submittable and doc.docstatus==2-%}
-	<div class=""alert alert-danger text-center"">
-		<h4 style=""margin: 0px;"">{{ _(""CANCELLED"") }}</h4></div>
-	{%- endif -%}
-	{% if max_pages > 1 %}
-	<p class=""text-right"">{{ _(""Page #{0} of {1}"").format(page_num, max_pages) }}</p>
-	{% endif %}
-{%- endmacro -%}
-
-<style>
-	.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
-	background-color: #B7CCF2;
-	color:#000000;
-	font-size:16px;
-	}
-	.print-format table, .print-format tr, 
-	.print-format td, .print-format div, .print-format p {
-		font-family: sans-serif;
-		line-height: 90%;
-		vertical-align: middle;
-	}
-	@media screen {
-		.print-format {
-			width: 210mm;
-			padding: 10mm;
-			min-height: 297mm;
-			footer {page-break-after: always;}
-		}
-	}
-</style>
-
-<small>
-{{ add_header(0,1,doc,letter_head, no_letterhead) }}
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td colspan=""2"">
-			<b style=""font-size:16px;"">{{ doc.select_print_heading or (doc.print_heading if doc.print_heading != None
-			else _(doc.doctype)) }}</b>  
-		</td>
-		<td style=""width:34%"">        
-			<b style=""font-size:16px; text-align:left; vertical-align:middle;"">{{ _(""#"") }}{{ doc.name }}</b><br>
-		</td>
-	</tr>
-</table>
-
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td colspan=""2"">
-			<b style=""font-size:14px;"">
-	 <p><b>{{ _(""EXPORTER"") }}: </b></b>
-		 {{ _(""<br><br>EXOTIC FRUITS PVT. LTD., <br>B-208, ARJUN CENTER,<br>
-		 BKS DEVSHI MARG, GOVANDI(E),<br> MUMBAI-400 088, INDIA."") }}
-			 
-		</p> 
-		</td>
-		
-		<td style=""width:50%"">  
-		 <table class=""table table-condensed"">
-			<td>Invoice No. & Date<br>
-		 EFE{{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </td> 
-		 <td>Exporter's Ref. <br> IEC NO. 0799000531</td> 
-	
-	 </table>
-		<table class=""table table-condensed"">
-			<tr>
-				<td>
-					{{ _(""Buyer's Ref. No. & Date  :"") }}
-				</td>
-			</tr>
-			<tr>
-				<td>
-					{{ _(""PURCHASE CONTRACT NO."") }} <<< 312049 >> {{ _(""DT."") }} << 13/2013 >>
-				</td>
-			</tr>
-			 <tr>
-				<td>
-					{{ _(""Buyer's Other Ref. No."") }} 
-				</td>
-			</tr>
-		 <tr>
-			 <td>
-					{{ _(""Order No."") }} << 312049-R >> 
-				</td>
-			</tr>
-			
-		</table>
-		</td>
-	 
-	</tr>
-</table>
-
-<table class=""table table-condensed table-bordered"">
-	<tr>
-
-	
-     
-    <td style=""width:50%"">  
-    <table class=""table table-condensed"">
-		 <tr><td>
-		        <b style=""font-size:14px;"">
-	         <p><b>{{ _(""Consignee"") }}: </b></b>
-					 {{ _(""<br><br>consign name, <br>Addr,<br>
-		 			 Addr2,<br> State, Country"") }}
-			     </p> 
-		     </td>
-		  </tr>
-	   </table>
-		 <table class=""table table-condensed"">
-			<tr>
-			   <td>Pre-carrige by <br>  </td> 
-		     <td>Place of Receipt by Pre-Carrier <br> </td> 
-	   </tr>
-	   <tr>
-			   <td>Vessel/Voyage No.<br> </td> 
-		     <td>Port of Loading<br> << Chennai Port, India >></td> 
-	   </tr>
-	   <tr>
-			   <td>Port of Discharge<br> << FELIXSTOWE >> </td> 
-		     <td>Final Destination <br> << FELIXSTOWE, U.K. >></td> 
-	   </tr>
-	   </table>
-		</td>
-
-		<td style=""width:50%"">  
-		<table class=""table table-condensed"">
-		 <tr><td>BUYER (IF OTHER THAN CONSIGNEE)</td></tr>
-	   </table>
-
-		 <table class=""table table-condensed"">
-			<td>Country of Origin of goods<br>
-		  << INDIA >> </td> 
-		 <td>Country of Final Destination <br> << UNITED KINGDOM/td>  
-	   </table>
-		<table class=""table table-condensed"">
-			<tr>
-				<td height=""100px""; valign=""top"">
-					<b>{{ _(""Terms of Delivery and payment:"") }}</b>
-				</td>
-			</tr>
-		</table>
-		</td>
-	 
-	</tr>
-  </td>
-
-
-
-<table class = ""table table-condensed table-bordered"">
-	<tr>
-		 
-		<td style=""width: 33%;"">
-			<b>{{ _(""To"") }}:</b> {{ doc.customer_name }}<br>
-				<b>{{ _(""Address"") }}:</b> {{ doc.address_display }}
-		</td>
-		<td style=""width: 33%;"">
-			<b>{{ _(""Ship To"") }}:</b> {{ doc.shipping_address_title }}<br>
-				<b>{{ _(""Address"") }}:</b> {{ doc.shipping_address }}
-		</td>
-		<td style=""width: 34%;"">
-				<b>{{ _(""Date"") }}:</b> {{ doc.get_formatted(""transaction_date"") }}<br>
-				<b>{{ _(""PO #"") }}:</b> {{ doc.po_no }} <br>
-				<b>{{ _(""PO Date"") }}:</b> {{ doc.get_formatted(""po_date"") }}
-		</td>
-	</tr>
-</table>
-
-<table class=""table table-condensed table-hover table-bordered"">
-		<tr>
-			<th>Sr</th>
-			<th>Description</th>
-			<th class=""text-right"">Qty</th>
-			<th class=""text-right"">Rate</th>
-			<th class=""text-right"">Amount</th>
-		</tr>
-		{%- for row in doc.sales_order_details -%}
-		<tr>
-			<td style=""width: 3%;"">{{ row.idx }}</td>
-			<td style=""width: 57%;"">{{ row.description }}</td>
-			<td style=""width: 10%; text-align: right;"">{{ row.qty }} {{ row.uom or row.stock_uom }}</td>
-			<td style=""width: 15%; text-align: right;"">{{
-				row.get_formatted(""rate"", doc) }}</td>
-			<td style=""width: 15%; text-align: right;"">{{
-				row.get_formatted(""amount"", doc) }}</td>
-		</tr>
-		{%- endfor -%}
-	</tbody>
-</table>
-<table class=""table table-condensed table-bordered"">
-	<tr>
-		<td width=""50%"">
-			<p>{% if doc.terms %} <b>{{ _(""Auxiliary Information"") }}: </b>{{ doc.terms or """" }}
-				{%- endif -%}
-		</p>
-		<p style=""font-size:12px"">{% if doc.in_words_export %}
-			<b>{{ _(""Total Amount (In Words)"") }}: </b><br>
-					{{ doc.in_words_export }}
-				{%- endif -%}
-		</p><br><br>
-		<table class=""table table-condensed"">
-			<tr>
-				<td height=""100px""; valign=""top"">
-					<b>{{ _(""Received By:"") }}</b>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<b>{{ _(""Customer Sign"") }}</b>
-				</td>
-			</tr>
-		</table>
-
-		</td>
-<td>
-				<table class=""table table-condensed"">
-						<tr>
-								<td class=""text-right"" style=""width: 30%"">
-										{{ _(""Net Total"") }}
-								</td>
-								<td class=""text-right"">
-										{{ doc.get_formatted(""net_total_export"") }}
-								</td>
-						</tr>
-						{%- for row in doc.other_charges -%}
-						{%- if not row.included_in_print_rate -%}
-						{%- if row.tax_amount -%}
-						<tr height:100%>
-								<td class=""text-right"" style=""width: 70%"">
-										{{ row.description }}
-								</td>
-								<td class=""text-right"">
-										{{ row.get_formatted(""tax_amount"", doc) }}
-								</td>
-						</tr>
-						{%- endif -%}
-						{%- endif -%}
-						{%- endfor -%}
-						{%- if doc.discount_amount -%}
-						<tr>
-								<td class=""text-right"" style=""width: 70%"">
-										{{ _(""Discount"") }}
-								</td>
-								<td class=""text-right"">
-										{{ doc.get_formatted(""discount_amount"") }}
-								</td>
-						</tr>
-						{%- endif -%}
-						<tr>
-								<td class=""text-right"" style=""width: 70%"">
-										<big><b>{{ _(""Grand Total"") }}</b></big>
-								</td>
-								<td class=""text-right"">
-										<big><b>{{ doc.get_formatted(""grand_total_export"") }}</b></big>
-								</td>
-						</tr>
-				</td>
-
-				</table>
-
-		</td>
-	</tr>
-</table>
-{% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
-<hr>
-<p><b>Taxes Included:</b></p>
-<table class=""table table-condensed no-border"">
-	<tbody>
-		{%- for row in doc.other_charges -%}
-		{%- if row.included_in_print_rate -%}
-		<tr>
-			<td class=""text-right"" style=""width: 70%"">
-
-				{{ row.description }}
-			</td>
-			<td class=""text-right"">
-				{{ row.get_formatted(""tax_amount"", doc) }}
-			</td>
-		<tr>
-		{%- endif -%}
-		{%- endfor -%}
-	</tbody>
-</table>
-{%- endif -%}
-<hr>
-</small>"
-"","""Bill Of exchange""","Bill Of exchange","exotic_fruits","Yes","Server",0,"<p class=""text-center"">{{ _(""DRAWN ON 75 DAYS AFTER DATE OF INVOICE THROUGH RABOBANK NEDERLAND OBS TRADE SERVICES GLIDENKWARTIER 199 3511 DH UTERECHT THE NETHERLANDS."") }}</p>
+<p><b>REFERENCE: OUR INVOICE NUMBER {{ doc.sales_order }} DT. {{ doc.delivery_date}} </b></p>
 
 <br><br>
-<p> Invoice No. {{ doc.sales_order }} dt: {{ doc.get_formatted(""delivery_date"") }} </p><br>
-<p>EXCHANGE FOR << USE 84,240 >> </p><br>
+<p><b>PRODUCT :  {{ doc.product }} </b></p>
+<br>
+<table class=""table table-bordered"">
+	<tbody>	
+		<tr>	<td style=""width: 3%;"">
+WATER - %</td>
+			<td style=""width: 20%;""> {{ doc.water }}</td>
+		</tr>
+               <tr>
+			<td style=""width: 3%;"">CALORIES Kcal/kg</td>
+			<td style=""width: 20%;""> {{ doc.calories }} </td>
+		</tr>
+<tr>
+			<td style=""width: 3%;"">PROTEIN -gm</td>
+			<td style=""width: 20%;"">{{ doc.protein }} </td>
+		</tr>
+<tr>
+  <td style=""width: 3%;""> FAT -gm </td>
+  <td style=""width: 20%;""> {{ doc.fat }} </td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> CARBOHYDRATE TOTAL -gm</td>
+  <td style=""width: 20%;""> {{ doc.carbohydrate_total }} </td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> ASH -gm</td>
+  <td style=""width: 20%;"">  {{ doc.ash }}</td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> CALCIUM-gm</td>
+  <td style=""width: 20%;""> {{ doc.calcium }}</td>
+</tr>
+<tr>
+  <td style=""width: 3%;"">PHOSPHORUS-gm</td>
+  <td style=""width: 20%;""> {{ doc.phosphorus }} </td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> IRON -gm</td>
+  <td style=""width: 20%;"">{{ doc.iron }} </td>
+</tr>
+<tr>
+  <td style=""width: 3%;"">SODIUM -gm</td>
+  <td style=""width: 20%;"">{{ doc.sodium }} </td>
+</tr>
+<tr>
+  <td style=""width: 3%;"">POTASSIUM -gm </td>
+  <td style=""width: 20%;""> {{ doc.potassium }}</td>
+</tr>
+<tr>
+  <td style=""width: 3%;"">VITAMIN A  -IU/gm </td>
+  <td style=""width: 20%;"">{{ doc.vitamin_a }}  </td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> THIAMINE -mg/100g</td>
+  <td style=""width: 20%;""> {{ doc.thiamine }}</td>
+</tr>
+<tr>
+  <td style=""width: 3%;"">RIBOFLAVIN - mg/100g</td>
+  <td style=""width: 20%;"">{{ doc.riboflavin }}</td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> NIACIN - mg/100g</td>
+  <td style=""width: 20%;"">  {{ doc.niacin }}</td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> ASCORBIC ACID - mg/100g</td>
+  <td style=""width: 20%;""> {{ doc.ascorbic_acid }} </td>
+</tr>
+<tr>
+  <td style=""width: 3%;""> </td>
+  <td style=""width: 20%;""> COMPOSITION OF FOODS PER 100 GMS, EDIBLE PORTION - PULP</td>
+</tr>
+	
+	</tbody>
+</table>
 
-<p>At  << 75>> days after << INVOICE >> date of this FIRST of exchange (Second of the same tenure date being unpaid) pay to the order of << ANDHRA BANK, 9/15, MAMA PARAMANAND MARG, QUEENS ROAD, OPERA HOUSE MUMBAI - 400 004, MAHARASHTRA INDIA - A/C NO. 0402111000001945 >> the sum of << US DOLLARS EIGHTY FOUR THOUSAND TWO HUNDREAD FOURTY ONLY >> value received and charge the same to the account of << 240 Drums >> shipped per vessel << CMA CGM BELLINI V- EPA14W >>  </p><br>
+<br><br><br>
+<p><b>For EXOTIC FRUITS PVT.LTD.,</b></p>
+<br><br>
+<p><b>MANAGER (Q.A.)</b></p>"
+"","""Certificate Of Authenticity And Conformity""","Certificate Of Authenticity And Conformity","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE OF AUTHENTICITY AND CONFORMITY"") }}</b></p>
 
+<br><br>
+<table class=""table table-bordered"">
+	<tbody>	
+		<tr>	<td style=""width: 3%;"">
+OUR REF:</td>
+			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT. {{ doc.get_formatted(""delivery_date"") }}</td>
+		</tr>
+               <tr>
+			<td style=""width: 3%;"">PRODUCT :  </td>
+			<td style=""width: 20%;""> {{ doc.product }} </td>
+		</tr>
 
-<p>INVOICE NO<< INVOICE NO >> B/L No.  <<  >>  </p><br>
+	</tbody>
+</table>
 
-<p>TO <<  >> </p><br>
+<br>
+<br>
 
-<p>M/s <<FRIESLANDCAMPINA RIEDL B.V. <br>
-FRANKENENG 12, <br>
-THE NETHERLANDS >> </p><br>
+<p>The undersigned guarantees that the product supplied to < CLIENT NAME > < CLIENT ADDRESS > and delivered in one Or more deliveries, is made from 100% sound, mature & wholesome fruit is authentic & is free from any dyestuff and preservatives & is not modified and/or adulterated and/or misbranded and/or enriched in anyway by addition of natural or artificial substances and/or sugars and/or stabilizing agents(Like E.C. Emulsifiers, jellying agents etc), within the meaning of the European Food legislation with special reference to the E.C Flavouring directive and/or E.C. Directive for food additives. </p>
+<br>
+<p>The product is manufactured under highly qualified & sanitary conditions corresponding to International Good Manufacturing Standards and is in conformity with the specifications. As agreed in purchase order, and is suitable for it's intended application in Fruit juice and/or Fruit Nectars in the meaning of E.C. Fruit Juice directive. </p>
+<br>
+
+<p>The undersigned guarantees that these products do not contain any additives or components of which the use is prohibited or restricted by European Food Laws.</p>
+<br>
+
+<p>The producer and/or seller warrants that the product also fully corresponds to the AIJN Code of Practice for the Arsenic and Heavy Metals.</p>
+<br>
+<br>
+<br>
+<p><b>For EXOTIC FRUITS PRIVATE LIMITED</b></p>
+<br><br>
+<p><b>AUTHORISED SIGNATORY </b></p><br>"
+"","""Certificate Of Naturalness""","Certificate Of Naturalness","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CERTIFICATE OF NATURALNESS"") }}</b></p><br>
+<p class=""text-center""><b>{{ _(""GUARANTEE OF PURITY AS PER USDA STANDERDS"") }}</b></p>
+
+<br>
+<table class=""table table-bordered"">
+	<tbody>	
+		<tr>	<td style=""width: 3%;"">
+OUR REF:</td>
+			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
+		</tr>
+               <tr>
+			<td style=""width: 3%;"">PRODUCT :  </td>
+			<td style=""width: 20%;""> {{ doc.product }} </td>
+		</tr>
+
+	</tbody>
+</table>
+<br><br>
+
+<p>We hereby guarantee that the above product comply in all respect to the Indian food laws i.e. Prevention of Food Adulteration Act (1954) and Fruit Products Order (1955) and all acts, amending or supplementing the same </p>
+<br>
+<p>We further certify and guarantee that the product is 100% natural and is not adulterated or misbranded within the meaning of aforementioned act.  </p>
+<br>
+<p>This certificate shall also constitute a Continuing Guarantee of the matters started above.</p>
+<br>
+<br>
+<br>
+<p><b>For EXOTIC FRUITS PVT. LTD</b></p>
+<br><br>
+<p><b>AUTHORISED SIGNATORY </b></p><br>"
+"","""GMO DECLARATION""","GMO DECLARATION","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""GMO DECLARATION"") }}</b></p>
+
+<br>
+<table class=""table table-bordered"">
+	<tbody>	
+		<tr>	<td style=""width: 3%;"">
+OUR REF:</td>
+			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
+		</tr>
+               <tr>
+			<td style=""width: 3%;"">PRODUCT :  </td>
+			<td style=""width: 20%;""> {{ doc.product }} </td>
+		</tr>
+
+	</tbody>
+</table>
+<br>
+
+<p>We hereby declare that the product named above, as supplied to client M/s {{ doc.customer_name }}  << CLIENT ADDRESS >> is not derived from or produced using GMO's or their derivates and all reasonable precautions have been taken to prevent contamination free genetically modified ingredients where used this also applies to Food Additives and Processing aids.</p>
+
+<br>
+<br>
+<br>
+<p><b>For EXOTIC FRUITS PVT. LTD </b></p>
+<br><br>
+<p><b>AUTHORISED SIGNATORY </b></p><br>"
+"","""Shelf Life Certificate""","Shelf Life Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""SHELF LIFE CERTIFICATE"") }}</b></p>
+
+<br>
+<table class=""table table-bordered"">
+	<tbody>	
+		<tr>	<td style=""width: 3%;"">
+OUR REF:</td>
+			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
+		</tr>
+               <tr>
+			<td style=""width: 3%;"">PRODUCT :  </td>
+			<td style=""width: 20%;""> {{ doc.product }} </td>
+		</tr>
+
+	</tbody>
+</table>
+<br>
+
+<p>This is to certify that shelf life of the product shipped with reference to the above mentioned invoice is <b> 12 months </b> from the date of production, if kept under ideal storage conditions.</p>
+
+<br>
+<br>
+<br>
+<p><b>For EXOTIC FRUITS PVT. LTD </b></p>
+<br><br>
+<p><b>AUTHORISED SIGNATORY </b></p><br>"
+"","""DRUM MANIFEST""","DRUM MANIFEST","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""DRUM MANIFEST"") }}</b></p>
+
+<br><br>
+<p class=""text-center""><b>REF: Our Invoice Number {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </b></p><br>
+
+<br><br>
+<p>Container No :  {{ doc.container_no }} </p><br>
+
+<p>Batch # :  {{ doc.batch }}  </p><br>
+
+<p>Prod. Date :  {{ doc.prod_date }}</p><br>
+
+<p>DRM Nos : {{ doc.drm_nos }} </p><br>
+
+<p>No Of DRMS : {{ doc.no_of_drms }} </p><br>
+
+<br>
+
+<p>NET WEIGHT PER DRUM: 220 KGS,      GROSS WEIGHT PER DRUM: 240 KGS, <br> TOTAL NET WEIGHT: 17000.00 KGS,
+     TOTAL GROSS WEIGHT 19200.00 KGS</p>
+
+<br>
+<br>
+<br>
+<p><b>For EXOTIC FRUITS PVT. LTD., </b></p>
+<br><br>
+<p><b> MANAGER (Q.A.) </b></p><br>"
+"","""Health Certificate""","Health Certificate","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""HEALTH CERTIFICATE"") }}</b></p>
+
+<br><br>
+<table class=""table table-bordered"">
+	<tbody>	
+		<tr>	<td style=""width: 3%;"">
+OUR REF:</td>
+			<td style=""width: 20%;""> Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }}</td>
+		</tr>
+               <tr>
+			<td style=""width: 3%;"">PRODUCT :  </td>
+			<td style=""width: 20%;""> {{ doc.product }} </td>
+		</tr>
+ <tr>
+			<td style=""width: 3%;"">NO OF PACKAGES :  </td>
+			<td style=""width: 20%;""> {{ doc.no_of_packages }} </td>
+		</tr>
+ <tr>
+			<td style=""width: 3%;"">PROCESS :  </td>
+			<td style=""width: 20%;""> {{ doc.process }} </td>
+		</tr>
+ <tr>
+			<td style=""width: 3%;"">TOTAL NET WEIGHT :  </td>
+			<td style=""width: 20%;""> {{ doc.total_net_weight }} </td>
+		</tr>
+ <tr>
+			<td style=""width: 3%;"">CONTAINER NO. :  </td>
+			<td style=""width: 20%;""> {{ doc.container_no }} </td>
+		</tr>
+
+	</tbody>
+</table>
+
+<br>
+
+<p>This is to certify that above product packed in Aseptic bag in a drum has undergone sufficient sterilization process and the product is safe for human consumption.</p>
+
+<br>
+<br>
+<br>
+<p><b>For EXOTIC FRUITS PVT. LTD.</b></p>
+<br><br>
+<p><b> AUTHORISED SIGNATORY </b></p><br>"
+"","""CARTON MANIFEST""","CARTON MANIFEST","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""CARTON MANIFEST"") }}</b></p>
 
 
 <br>
-<p class=""text-right""><b>For EXOTIC FRUITS PVT. LTD.</b></p>
+<p class=""text-center""><b>REF: Our Invoice Number {{ doc.sales_order }} dt: {{ doc.get_formatted(""delivery_date"") }} </b></p><br>
+<br>
+
+
+<p>Container No : {{ doc.container_no }} </p><br>
+
+<p>Batch No. : {{ doc.batch }}  </p><br>
+
+<p>Prod. Date : {{ doc.prod_date }} </p><br>
+
+<p>Carton Nos : {{ doc.carton_nos }} </p><br>
+
+<p>No Of Cartons : {{ doc.no_of_cartons }}  </p><br>
+
+<br>
+
+<p>NET WEIGHT PER CARTON: 20.00 KGS,      GROSS WEIGHT PER CARTON: 21.50 KGS, <br> TOTAL NET WEIGHT: 18480.00 KGS,
+     TOTAL GROSS WEIGHT 19866.00 KGS</p>
+
+<br>
+<br>
+<br>
+<p><b>For EXOTIC FRUITS PVT. LTD., </b></p>
 <br><br>
-<p class=""text-right""><b> AUTHORISED SIGNATORY </b></p><br>"
-"","""Payment Receipt Voucher""","Journal Voucher","Accounts","Yes","Server",0,"{%- from ""templates/print_formats/standard_macros.html"" import add_header -%}
-<div class=""page-break"">
-    {%- if not doc.get(""print_heading"") and not doc.get(""select_print_heading"") 
-        and doc.set(""select_print_heading"", _(""Payment Receipt Note"")) -%}{%- endif -%}
-    {{ add_header(0, 1, doc, letter_head, no_letterhead) }}
+<p><b> MANAGER (Q.A.) </b></p><br>"
+"","""Shipment Advice""","Shipment Advice","exotic_fruits","Yes","Server",0,"<p class=""text-center""><b>{{ _(""SHIPMENT ADVICE"") }}</b></p>
 
-    {%- for label, value in (
-        (_(""Received On""), frappe.utils.formatdate(doc.voucher_date)),
-        (_(""Received From""), doc.pay_to_recd_from),
-        (_(""Amount""), ""<strong>"" + doc.total_amount or 0 + ""</strong><br>"" + (doc.total_amount_in_words or """") + ""<br>""),
-        (_(""Remarks""), doc.remark)
-    ) -%}
-    <div class=""row"">
-        <div class=""col-sm-3""><label class=""text-right"">{{ label }}</label></div>
-        <div class=""col-sm-9"">{{ value }}</div>
-    </div>
+<br><br>
+<p>SHIPMENT ADVICE- CONTRACT NO-  {{ doc.contract_no }} DATE {{ doc.get_formatted(""contract_date"") }}  </p><br>
+<p>DOHLER HOLLAND BV- Invoice No. {{ doc.sales_order }} DT: {{ doc.get_formatted(""delivery_date"") }} </p><br>
 
-    {%- endfor -%}
 
-    <hr>
-    <br>
-    <p class=""strong"">
-        {{ _(""For"") }} {{ doc.company }},<br>
-        <br>
-        <br>
-        <br>
-        {{ _(""Authorized Signatory"") }}
-    </p>
-</div>"
-"","""Credit Note""","Journal Voucher","Accounts","Yes","Server",0,"{%- from ""templates/print_formats/standard_macros.html"" import add_header -%}
+<table class=""table table-bordered"">
+	<tbody>	
+		<tr>	<td style=""width: 3%;"">
+PRODUCT </td>
+			<td style=""width: 20%;"">{{ doc.product }} </td>
+		</tr>
+               <tr>
+			<td style=""width: 3%;"">QUANTITY :  </td>
+			<td style=""width: 20%;""> {{ doc.quantity }} </td>
+		</tr>
+<tr>
+			<td style=""width: 3%;"">VALUE :  </td>
+			<td style=""width: 20%;""> {{ doc.value }} </td>
+		</tr>
+<tr>
+			<td style=""width: 3%;"">PORT OF DISCHARGE :  </td>
+			<td style=""width: 20%;""> {{ doc.port_of_discharge }} </td>
+		</tr>
+<tr>
+			<td style=""width: 3%;"">VESSEL NAME :  </td>
+			<td style=""width: 20%;""> {{ doc.vessel_name }} </td>
+		</tr>
+<tr>
+			<td style=""width: 3%;"">B/L NO. & DATE :  </td>
+			<td style=""width: 20%;""> {{ doc.bl_no_and_date }} </td>
+		</tr>
+<tr>
+			<td style=""width: 3%;"">CONTAINER NO :  </td>
+			<td style=""width: 20%;""> {{ doc.container_no }} </td>
+		</tr>
 
-<div class=""page-break"">
-    {%- if not doc.get(""print_heading"") and not doc.get(""select_print_heading"") 
-        and doc.set(""select_print_heading"", _(""Credit Note"")) -%}{%- endif -%}
-    {{ add_header(0, 1, doc, letter_head, no_letterhead) }}
+<tr>
+			<td style=""width: 3%;"">NET WEIGHT :  </td>
+			<td style=""width: 20%;""> {{ doc.net_weight }} </td>
+		</tr>
+<tr>
+			<td style=""width: 3%;"">GROSS WEIGHT :  </td>
+			<td style=""width: 20%;""> {{ doc.gross_weight }} </td>
+		</tr>
 
-    {%- for label, value in (
-        (_(""Credit To""), doc.pay_to_recd_from),
-        (_(""Date""), frappe.utils.formatdate(doc.voucher_date)),
-        (_(""Amount""), ""<strong>"" + frappe.utils.cstr(doc.total_amount) + ""</strong><br>"" + (doc.total_amount_in_words or """") + ""<br>""),
-        (_(""Remarks""), doc.remark)
-    ) -%}
+	</tbody>
+</table>
 
-    <div class=""row"">
-        <div class=""col-sm-3""><label class=""text-right"">{{ label }}</label></div>
-        <div class=""col-sm-9"">{{ value }}</div>
-    </div>
 
-    {%- endfor -%}
+<br>
 
-    <hr>
-    <br>
-    <p class=""strong"">
-        {{ _(""For"") }} {{ doc.company }},<br>
-        <br>
-        <br>
-        <br>
-        {{ _(""Authorized Signatory"") }}
-    </p>
-</div>"
-"","""Cheque Printing Format""","Journal Voucher","Accounts","Yes","Server",0,"<div style=""position: relative"">
+<p>This is to certify that above product packed in Aseptic bag in a drum has undergone sufficient sterilization process and that the product is safe for human consumption.</p>
 
-	{%- from ""templates/print_formats/standard_macros.html"" import add_header -%}
-<div class=""page-break"">
-    {%- if not doc.get(""print_heading"") and not doc.get(""select_print_heading"") 
-        and doc.set(""select_print_heading"", _(""Payment Advice"")) -%}{%- endif -%}
-    {{ add_header(0, 1, doc, letter_head, no_letterhead) }}
-
-{%- for label, value in (
-        (_(""Voucher Date""), frappe.utils.formatdate(doc.voucher_date)),
-        (_(""Reference / Cheque No.""), doc.cheque_no),
-        (_(""Reference / Cheque Date""), frappe.utils.formatdate(doc.cheque_date))
-    ) -%}
-    <div class=""row"">
-        <div class=""col-sm-4""><label class=""text-right"">{{ label }}</label></div>
-        <div class=""col-sm-8"">{{ value }}</div>
-    </div>
-{%- endfor -%}
-	<hr>
-	<p>{{ _(""This amount is in full / part settlement of the listed bills"") }}:</p>
-{%- for label, value in (
-         (_(""Amount""), ""<strong>"" + (doc.total_amount or """") + ""</strong><br>"" + (doc.total_amount_in_words or """") + ""<br>""),
-        (_(""References""), doc.remark)
-    ) -%}
-    <div class=""row"">
-        <div class=""col-sm-4""><label class=""text-right"">{{ label }}</label></div>
-        <div class=""col-sm-8"">{{ value }}</div>
-    </div>
-    {%- endfor -%}
-    <hr>
-	<div style=""position: absolute; top: 14cm; left: 0cm;"">
-		Prepared By</div>
-	<div style=""position: absolute; top: 14cm; left: 5.5cm;"">
-		Authorised Signatory</div>
-	<div style=""position: absolute; top: 14cm; left: 11cm;"">
-		Received Payment as Above</div>
-	<div style=""position: absolute; top: 16.4cm; left: 5.9cm;"">
-		<strong>_____________</strong></div>
-	<div style=""position: absolute; top: 16.7cm; left: 6cm;"">
-		<strong>A/C Payee</strong></div>
-	<div style=""position: absolute; top: 16.7cm; left: 5.9cm;"">
-		<strong>_____________</strong></div>
-	<div style=""position: absolute; top: 16.9cm; left: 12cm;"">
-		{{ frappe.utils.formatdate(doc.cheque_date) }}</div>
-	<div style=""position: absolute; top: 17.9cm; left: 1cm;"">
-		{{ doc.pay_to_recd_from }}</div>
-	<div style=""position: absolute; top: 18.6cm; left: 1cm; width: 7cm;"">
-		{{ doc.total_amount_in_words }}</div>
-	<div style=""position: absolute; top: 19.7cm; left: 12cm;"">
-		{{ doc.total_amount }}</div>
-</div>"
+<br>
+<br>
+<br>
+<p><b>YOURS FAITHFULLY,</b></p><br>
+<p><b>For EXOTIC FRUITS PVT. LTD.</b></p>
+<br><br>
+<p><b> AUTHORISED SIGNATORY </b></p><br>"
