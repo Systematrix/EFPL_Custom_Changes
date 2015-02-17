@@ -18,6 +18,12 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
+"","""Customer-required_quality_specifications""","Customer","Small Text","Required Quality Specifications","","","","","required_quality_specifications",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-market_intelligence""","Customer","Small Text","Market Intelligence","","","","","market_intelligence",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-column_break""","Customer","Column Break","column break","","","","","column_break",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-documentation""","Customer","Small Text","Documentation","","","","","documentation",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-commercial_requirements""","Customer","Small Text","Commercial Requirements","","","","","commercial_requirements",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-customer_information""","Customer","Section Break","Customer Information","","","","","customer_information",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Invoice-buyer""","Sales Invoice","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Invoice-notify_party""","Sales Invoice","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Invoice-consignee""","Sales Invoice","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
@@ -338,9 +344,3 @@ Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,
 "","""Delivery Note-buyer""","Delivery Note","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-same_as_customer""","Delivery Note","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",1,0,0,0,0,0
 "","""Delivery Note-sampling_details""","Delivery Note","Section Break","Sampling Details","","","","","sampling_details",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Customer-documentation""","Customer","Small Text","Documentation","","","","","documentation",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-market_intelligence""","Customer","Small Text","Market Intelligence","","","","","market_intelligence",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-column_break""","Customer","Column Break","column break","","","","","column_break",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-commercial_requirements""","Customer","Small Text","Commercial Requirements","","","","","commercial_requirements",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-required_quality_specifications""","Customer","Small Text","Required Quality Specifications","","","","","required_quality_specifications",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-customer_information""","Customer","Section Break","Customer Information","","","","","customer_information",0,0,0,0,"","",0,"",0,0,0,0,0,0
