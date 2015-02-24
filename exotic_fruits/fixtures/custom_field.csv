@@ -18,305 +18,25 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
-"","""Customer-required_quality_specifications""","Customer","Small Text","Required Quality Specifications","","","","","required_quality_specifications",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-market_intelligence""","Customer","Small Text","Market Intelligence","","","","","market_intelligence",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-column_break""","Customer","Column Break","column break","","","","","column_break",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-documentation""","Customer","Small Text","Documentation","","","","","documentation",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-commercial_requirements""","Customer","Small Text","Commercial Requirements","","","","","commercial_requirements",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Customer-customer_information""","Customer","Section Break","Customer Information","","","","","customer_information",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-buyer""","Sales Invoice","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-notify_party""","Sales Invoice","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-consignee""","Sales Invoice","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-label_copy""","Sales Invoice","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",0,"",0,0,1,0,0,0
-"","""Sales Invoice-product_specification""","Sales Invoice","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-other""","Sales Invoice","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-shipment_schedule""","Sales Invoice","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-other_info""","Sales Invoice","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
-"","""Sales Invoice-temperature""","Sales Invoice","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
-"","""Sales Invoice-fcl_detail""","Sales Invoice","Select","FCL Detail","","","20 ft Dry
+"","""Delivery Note-sampling_details""","Delivery Note","Section Break","Sampling Details","","","","","sampling_details",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Delivery Note-same_as_customer""","Delivery Note","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-buyer""","Delivery Note","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-notify_party""","Delivery Note","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-consignee""","Delivery Note","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-cb65""","Delivery Note","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-label_copy""","Delivery Note","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",0,"",0,0,1,0,0,0
+"","""Delivery Note-product_specification""","Delivery Note","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-other""","Delivery Note","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-other_info""","Delivery Note","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Delivery Note-temperature""","Delivery Note","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
+"","""Delivery Note-fcl_detail""","Delivery Note","Select","FCL Detail","","","20 ft Dry
 40 ft Dry
 20 ft Reefer
 40 ft Reefer
 Controlled Temp
 Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
-"","""Sales Invoice-loadability""","Sales Invoice","Select","Loadability","","","LCL
+"","""Delivery Note-loadability""","Delivery Note","Select","Loadability","","","LCL
 FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-incoterms""","Sales Invoice","Select","Incoterms","","","EXW
-FOR
-FAS
-FOB
-CFR
-CIF
-FCA
-DDP","","incoterms",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-sale""","Sales Invoice","Select","Local/Export Sale","","","Local Sale
-Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-cb123""","Sales Invoice","Column Break","cb123","","","","","cb123",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-packing""","Sales Invoice","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Invoice-crop_year""","Sales Invoice","Select","Crop Year","","","2013
-2014
-2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-palletization""","Sales Invoice","Select","Palletization","","","Yes
-No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-empty_drums_return""","Sales Invoice","Select","Empty Drums Return","","","Yes
-No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-quote_expires_on""","Sales Invoice","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-quotation_details""","Sales Invoice","Section Break","Order Details","","","","","quotation_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-document_dispatch_address_iii""","Sales Invoice","Data","Document Dispatch Address III","","","","","document_dispatch_address_iii",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Invoice-document_dispatch_address_ii""","Sales Invoice","Data","Document Dispatch Address II","","","","","document_dispatch_address_ii",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Invoice-document_dispatch_address_i""","Sales Invoice","Data","Document Dispatch Address I","","","","","document_dispatch_address_i",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Invoice-documents_required""","Sales Invoice","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-documents""","Sales Invoice","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Invoice-documents_required_sec""","Sales Invoice","Section Break","Documents Required Sec","","","","","documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-port_of_discharge""","Sales Invoice","Data","Port of Discharge","","","","","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-awb_receive_date""","Delivery Note","Date","AWB Receive Date","","","","","awb_receive_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Delivery Note-awb_dispatch_date""","Delivery Note","Date","AWB Dispatch Date","","","","","awb_dispatch_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Delivery Note-awb_vendor""","Delivery Note","Data","AWB Vendor","","","","","awb_vendor",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Delivery Note-cb1001""","Delivery Note","Column Break","cb1001","","","","","cb1001",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-bill_number""","Delivery Note","Data","Airway Bill Number","","","","","bill_number",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Delivery Note-sampling_reason""","Delivery Note","Data","Sampling Reason","","","","","sampling_reason",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Delivery Note-is_sample_order""","Delivery Note","Check","Is Sample Order","shipping_address_name","","","","is_sample_order",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-shipping_cost_3""","Delivery Note","Currency","Shipping Cost 3","","","","","shipping_cost_3",0,0,0,0,"","",0,"eval:doc.shipping_cost_2 > 0",1,0,1,0,0,0
-"","""Delivery Note-shipping_cost_2""","Delivery Note","Currency","Shipping Cost 2","","","","","shipping_cost_2",0,0,0,0,"","",0,"eval:doc.shipping_cost_1 > 0",1,0,1,0,0,0
-"","""Delivery Note-shipping_cost_1""","Delivery Note","Currency","Shipping Cost 1","","","","","shipping_cost_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-ship_section""","Delivery Note","Section Break","","","","","","ship_section",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-etd_mother_vessel_ii""","Delivery Note","Date","ETD Mother Vessel II","","","","ETD Mother Vessel II","etd_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-eta_mother_vessel_ii""","Delivery Note","Date","ETA Mother Vessel II","","","","ETA Mother Vessel - II","eta_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-mother_vessel_ii""","Delivery Note","Data","Mother Vessel II","","","","","mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-etd_mother_vessel_i""","Delivery Note","Date","ETD","","","","ETD Mother Vessel - I","etd_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-eta_mother_vessel_i""","Delivery Note","Date","ETA","","","","ETA Mother Vessel - I","eta_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-mother_vessel_i""","Delivery Note","Data","Mother Vessel I","","","","","mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
-"","""Delivery Note-etd_mother_vessel""","Delivery Note","Date","ETD","","","","","etd_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-eta_mother_vessel""","Delivery Note","Date","ETA","","","","","eta_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-container_dispatch_date""","Delivery Note","Date","Container Dispatch Date","","","","","container_dispatch_date",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-container_number""","Delivery Note","Data","Container Number","","","","","container_number",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-mother_vessel""","Delivery Note","Data","Mother Vessel","","","","","mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-feeder_vessel""","Delivery Note","Data","Feeder Vessel","","","","","feeder_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-tsp""","Delivery Note","Select","TSP","","","Yes
-No","Trans-shipment","tsp",0,0,0,0,"","No",0,"",0,0,0,0,0,0
-"","""Delivery Note-shipment_schedule""","Delivery Note","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-shipping_line_name""","Delivery Note","Link","Shipping Line Name","","","Supplier","","shipping_line_name",0,0,0,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-custom_cha_section""","Delivery Note","Section Break","","","","","","custom_cha_section",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-transporter_total""","Delivery Note","Currency","Transporter Total","","","","","transporter_total",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-custom_cb_1004""","Delivery Note","Column Break","custom_cb_1004","","","","","custom_cb_1004",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-additional_charges""","Delivery Note","Currency","Additional Charges","","","","","additional_charges",0,0,0,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-initial_amount""","Delivery Note","Currency","Initial Amount","","","","","initial_amount",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-t_name""","Delivery Note","Link","Transporter Name","","","Supplier","","t_name",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-custom_container_section""","Delivery Note","Section Break","","","","","","custom_container_section",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-eta""","Delivery Note","Date","ETA","","","","Expected Time Of Arrival","eta",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-port_of_discharge""","Delivery Note","Data","POD","","","","Port of Discharge","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-custom_cb_1011""","Delivery Note","Column Break","custom_cb_1011","","","","","custom_cb_1011",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-etd""","Delivery Note","Date","ETD","","","","Expected Time Of Departure","etd",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-pol""","Delivery Note","Data","POL","","","","Port Of Loading","pol",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-payment_terms""","Delivery Note","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note Item-number_of_containers""","Delivery Note Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note Item-weight_uom""","Delivery Note Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note Item-net_weight""","Delivery Note Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note Item-rate_per_mt""","Delivery Note Item","Currency","Rate per MT","","3","","","rate_per_mt",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note Item-quantity_in_mt""","Delivery Note Item","Float","Quantity in MT","","","","","quantity_in_mt",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note Item-stuffing_date""","Delivery Note Item","Date","Stuffing Date","","","","","stuffing_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order Item-number_of_containers""","Sales Order Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Quotation Item-number_of_containers""","Quotation Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order Item-weight_uom""","Sales Order Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order Item-net_weight""","Sales Order Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order Item-rate_per_mt""","Sales Order Item","Currency","Rate per MT","","3","","","rate_per_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order Item-quantity_in_mt""","Sales Order Item","Float","Quantity in MT","","","","","quantity_in_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order Item-stuffing_date""","Sales Order Item","Date","Stuffing Date","","","","","stuffing_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation Item-weight_uom""","Quotation Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation Item-net_weight""","Quotation Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation Item-rate_per_mt""","Quotation Item","Currency","Rate per MT","","3","","","rate_per_mt",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation Item-quantity_in_mt""","Quotation Item","Float","Quantity in MT","","","","","quantity_in_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-packing""","Quotation","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Quotation-port_of_discharge""","Quotation","Data","Port of Discharge","","","","","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-same_as_customer""","Quotation","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-buyer""","Quotation","Link","Buyer","","","Customer","","buyer",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-notify_party""","Quotation","Link","Notify Party","","","Customer","","notify_party",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-consignee""","Quotation","Link","Consignee","","","Customer","","consignee",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-cb65""","Quotation","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-documents_required""","Quotation","Small Text","Documents Required","","","","","documents_required",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-product_specification""","Quotation","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-other""","Quotation","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-shipment_schedule""","Quotation","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-other_info""","Quotation","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
-"","""Quotation-temperature""","Quotation","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
-"","""Quotation-fcl_detail""","Quotation","Select","FCL Detail","","","20 ft Dry
-40 ft Dry
-20 ft Reefer
-40 ft Reefer
-Controlled Temp
-Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
-"","""Quotation-loadability""","Quotation","Select","Loadability","","","LCL
-FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-incoterms""","Quotation","Select","Incoterms","","","EXW
-FOR
-FAS
-FOB
-CFR
-CIF
-FCA
-DDP","","incoterms",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-sale""","Quotation","Select","Local/Export Sale","","","Local Sale
-Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-cb""","Quotation","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-crop_year""","Quotation","Select","Crop Year","ignore_pricing_rule","","2013
-2014
-2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-palletization""","Quotation","Select","Palletization","","","Yes
-No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-empty_drums_return""","Quotation","Select","Empty Drums Return","","","Yes
-No","","empty_drums_return",0,0,0,0,"","No",0,"",0,0,0,0,0,0
-"","""Quotation-quote_expires_on""","Quotation","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-quotation_detail""","Quotation","Section Break","Order Details","ignore_pricing_rule","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-payment_terms""","Quotation","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-oanda""","Quotation","HTML","oanda","","","<p align=""right""><a href=""http://www.oanda.com"" target=""_blank"">www.oanda.com</a></p>","","oanda",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Supplier-shipping_line_name""","Supplier","Data","Shipping Line Name","","","","","shipping_line_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Supplier-cha_name""","Supplier","Data","CHA Name","","","","Custom Handling Agent Name","cha_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Supplier-transporter_name""","Supplier","Data","Transporter Name","","","","","transporter_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Contact-work_fax""","Contact","Data","Work Fax","","","","","work_fax",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-work_telephone""","Contact","Data","Work Telephone","","","","","work_telephone",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-others""","Contact","Data","Others","","","","","others",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-alternate_number""","Contact","Data","Alternate Number","","","","","alternate_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Contact-home_number""","Contact","Data","Home Number","","","","","home_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Purchase Receipt Item-natural_loss""","Purchase Receipt Item","Float","Natural Loss","","","","","natural_loss",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Purchase Receipt Item-transporter_loss""","Purchase Receipt Item","Float","Transporter Loss","","","","","transporter_loss",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Batch-item_type""","Batch","Select","Item Type","","","Selling
-Purchase","","item_type",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Batch-ccb01""","Batch","Column Break","ccb01","","","","","ccb01",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Batch-ecrc_compartment""","Batch","Data","ECRC Compartment","","","","","ecrc_compartment",0,0,0,0,"","",0,"eval:doc.item_type == ""Purchase""",0,0,0,0,0,0
-"","""Serial No-manufacturing_details""","Serial No","Section Break","Manufacturing Details","","","","","manufacturing_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-manufacturing_line""","Serial No","Data","Manufacturing Line","","","","","manufacturing_line",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-line_head""","Serial No","Data","Line Head","","","","","line_head",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-brix""","Serial No","Float","Brix","","","","","brix",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-acidity""","Serial No","Float","Acidity","","","","","acidity",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-ph""","Serial No","Float","pH","","","","","ph",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-ccb1""","Serial No","Column Break","ccb1","","","","","ccb1",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-consistency""","Serial No","Data","Consistency","","","","","consistency",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-viscosity""","Serial No","Data","Viscosity","","","","","viscosity",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-specks""","Serial No","Data","Specks","","","","","specks",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-color_""","Serial No","Select","Color","","","Hunter - L
-Hunter - A
-Hunter - B
-Pantone
-Other","","color_",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-other""","Serial No","Data","Other","","","","","other",0,0,0,0,"","",0,"eval:doc.color_ == ""Other """,0,0,0,0,0,0
-"","""Serial No-sample_bag_drawn""","Serial No","Select","Sample Bag Drawn","","","Yes
-No","","sample_bag_drawn",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Serial No-sample_bag_id""","Serial No","Data","Sample Bag Id","","","","","sample_bag_id",0,0,0,0,"","",0,"eval:doc.sample_bag_drawn == ""Yes""",0,0,0,0,0,0
-"","""Serial No-b_a""","Serial No","Float","B/A","","","","","b_a",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Purchase Invoice Item-natural_loss""","Purchase Invoice Item","Float","Natural Loss","","","","","natural_loss",0,0,0,0,"","",1,"",0,0,0,0,0,0
-"","""Purchase Invoice Item-transporter_loss""","Purchase Invoice Item","Float","Transporter Loss","","","","","transporter_loss",0,0,0,0,"","",1,"",0,0,0,0,0,0
-"","""Sales Invoice Item-stuffing_date""","Sales Invoice Item","Date","Stuffing Date","","","","","stuffing_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice Item-quantity_in_mt""","Sales Invoice Item","Float","Quantity in MT","","","","","quantity_in_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice Item-rate_per_mt""","Sales Invoice Item","Currency","Rate per MT","","3","","","rate_per_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice Item-net_weight""","Sales Invoice Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice Item-weight_uom""","Sales Invoice Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice Item-number_of_containers""","Sales Invoice Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-bank_address_name""","Sales Order","Link","Bank Address","","","Address","Client's Banker","bank_address_name",0,0,0,0,"","",0,"customer",0,0,0,0,0,0
-"","""Sales Order-bank_address""","Sales Order","Small Text","Bank Address","","","","","bank_address",0,0,0,0,"","",1,"",0,0,0,0,0,0
-"","""Sales Order-is_sample_order""","Sales Order","Check","Is Sample Order","","","","","is_sample_order",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-order_reference""","Sales Order","Link","Order Reference","","","Sales Order","","order_reference",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Sales Order-sampling_reason""","Sales Order","Data","Sampling Reason","","","","","sampling_reason",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Sales Order-awb_vendor""","Sales Order","Data","AWB Vendor","","","","Air way bill Vendor Name","awb_vendor",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Sales Order-bill_number""","Sales Order","Data","Bill Number","","","","","bill_number",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Sales Order-awb_receive_date""","Sales Order","Date","AWB Receive Date","","","","Air way bill Receive Date","awb_receive_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Sales Order-awb_dispatch_date""","Sales Order","Date","AWB Dispatch Date","","","","Air way bill Dispatch Date","awb_dispatch_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
-"","""Sales Order-oanda""","Sales Order","HTML","oanda","","","<p align=""right""><a href=""http://www.oanda.com"" target=""_blank"">www.oanda.com</a></p>","","oanda",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-payment_terms""","Sales Order","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-s""","Sales Order","Section Break","","","","","","s",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-quotation_details""","Sales Order","Section Break","Order Details","","","","","quotation_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-quote_expires_on""","Sales Order","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-empty_drums_return""","Sales Order","Select","Empty Drums Return","","","Yes
-No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-palletization""","Sales Order","Select","Palletization","","","Yes
-No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-crop_year""","Sales Order","Select","Crop Year","","","2013
-2014
-2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-packing""","Sales Order","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-cb""","Sales Order","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-sale""","Sales Order","Select","Local/Export Sale","","","Local Sale
-Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-incoterms""","Sales Order","Select","Incoterms","","","EXW
-FOR
-FAS
-FOB
-CFR
-CIF
-FCA
-DDP","","incoterms",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-loadability""","Sales Order","Select","Loadability","","","LCL
-FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-fcl_detail""","Sales Order","Select","FCL Detail","","","20 ft Dry
-40 ft Dry
-20 ft Reefer
-40 ft Reefer
-Controlled Temp
-Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
-"","""Sales Order-temperature""","Sales Order","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
-"","""Sales Order-other_info""","Sales Order","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
-"","""Sales Order-port_of_discharge""","Sales Order","Data","Port of Discharge","","","","","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-shipment_schedule""","Sales Order","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-other""","Sales Order","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-product_specification""","Sales Order","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-cb65""","Sales Order","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-consignee""","Sales Order","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-notify_party""","Sales Order","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-buyer""","Sales Order","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-same_as_customer""","Sales Order","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-_documents_required_sec""","Sales Order","Section Break","Documents Required","","","","","_documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-documents""","Sales Order","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-documents_required""","Sales Order","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-document_dispatch_address_i""","Sales Order","Data","Document Dispatch Address I","","","","","document_dispatch_address_i",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-document_dispatch_address_ii""","Sales Order","Data","Document Dispatch Address II","","","","","document_dispatch_address_ii",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-document_dispatch_address_iii""","Sales Order","Data","Document Dispatch Address III","","","","","document_dispatch_address_iii",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Order-cb33a""","Sales Order","Column Break","cb33a","","","","","cb33a",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Invoice-bank_address_name""","Sales Invoice","Link","Bank Address","","","Address","","bank_address_name",0,0,0,0,"","",0,"customer",0,0,0,0,0,0
-"","""Sales Invoice-bank_address""","Sales Invoice","Small Text","Bank Address","","","","Client's Banker","bank_address",0,0,0,0,"","",1,"",0,0,0,0,0,0
-"","""Sales Invoice-payment_terms""","Sales Invoice","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Sales Invoice-same_as_customer""","Sales Invoice","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Quotation-label_copy""","Quotation","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",1,"",1,0,1,0,0,0
-"","""Sales Order-label_copy""","Sales Order","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",0,"",0,0,1,0,0,0
-"","""Delivery Note-bank_address_name""","Delivery Note","Link","Bank Address","","","Address","Client's Banker","bank_address_name",0,0,0,0,"","",1,"customer",1,0,0,0,0,0
-"","""Delivery Note-bank_address""","Delivery Note","Small Text","Bank Address","","","","","bank_address",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Delivery Note-shipping_cost_4""","Delivery Note","Currency","Shipping Cost 4","","","","","shipping_cost_4",0,0,0,0,"","",0,"eval:doc.shipping_cost_3 > 0",1,0,1,0,0,0
-"","""Delivery Note-shipping_cost_5""","Delivery Note","Currency","Shipping Cost 5","","","","","shipping_cost_5",0,0,0,0,"","",0,"eval:doc.shipping_cost_4 > 0",1,0,1,0,0,0
-"","""Delivery Note-custom_cb_1002""","Delivery Note","Column Break","custom_cb_1002","","","","","custom_cb_1002",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-shipping_cost_total""","Delivery Note","Currency","Shipping Cost Total","","","","","shipping_cost_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-cost_custom_sec""","Delivery Note","Section Break","","","","","","cost_custom_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-cha_name""","Delivery Note","Link","CHA Name","","","Supplier","Custom Handling Agent Name","cha_name",0,0,0,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-cha_cost_1""","Delivery Note","Currency","CHA Cost 1","","","","","cha_cost_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-cha_cost_2""","Delivery Note","Currency","CHA Cost 2","","","","","cha_cost_2",0,0,0,0,"","",0,"eval:doc.cha_cost_1 > 0",1,0,1,0,0,0
-"","""Delivery Note-cha_cost_3""","Delivery Note","Currency","CHA Cost 3","","","","","cha_cost_3",0,0,0,0,"","",0,"eval:doc.cha_cost_2 > 0",1,0,1,0,0,0
-"","""Delivery Note-cha_cost_4""","Delivery Note","Currency","CHA Cost 4","","","","","cha_cost_4",0,0,0,0,"","",0,"eval:doc.cha_cost_3 > 0",1,0,1,0,0,0
-"","""Delivery Note-cha_cost_5""","Delivery Note","Currency","CHA Cost 5","","","","","cha_cost_5",0,0,0,0,"","",0,"eval:doc.cha_cost_4 > 0",1,0,1,0,0,0
-"","""Delivery Note-cha_total""","Delivery Note","Currency","CHA Total","","","","","cha_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-custom_cb_1003""","Delivery Note","Column Break","custom_cb_1003","","","","","custom_cb_1003",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-legalization_cost_1""","Delivery Note","Currency","Legalization Cost 1","","","","","legalization_cost_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-legalization_cost_2""","Delivery Note","Currency","Legalization Cost 2","","","","","legalization_cost_2",0,0,0,0,"","",0,"eval:doc.legalization_cost_1 > 0",1,0,1,0,0,0
-"","""Delivery Note-legalization_total""","Delivery Note","Currency","Legalization Total","","","","","legalization_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-other_charges_1""","Delivery Note","Currency","Other Charges 1","","","","","other_charges_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-other_charges_2""","Delivery Note","Currency","Other Charges 2","","","","","other_charges_2",0,0,0,0,"","",0,"eval:doc.other_charges_1 > 0",1,0,1,0,0,0
-"","""Delivery Note-other_charges_3""","Delivery Note","Currency","Other Charges 3","","","","","other_charges_3",0,0,0,0,"","",0,"eval:doc.other_charges_2 > 0",1,0,1,0,0,0
-"","""Delivery Note-other_cost_total""","Delivery Note","Currency","Other Charges Total","","","","","other_cost_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
-"","""Delivery Note-documents_required_sec""","Delivery Note","Section Break","Documents Required","","","","","documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-documents""","Delivery Note","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-documents_required""","Delivery Note","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-document_dispatch_address_i""","Delivery Note","Data","Document Dispatch Address I","","","","","document_dispatch_address_i",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-document_dispatch_address_ii""","Delivery Note","Data","Document Dispatch Address II","","","","","document_dispatch_address_ii",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-document_dispatch_address_iii""","Delivery Note","Data","Document Dispatch Address III","","","","","document_dispatch_address_iii",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-quotation_detail""","Delivery Note","Section Break","Order Detail","","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-quote_expires_on""","Delivery Note","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-empty_drums_return""","Delivery Note","Select","Empty Drums Return","","","Yes
-No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-palletization""","Delivery Note","Select","Palletization","","","Yes
-No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-crop_year""","Delivery Note","Select","Crop Year","","","2013
-2014
-2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-packing""","Delivery Note","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-col68""","Delivery Note","Column Break","col68","","","","","col68",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-sale""","Delivery Note","Select","Sale","","","Local Sale
-Export Sale","Local/Export Sale","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-incoterms""","Delivery Note","Select","Incoterms","","","EXW
 FOR
 FAS
@@ -325,22 +45,302 @@ CFR
 CIF
 FCA
 DDP","","incoterms",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-loadability""","Delivery Note","Select","Loadability","","","LCL
-FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-fcl_detail""","Delivery Note","Select","FCL Detail","","","20 ft Dry
+"","""Delivery Note-sale""","Delivery Note","Select","Sale","","","Local Sale
+Export Sale","Local/Export Sale","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-col68""","Delivery Note","Column Break","col68","","","","","col68",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-packing""","Delivery Note","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-crop_year""","Delivery Note","Select","Crop Year","","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-palletization""","Delivery Note","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-empty_drums_return""","Delivery Note","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-quote_expires_on""","Delivery Note","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-quotation_detail""","Delivery Note","Section Break","Order Detail","","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-document_dispatch_address_iii""","Delivery Note","Data","Document Dispatch Address III","","","","","document_dispatch_address_iii",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-document_dispatch_address_ii""","Delivery Note","Data","Document Dispatch Address II","","","","","document_dispatch_address_ii",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-document_dispatch_address_i""","Delivery Note","Data","Document Dispatch Address I","","","","","document_dispatch_address_i",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-documents_required""","Delivery Note","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-documents""","Delivery Note","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-documents_required_sec""","Delivery Note","Section Break","Documents Required","","","","","documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-other_cost_total""","Delivery Note","Currency","Other Charges Total","","","","","other_cost_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-other_charges_3""","Delivery Note","Currency","Other Charges 3","","","","","other_charges_3",0,0,0,0,"","",0,"eval:doc.other_charges_2 > 0",1,0,1,0,0,0
+"","""Delivery Note-other_charges_2""","Delivery Note","Currency","Other Charges 2","","","","","other_charges_2",0,0,0,0,"","",0,"eval:doc.other_charges_1 > 0",1,0,1,0,0,0
+"","""Delivery Note-other_charges_1""","Delivery Note","Currency","Other Charges 1","","","","","other_charges_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-legalization_total""","Delivery Note","Currency","Legalization Total","","","","","legalization_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-legalization_cost_2""","Delivery Note","Currency","Legalization Cost 2","","","","","legalization_cost_2",0,0,0,0,"","",0,"eval:doc.legalization_cost_1 > 0",1,0,1,0,0,0
+"","""Delivery Note-legalization_cost_1""","Delivery Note","Currency","Legalization Cost 1","","","","","legalization_cost_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-custom_cb_1003""","Delivery Note","Column Break","custom_cb_1003","","","","","custom_cb_1003",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-cha_total""","Delivery Note","Currency","CHA Total","","","","","cha_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-cha_cost_5""","Delivery Note","Currency","CHA Cost 5","","","","","cha_cost_5",0,0,0,0,"","",0,"eval:doc.cha_cost_4 > 0",1,0,1,0,0,0
+"","""Delivery Note-cha_cost_4""","Delivery Note","Currency","CHA Cost 4","","","","","cha_cost_4",0,0,0,0,"","",0,"eval:doc.cha_cost_3 > 0",1,0,1,0,0,0
+"","""Delivery Note-cha_cost_3""","Delivery Note","Currency","CHA Cost 3","","","","","cha_cost_3",0,0,0,0,"","",0,"eval:doc.cha_cost_2 > 0",1,0,1,0,0,0
+"","""Delivery Note-cha_cost_2""","Delivery Note","Currency","CHA Cost 2","","","","","cha_cost_2",0,0,0,0,"","",0,"eval:doc.cha_cost_1 > 0",1,0,1,0,0,0
+"","""Delivery Note-cha_cost_1""","Delivery Note","Currency","CHA Cost 1","","","","","cha_cost_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-cha_name""","Delivery Note","Link","CHA Name","","","Supplier","Custom Handling Agent Name","cha_name",0,0,0,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-cost_custom_sec""","Delivery Note","Section Break","","","","","","cost_custom_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-shipping_cost_total""","Delivery Note","Currency","Shipping Cost Total","","","","","shipping_cost_total",0,0,1,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-custom_cb_1002""","Delivery Note","Column Break","custom_cb_1002","","","","","custom_cb_1002",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-shipping_cost_5""","Delivery Note","Currency","Shipping Cost 5","","","","","shipping_cost_5",0,0,0,0,"","",0,"eval:doc.shipping_cost_4 > 0",1,0,1,0,0,0
+"","""Delivery Note-shipping_cost_4""","Delivery Note","Currency","Shipping Cost 4","","","","","shipping_cost_4",0,0,0,0,"","",0,"eval:doc.shipping_cost_3 > 0",1,0,1,0,0,0
+"","""Delivery Note-bank_address""","Delivery Note","Small Text","Bank Address","","","","","bank_address",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Delivery Note-bank_address_name""","Delivery Note","Link","Bank Address","","","Address","Client's Banker","bank_address_name",0,0,0,0,"","",1,"customer",1,0,0,0,0,0
+"","""Sales Order-label_copy""","Sales Order","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",0,"",0,0,1,0,0,0
+"","""Quotation-label_copy""","Quotation","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",1,"",1,0,1,0,0,0
+"","""Sales Invoice-same_as_customer""","Sales Invoice","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice-payment_terms""","Sales Invoice","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice-bank_address""","Sales Invoice","Small Text","Bank Address","","","","Client's Banker","bank_address",0,0,0,0,"","",1,"",0,0,0,0,0,0
+"","""Sales Invoice-bank_address_name""","Sales Invoice","Link","Bank Address","","","Address","","bank_address_name",0,0,0,0,"","",0,"customer",0,0,0,0,0,0
+"","""Sales Order-cb33a""","Sales Order","Column Break","cb33a","","","","","cb33a",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-document_dispatch_address_iii""","Sales Order","Data","Document Dispatch Address III","","","","","document_dispatch_address_iii",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order-document_dispatch_address_ii""","Sales Order","Data","Document Dispatch Address II","","","","","document_dispatch_address_ii",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order-document_dispatch_address_i""","Sales Order","Data","Document Dispatch Address I","","","","","document_dispatch_address_i",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-documents_required""","Sales Order","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-documents""","Sales Order","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-_documents_required_sec""","Sales Order","Section Break","Documents Required","","","","","_documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-same_as_customer""","Sales Order","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order-buyer""","Sales Order","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-notify_party""","Sales Order","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-consignee""","Sales Order","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-cb65""","Sales Order","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-product_specification""","Sales Order","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-other""","Sales Order","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-shipment_schedule""","Sales Order","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-port_of_discharge""","Sales Order","Data","Port of Discharge","","","","","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-other_info""","Sales Order","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Sales Order-temperature""","Sales Order","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
+"","""Sales Order-fcl_detail""","Sales Order","Select","FCL Detail","","","20 ft Dry
 40 ft Dry
 20 ft Reefer
 40 ft Reefer
 Controlled Temp
 Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
-"","""Delivery Note-temperature""","Delivery Note","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
-"","""Delivery Note-other_info""","Delivery Note","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
-"","""Delivery Note-other""","Delivery Note","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-product_specification""","Delivery Note","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-label_copy""","Delivery Note","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",0,"",0,0,1,0,0,0
-"","""Delivery Note-cb65""","Delivery Note","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-consignee""","Delivery Note","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-notify_party""","Delivery Note","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-buyer""","Delivery Note","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Delivery Note-same_as_customer""","Delivery Note","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Delivery Note-sampling_details""","Delivery Note","Section Break","Sampling Details","","","","","sampling_details",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Order-loadability""","Sales Order","Select","Loadability","","","LCL
+FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-incoterms""","Sales Order","Select","Incoterms","","","EXW
+FOR
+FAS
+FOB
+CFR
+CIF
+FCA
+DDP","","incoterms",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-sale""","Sales Order","Select","Local/Export Sale","","","Local Sale
+Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-cb""","Sales Order","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-packing""","Sales Order","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order-crop_year""","Sales Order","Select","Crop Year","","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-palletization""","Sales Order","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-empty_drums_return""","Sales Order","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-quote_expires_on""","Sales Order","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-quotation_details""","Sales Order","Section Break","Order Details","","","","","quotation_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-s""","Sales Order","Section Break","","","","","","s",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order-payment_terms""","Sales Order","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order-oanda""","Sales Order","HTML","oanda","","","<p align=""right""><a href=""http://www.oanda.com"" target=""_blank"">www.oanda.com</a></p>","","oanda",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order-awb_dispatch_date""","Sales Order","Date","AWB Dispatch Date","","","","Air way bill Dispatch Date","awb_dispatch_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Order-awb_receive_date""","Sales Order","Date","AWB Receive Date","","","","Air way bill Receive Date","awb_receive_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Order-bill_number""","Sales Order","Data","Bill Number","","","","","bill_number",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Order-awb_vendor""","Sales Order","Data","AWB Vendor","","","","Air way bill Vendor Name","awb_vendor",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Order-sampling_reason""","Sales Order","Data","Sampling Reason","","","","","sampling_reason",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Order-order_reference""","Sales Order","Link","Order Reference","","","Sales Order","","order_reference",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Order-is_sample_order""","Sales Order","Check","Is Sample Order","","","","","is_sample_order",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order-bank_address""","Sales Order","Small Text","Bank Address","","","","","bank_address",0,0,0,0,"","",1,"",0,0,0,0,0,0
+"","""Sales Order-bank_address_name""","Sales Order","Link","Bank Address","","","Address","Client's Banker","bank_address_name",0,0,0,0,"","",0,"customer",0,0,0,0,0,0
+"","""Sales Invoice Item-number_of_containers""","Sales Invoice Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice Item-weight_uom""","Sales Invoice Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice Item-net_weight""","Sales Invoice Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice Item-rate_per_mt""","Sales Invoice Item","Currency","Rate per MT","","3","","","rate_per_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice Item-quantity_in_mt""","Sales Invoice Item","Float","Quantity in MT","","","","","quantity_in_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice Item-stuffing_date""","Sales Invoice Item","Date","Stuffing Date","","","","","stuffing_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Purchase Invoice Item-transporter_loss""","Purchase Invoice Item","Float","Transporter Loss","","","","","transporter_loss",0,0,0,0,"","",1,"",0,0,0,0,0,0
+"","""Purchase Invoice Item-natural_loss""","Purchase Invoice Item","Float","Natural Loss","","","","","natural_loss",0,0,0,0,"","",1,"",0,0,0,0,0,0
+"","""Serial No-b_a""","Serial No","Float","B/A","","","","","b_a",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-sample_bag_id""","Serial No","Data","Sample Bag Id","","","","","sample_bag_id",0,0,0,0,"","",0,"eval:doc.sample_bag_drawn == ""Yes""",0,0,0,0,0,0
+"","""Serial No-sample_bag_drawn""","Serial No","Select","Sample Bag Drawn","","","Yes
+No","","sample_bag_drawn",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-other""","Serial No","Data","Other","","","","","other",0,0,0,0,"","",0,"eval:doc.color_ == ""Other """,0,0,0,0,0,0
+"","""Serial No-color_""","Serial No","Select","Color","","","Hunter - L
+Hunter - A
+Hunter - B
+Pantone
+Other","","color_",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-specks""","Serial No","Data","Specks","","","","","specks",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-viscosity""","Serial No","Data","Viscosity","","","","","viscosity",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-consistency""","Serial No","Data","Consistency","","","","","consistency",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-ccb1""","Serial No","Column Break","ccb1","","","","","ccb1",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-ph""","Serial No","Float","pH","","","","","ph",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-acidity""","Serial No","Float","Acidity","","","","","acidity",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-brix""","Serial No","Float","Brix","","","","","brix",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-line_head""","Serial No","Data","Line Head","","","","","line_head",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-manufacturing_line""","Serial No","Data","Manufacturing Line","","","","","manufacturing_line",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Serial No-manufacturing_details""","Serial No","Section Break","Manufacturing Details","","","","","manufacturing_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Batch-ecrc_compartment""","Batch","Data","ECRC Compartment","","","","","ecrc_compartment",0,0,0,0,"","",0,"eval:doc.item_type == ""Purchase""",0,0,0,0,0,0
+"","""Batch-ccb01""","Batch","Column Break","ccb01","","","","","ccb01",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Batch-item_type""","Batch","Select","Item Type","","","Selling
+Purchase","","item_type",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Purchase Receipt Item-transporter_loss""","Purchase Receipt Item","Float","Transporter Loss","","","","","transporter_loss",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Purchase Receipt Item-natural_loss""","Purchase Receipt Item","Float","Natural Loss","","","","","natural_loss",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-home_number""","Contact","Data","Home Number","","","","","home_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-alternate_number""","Contact","Data","Alternate Number","","","","","alternate_number",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-others""","Contact","Data","Others","","","","","others",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-work_telephone""","Contact","Data","Work Telephone","","","","","work_telephone",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Contact-work_fax""","Contact","Data","Work Fax","","","","","work_fax",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Supplier-transporter_name""","Supplier","Data","Transporter Name","","","","","transporter_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Supplier-cha_name""","Supplier","Data","CHA Name","","","","Custom Handling Agent Name","cha_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Supplier-shipping_line_name""","Supplier","Data","Shipping Line Name","","","","","shipping_line_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Quotation-oanda""","Quotation","HTML","oanda","","","<p align=""right""><a href=""http://www.oanda.com"" target=""_blank"">www.oanda.com</a></p>","","oanda",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Quotation-payment_terms""","Quotation","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-quotation_detail""","Quotation","Section Break","Order Details","ignore_pricing_rule","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-quote_expires_on""","Quotation","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-empty_drums_return""","Quotation","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","No",0,"",0,0,0,0,0,0
+"","""Quotation-palletization""","Quotation","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-crop_year""","Quotation","Select","Crop Year","ignore_pricing_rule","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-cb""","Quotation","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-sale""","Quotation","Select","Local/Export Sale","","","Local Sale
+Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-incoterms""","Quotation","Select","Incoterms","","","EXW
+FOR
+FAS
+FOB
+CFR
+CIF
+FCA
+DDP","","incoterms",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-loadability""","Quotation","Select","Loadability","","","LCL
+FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-fcl_detail""","Quotation","Select","FCL Detail","","","20 ft Dry
+40 ft Dry
+20 ft Reefer
+40 ft Reefer
+Controlled Temp
+Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
+"","""Quotation-temperature""","Quotation","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
+"","""Quotation-other_info""","Quotation","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Quotation-shipment_schedule""","Quotation","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-other""","Quotation","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-product_specification""","Quotation","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-documents_required""","Quotation","Small Text","Documents Required","","","","","documents_required",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-cb65""","Quotation","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-consignee""","Quotation","Link","Consignee","","","Customer","","consignee",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-notify_party""","Quotation","Link","Notify Party","","","Customer","","notify_party",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-buyer""","Quotation","Link","Buyer","","","Customer","","buyer",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-same_as_customer""","Quotation","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-port_of_discharge""","Quotation","Data","Port of Discharge","","","","","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-packing""","Quotation","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Quotation Item-quantity_in_mt""","Quotation Item","Float","Quantity in MT","","","","","quantity_in_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation Item-rate_per_mt""","Quotation Item","Currency","Rate per MT","","3","","","rate_per_mt",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation Item-net_weight""","Quotation Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation Item-weight_uom""","Quotation Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order Item-stuffing_date""","Sales Order Item","Date","Stuffing Date","","","","","stuffing_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order Item-quantity_in_mt""","Sales Order Item","Float","Quantity in MT","","","","","quantity_in_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order Item-rate_per_mt""","Sales Order Item","Currency","Rate per MT","","3","","","rate_per_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order Item-net_weight""","Sales Order Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Order Item-weight_uom""","Sales Order Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation Item-number_of_containers""","Quotation Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Order Item-number_of_containers""","Sales Order Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note Item-stuffing_date""","Delivery Note Item","Date","Stuffing Date","","","","","stuffing_date",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note Item-quantity_in_mt""","Delivery Note Item","Float","Quantity in MT","","","","","quantity_in_mt",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note Item-rate_per_mt""","Delivery Note Item","Currency","Rate per MT","","3","","","rate_per_mt",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note Item-net_weight""","Delivery Note Item","Float","Net Weight","","","","","net_weight",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note Item-weight_uom""","Delivery Note Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note Item-number_of_containers""","Delivery Note Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-payment_terms""","Delivery Note","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-pol""","Delivery Note","Data","POL","","","","Port Of Loading","pol",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-etd""","Delivery Note","Date","ETD","","","","Expected Time Of Departure","etd",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-custom_cb_1011""","Delivery Note","Column Break","custom_cb_1011","","","","","custom_cb_1011",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-port_of_discharge""","Delivery Note","Data","POD","","","","Port of Discharge","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-eta""","Delivery Note","Date","ETA","","","","Expected Time Of Arrival","eta",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-custom_container_section""","Delivery Note","Section Break","","","","","","custom_container_section",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-t_name""","Delivery Note","Link","Transporter Name","","","Supplier","","t_name",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-initial_amount""","Delivery Note","Currency","Initial Amount","","","","","initial_amount",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-additional_charges""","Delivery Note","Currency","Additional Charges","","","","","additional_charges",0,0,0,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-custom_cb_1004""","Delivery Note","Column Break","custom_cb_1004","","","","","custom_cb_1004",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-transporter_total""","Delivery Note","Currency","Transporter Total","","","","","transporter_total",0,0,1,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-custom_cha_section""","Delivery Note","Section Break","","","","","","custom_cha_section",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-shipping_line_name""","Delivery Note","Link","Shipping Line Name","","","Supplier","","shipping_line_name",0,0,0,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-shipment_schedule""","Delivery Note","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-tsp""","Delivery Note","Select","TSP","","","Yes
+No","Trans-shipment","tsp",0,0,0,0,"","No",0,"",0,0,0,0,0,0
+"","""Delivery Note-feeder_vessel""","Delivery Note","Data","Feeder Vessel","","","","","feeder_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel""","Delivery Note","Data","Mother Vessel","","","","","mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-container_number""","Delivery Note","Data","Container Number","","","","","container_number",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-container_dispatch_date""","Delivery Note","Date","Container Dispatch Date","","","","","container_dispatch_date",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel""","Delivery Note","Date","ETA","","","","","eta_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel""","Delivery Note","Date","ETD","","","","","etd_mother_vessel",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel_i""","Delivery Note","Data","Mother Vessel I","","","","","mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel_i""","Delivery Note","Date","ETA","","","","ETA Mother Vessel - I","eta_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel_i""","Delivery Note","Date","ETD","","","","ETD Mother Vessel - I","etd_mother_vessel_i",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-mother_vessel_ii""","Delivery Note","Data","Mother Vessel II","","","","","mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-eta_mother_vessel_ii""","Delivery Note","Date","ETA Mother Vessel II","","","","ETA Mother Vessel - II","eta_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-etd_mother_vessel_ii""","Delivery Note","Date","ETD Mother Vessel II","","","","ETD Mother Vessel II","etd_mother_vessel_ii",0,0,0,0,"","",0,"eval:doc.tsp == ""Yes""",0,0,0,0,0,0
+"","""Delivery Note-ship_section""","Delivery Note","Section Break","","","","","","ship_section",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-shipping_cost_1""","Delivery Note","Currency","Shipping Cost 1","","","","","shipping_cost_1",0,0,0,0,"","",0,"",1,0,1,0,0,0
+"","""Delivery Note-shipping_cost_2""","Delivery Note","Currency","Shipping Cost 2","","","","","shipping_cost_2",0,0,0,0,"","",0,"eval:doc.shipping_cost_1 > 0",1,0,1,0,0,0
+"","""Delivery Note-shipping_cost_3""","Delivery Note","Currency","Shipping Cost 3","","","","","shipping_cost_3",0,0,0,0,"","",0,"eval:doc.shipping_cost_2 > 0",1,0,1,0,0,0
+"","""Delivery Note-is_sample_order""","Delivery Note","Check","Is Sample Order","shipping_address_name","","","","is_sample_order",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Delivery Note-sampling_reason""","Delivery Note","Data","Sampling Reason","","","","","sampling_reason",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Delivery Note-bill_number""","Delivery Note","Data","Airway Bill Number","","","","","bill_number",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Delivery Note-cb1001""","Delivery Note","Column Break","cb1001","","","","","cb1001",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Delivery Note-awb_vendor""","Delivery Note","Data","AWB Vendor","","","","","awb_vendor",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Delivery Note-awb_dispatch_date""","Delivery Note","Date","AWB Dispatch Date","","","","","awb_dispatch_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Delivery Note-awb_receive_date""","Delivery Note","Date","AWB Receive Date","","","","","awb_receive_date",0,0,0,0,"","",0,"eval:doc.is_sample_order == ""1""",0,0,0,0,0,0
+"","""Sales Invoice-port_of_discharge""","Sales Invoice","Data","Port of Discharge","","","","","port_of_discharge",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-documents_required_sec""","Sales Invoice","Section Break","Documents Required Sec","","","","","documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-documents""","Sales Invoice","Link","Documents","","","Documents Required","","documents",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice-documents_required""","Sales Invoice","Text Editor","Documents Required","","","","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-document_dispatch_address_i""","Sales Invoice","Data","Document Dispatch Address I","","","","","document_dispatch_address_i",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice-document_dispatch_address_ii""","Sales Invoice","Data","Document Dispatch Address II","","","","","document_dispatch_address_ii",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice-document_dispatch_address_iii""","Sales Invoice","Data","Document Dispatch Address III","","","","","document_dispatch_address_iii",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice-quotation_details""","Sales Invoice","Section Break","Order Details","","","","","quotation_details",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-quote_expires_on""","Sales Invoice","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-empty_drums_return""","Sales Invoice","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-palletization""","Sales Invoice","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-crop_year""","Sales Invoice","Select","Crop Year","","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-packing""","Sales Invoice","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Sales Invoice-cb123""","Sales Invoice","Column Break","cb123","","","","","cb123",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-sale""","Sales Invoice","Select","Local/Export Sale","","","Local Sale
+Export Sale","","sale",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-incoterms""","Sales Invoice","Select","Incoterms","","","EXW
+FOR
+FAS
+FOB
+CFR
+CIF
+FCA
+DDP","","incoterms",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-loadability""","Sales Invoice","Select","Loadability","","","LCL
+FCL","","loadability",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-fcl_detail""","Sales Invoice","Select","FCL Detail","","","20 ft Dry
+40 ft Dry
+20 ft Reefer
+40 ft Reefer
+Controlled Temp
+Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
+"","""Sales Invoice-temperature""","Sales Invoice","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
+"","""Sales Invoice-other_info""","Sales Invoice","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Sales Invoice-shipment_schedule""","Sales Invoice","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-other""","Sales Invoice","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-product_specification""","Sales Invoice","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-label_copy""","Sales Invoice","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",0,"",0,0,1,0,0,0
+"","""Sales Invoice-consignee""","Sales Invoice","Data","Consignee","","","","","consignee",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-notify_party""","Sales Invoice","Data","Notify Party","","","","","notify_party",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Sales Invoice-buyer""","Sales Invoice","Data","Buyer","","","","","buyer",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-customer_information""","Customer","Section Break","Customer Information","","","","","customer_information",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-commercial_requirements""","Customer","Small Text","Commercial Requirements","","","","","commercial_requirements",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-documentation""","Customer","Small Text","Documentation","","","","","documentation",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-column_break""","Customer","Column Break","column break","","","","","column_break",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-market_intelligence""","Customer","Small Text","Market Intelligence","","","","","market_intelligence",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Customer-required_quality_specifications""","Customer","Small Text","Required Quality Specifications","","","","","required_quality_specifications",0,0,0,0,"","",0,"",0,0,0,0,0,0
