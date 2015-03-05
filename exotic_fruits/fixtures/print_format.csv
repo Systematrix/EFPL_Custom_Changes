@@ -18,6 +18,296 @@
 "Type:","Data (text)","Link","Link","Select","Select","Check","Code"
 "Info:","","Valid DocType","Valid Module Def","One of: No, Yes","One of: Server, Client","0 or 1",""
 "Start entering data below this line"
+"","""Proforma Invoice""","Delivery Note","Stock","No","Server",0,"{%- macro add_header(page_num, max_pages, doc, letter_head, no_letterhead) -%}
+	{% if letter_head and not no_letterhead %}
+	<div class=""letter-head"">{{ letter_head }}</div>
+	{% endif %}
+	{%- if doc.meta.is_submittable and doc.docstatus==0-%}
+	<div class=""alert alert-info text-center"">
+		<h4 style=""margin: 0px;"">{{ _(""DRAFT"") }}</h4></div>
+	{%- endif -%}
+	{%- if doc.meta.is_submittable and doc.docstatus==2-%}
+	<div class=""alert alert-danger text-center"">
+		<h4 style=""margin: 0px;"">{{ _(""CANCELLED"") }}</h4></div>
+	{%- endif -%}
+	{% if max_pages > 1 %}
+	<p class=""text-right"">{{ _(""Page #{0} of {1}"").format(page_num, max_pages) }}</p>
+	{% endif %}
+{%- endmacro -%}
+
+<style>
+	.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+	background-color: #B7CCF2;
+	color:#000000;
+	font-size:16px;
+	}
+	.print-format table, .print-format tr, 
+	.print-format td, .print-format div, .print-format p {
+		font-family: sans-serif;
+		line-height: 90%;
+		vertical-align: middle;
+	}
+	@media screen {
+		.print-format {
+			width: 210mm;
+			padding: 10mm;
+			min-height: 297mm;
+			footer {page-break-after: always;}
+		}
+	}
+</style>
+
+
+{{ add_header(0,1,doc,letter_head, no_letterhead) }}
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td>
+		   <b style=""font-size:14px;"">
+                   <p style=""text-align:center""><b>{{ _(""INVOICE"") }}</b></p></b>
+		</td>
+	</tr>
+</table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td colspan=""2"">
+			<b style=""font-size:14px;"">
+	 <p><b>{{ _(""EXPORTER"") }}: </b></b>
+		 {{ _(""<br><br>EXOTIC FRUITS PVT. LTD., <br>B-208, ARJUN CENTER,<br>
+		 BKS DEVSHI MARG, GOVANDI(E),<br> MUMBAI-400 088, INDIA."") }}
+			 
+		</p> 
+		</td>
+		
+		<td style=""width:50%"">  
+		 <table class=""table table-condensed"">
+			<td>Invoice No. & Date<br>
+		 {{ doc.name }} DT: {{ doc.get_formatted(""posting_date"") }} </td> 
+		 <td>Exporter's Ref. <br> IEC NO. 0799000531</td> 
+	
+	 </table>
+		<table class=""table table-condensed"">
+			<tr>
+				<td>
+					{{ _(""Buyer’s Order No."") }}
+				</td>
+			</tr>
+			 <tr>
+				<td>
+					{{ _(""Other Reference(s)."") }} 
+				</td>
+			</tr>
+		 <tr>
+			 <td>
+					{{ _(""Buyer (if other than consignee)"") }} 
+				</td>
+			</tr>
+			
+		</table>
+		</td>
+	 
+	</tr>
+</table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+
+	
+     
+    <td style=""width:50%"">  
+           <table class=""table table-condensed"">
+		        <tr>
+		            <td>
+		            <b style=""font-size:14px;"">
+	                <p><b>{{ _(""Consignee"") }}: </b></b></p> 
+		             </td>
+		         </tr>
+	       </table>
+		   <table class=""table"">
+       	   <tr>
+			 <td><b>Vessel/Flight No.</b><br> </td> 
+		     <td><b>Port of Loading<b><br>  </td> 
+	       </tr>
+	       <tr>
+			 <td>Port of Discharge<br>  </td> 
+		     <td>Final Destination <br> </td> 
+	       </tr>
+	       </table>
+		</td>
+		<td>  
+			<table class=""table"">
+		 		<tr><td colspan=""2"">BUYER (IF OTHER THAN CONSIGNEE)</td></tr>
+                <tr>
+                	<td>
+						{{ _(""Country of Origin of goods"") }}<br>
+				  		{{ _(""INDIA"") }}
+					</td> 
+					<td>
+						{{ _(""Country of Final Destination "") }}
+		 		 	</td> 
+	   		    </tr>
+	   		    <tr>
+	   		        <td colspan=""2"">
+	   		        <b>{{ _(""Terms of Delivery and payment:"") }}</b><br>
+					Free sample of no commercial value for
+					laboratory tests only.
+					No foreign exchange involved.<br>
+					<b>{{ _(""PLEASE NOTE:"") }}</b><br>
+					As the products is packed and sealed in aseptic
+					bag it is non perishable as long as the seal is not
+					broken and the product is not subjected to
+					direct sun light.
+					</td>
+	   		    <tr>
+	   		</table>
+		</td>
+	 
+		</tr>
+  </table>
+
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td>
+		   {{ _(""INVOICE"") }}
+		</td>
+		<td>
+		   {{ _(""INVOICE"") }}
+		</td>
+		<td>
+		   {{ _(""INVOICE"") }}
+		</td>
+	</tr>
+</table>
+
+
+<table class=""table table-condensed table-hover table-bordered"">
+		<tr>
+			<th>Sr</th>
+			<th>Description</th>
+			<th class=""text-right"">Qty</th>
+			<th class=""text-right"">Rate</th>
+			<th class=""text-right"">Amount</th>
+		</tr>
+		{%- for row in doc.sales_order_details -%}
+		<tr>
+			<td style=""width: 3%;"">{{ row.idx }}</td>
+			<td style=""width: 57%;"">{{ row.description }}</td>
+			<td style=""width: 10%; text-align: right;"">{{ row.qty }} {{ row.uom or row.stock_uom }}</td>
+			<td style=""width: 15%; text-align: right;"">{{
+				row.get_formatted(""rate"", doc) }}</td>
+			<td style=""width: 15%; text-align: right;"">{{
+				row.get_formatted(""amount"", doc) }}</td>
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<table class=""table table-condensed table-bordered"">
+	<tr>
+		<td width=""50%"">
+			<p>{% if doc.terms %} <b>{{ _(""Auxiliary Information"") }}: </b>{{ doc.terms or """" }}
+				{%- endif -%}
+		</p>
+		<p style=""font-size:12px"">{% if doc.in_words_export %}
+			<b>{{ _(""Total Amount (In Words)"") }}: </b><br>
+					{{ doc.in_words_export }}
+				{%- endif -%}
+		</p><br><br>
+		<table class=""table table-condensed"">
+			<tr>
+				<td height=""100px""; valign=""top"">
+					<b>{{ _(""Received By:"") }}</b>
+				</td>
+			</tr>
+		</table>
+
+		</td>
+<td>
+				<table class=""table table-condensed"">
+						<tr>
+								<td class=""text-right"" style=""width: 30%"">
+										{{ _(""Net Total"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""net_total_export"") }}
+								</td>
+						</tr>
+						{%- for row in doc.other_charges -%}
+						{%- if not row.included_in_print_rate -%}
+						{%- if row.tax_amount -%}
+						<tr height:100%>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ row.description }}
+								</td>
+								<td class=""text-right"">
+										{{ row.get_formatted(""tax_amount"", doc) }}
+								</td>
+						</tr>
+						{%- endif -%}
+						{%- endif -%}
+						{%- endfor -%}
+						{%- if doc.discount_amount -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										{{ _(""Discount"") }}
+								</td>
+								<td class=""text-right"">
+										{{ doc.get_formatted(""discount_amount"") }}
+								</td>
+						</tr>
+						{%- endif -%}
+						<tr>
+								<td class=""text-right"" style=""width: 70%"">
+										<big><b>{{ _(""Grand Total"") }}</b></big>
+								</td>
+								<td class=""text-right"">
+										<big><b>{{ doc.get_formatted(""grand_total_export"") }}</b></big>
+								</td>
+						</tr>
+				</td>
+
+				</table>
+
+		</td>
+	</tr>
+</table>
+{% if doc.get(""other_charges"", filters={""included_in_print_rate"": 1}) %}
+<hr>
+<p><b>Taxes Included:</b></p>
+<table class=""table table-condensed no-border"">
+	<tbody>
+		{%- for row in doc.other_charges -%}
+		{%- if row.included_in_print_rate -%}
+		<tr>
+			<td class=""text-right"" style=""width: 70%"">
+
+				{{ row.description }}
+			</td>
+			<td class=""text-right"">
+				{{ row.get_formatted(""tax_amount"", doc) }}
+			</td>
+		<tr>
+		{%- endif -%}
+		{%- endfor -%}
+	</tbody>
+</table>
+
+
+{%- endif -%}
+<hr>
+<div class=""row"">
+<div class=""col-md-9 text-left"">
+<p  style=""text-align:left"">Declaration:<br> </p>
+<p  style=""text-align:left"">We declare that this Invoice shows the actual price of the goods
+described and that all particulars are true and correct. </p>
+</div>
+<div class=""col-md-3 text-left"">
+<p><b>For EXOTIC FRUITS PVT.LTD.</b></p>
+<p  style=""text-align:right""><lable>AUTHORISED SIGNATORY </lable></p><br>
+</div>
+</div>
+
+
+"
 "","""Bill Of exchange""","Bill Of exchange","exotic_fruits","Yes","Server",0,"<p class=""text-center"">{{ _(""DRAWN ON 75 DAYS AFTER DATE OF INVOICE THROUGH RABOBANK NEDERLAND OBS TRADE SERVICES GLIDENKWARTIER 199 3511 DH UTERECHT THE NETHERLANDS."") }}</p>
 
 <br><br>
