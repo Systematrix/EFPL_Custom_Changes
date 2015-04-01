@@ -18,6 +18,48 @@
 "Type:","Data (text)","Link","Select","Data","Select","Select","Text","Text","Data","Int","Check","Check","Check","Data","Text","Check","Data","Check","Check","Check","Check","Check","Check"
 "Info:","","Valid DocType","One of: Button, Check, Code, Column Break, Currency, Data, Date, Datetime, Dynamic Link, Float, HTML, Image, Int, Link, Long Text, Password, Percent, Read Only, Section Break, Select, Small Text, Table, Text, Text Editor, Time","","","One of: 1, 2, 3, 4, 5, 6, 7, 8, 9","","","","Integer","0 or 1","0 or 1","0 or 1","","","0 or 1","","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1","0 or 1"
 "Start entering data below this line"
+"","""Quotation-port_of_discharge""","Quotation","Data","Port of Discharge","","","","","port_of_discharge",0,1,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-cb65""","Quotation","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-documents_required""","Quotation","Small Text","Documents Required","","","","","documents_required",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-label_copy""","Quotation","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",1,"",1,0,1,0,0,0
+"","""Quotation-product_specification""","Quotation","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",1,"",1,0,0,0,0,0
+"","""Quotation-other""","Quotation","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-shipment_schedule""","Quotation","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-other_info""","Quotation","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
+"","""Quotation-temperature""","Quotation","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
+"","""Quotation-fcl_detail""","Quotation","Select","FCL Detail","","","20 ft Dry
+40 ft Dry
+20 ft Reefer
+40 ft Reefer
+Controlled Temp
+Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
+"","""Quotation-loadability""","Quotation","Select","Loadability","","","LCL
+FCL","","loadability",0,0,0,0,"","LCL",0,"",0,0,0,0,0,0
+"","""Quotation-incoterms""","Quotation","Select","Incoterms","","","EXW
+FOR
+FAS
+FOB
+CFR
+CIF
+FCA
+DDP","","incoterms",0,0,0,0,"","CFR",0,"",0,0,0,0,0,0
+"","""Quotation-sale""","Quotation","Select","Local/Export Sale","","","Local Sale
+Export Sale","","sale",0,0,0,0,"","Export Sale",0,"",0,0,0,0,0,0
+"","""Quotation-cb""","Quotation","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-packing""","Quotation","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
+"","""Quotation-crop_year""","Quotation","Select","Crop Year","ignore_pricing_rule","","2013
+2014
+2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-palletization""","Quotation","Select","Palletization","","","Yes
+No","","palletization",0,0,0,0,"","No",0,"",0,0,0,0,0,0
+"","""Quotation-empty_drums_return""","Quotation","Select","Empty Drums Return","","","Yes
+No","","empty_drums_return",0,0,0,0,"","No",0,"",0,0,0,0,0,0
+"","""Quotation-quote_expires_on""","Quotation","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-quotation_detail""","Quotation","Section Break","Order Details","ignore_pricing_rule","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-payment_terms""","Quotation","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-total_commission""","Quotation","Data","Total Commission","","","","","total_commission",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-commission_agent""","Quotation","Data","Commission Agent","","","","","commission_agent",0,0,0,0,"","",0,"",0,0,0,0,0,0
+"","""Quotation-oanda""","Quotation","HTML","oanda","","","<p align=""right""><a href=""http://www.oanda.com"" target=""_blank"">www.oanda.com</a></p>","","oanda",0,0,0,0,"","",0,"",1,0,0,0,0,0
 "","""Address-swift_code""","Address","Data","SWIFT Code","","","","","swift_code",0,0,0,0,"","",0,"eval:doc.address_type == ""Bank""",0,0,0,0,0,0
 "","""Address-iban_account_no""","Address","Data","IBAN Account No","","","","","iban_account_no",0,0,0,0,"","",0,"eval:doc.address_type == ""Bank""",0,0,0,0,0,0
 "","""Sales Invoice-label_copy""","Sales Invoice","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",0,"",0,0,1,0,0,0
@@ -159,7 +201,6 @@ No","","palletization",0,0,0,0,"","",0,"",0,0,0,0,0,0
 No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-quote_expires_on""","Delivery Note","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note-quotation_detail""","Delivery Note","Section Break","Order Detail","","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Sales Order-cb33a""","Sales Order","Column Break","cb33a","","","","","cb33a",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-documents_required""","Sales Order","Table","Documents Required","","","Documents Required","","documents_required",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-documents_required_master""","Sales Order","Link","Documents Required Master","","","Documents Required Master","","documents_required_master",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Order-_documents_required_sec""","Sales Order","Section Break","Documents Required","","","","","_documents_required_sec",0,0,0,0,"","",0,"",0,0,0,0,0,0
@@ -216,51 +257,6 @@ No","","empty_drums_return",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Customer-commercial_requirements""","Customer","Small Text","Commercial Requirements","","","","","commercial_requirements",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Customer-customer_information""","Customer","Section Break","Customer Information","","","","","customer_information",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Customer-documents_required_master""","Customer","Link","Documents Required Master","","","Documents Required Master","","documents_required_master",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-sale""","Quotation","Select","Local/Export Sale","","","Local Sale
-Export Sale","","sale",0,0,0,0,"","Export Sale",0,"",0,0,0,0,0,0
-"","""Quotation-port_of_discharge""","Quotation","Data","Port of Discharge","","","","","port_of_discharge",0,1,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-same_as_customer""","Quotation","Check","Same as Customer","","","","","same_as_customer",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-buyer""","Quotation","Link","Buyer","","","Customer","","buyer",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-notify_party""","Quotation","Link","Notify Party","","","Customer","","notify_party",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-consignee""","Quotation","Link","Consignee","","","Customer","","consignee",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-cb65""","Quotation","Column Break","cb65","","","","","cb65",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-documents_required""","Quotation","Small Text","Documents Required","","","","","documents_required",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-label_copy""","Quotation","Data","Label Copy","","","","","label_copy",0,0,0,0,"","",1,"",1,0,1,0,0,0
-"","""Quotation-product_specification""","Quotation","Data","Product Specification","","","","","product_specification",0,0,0,0,"","",1,"",1,0,0,0,0,0
-"","""Quotation-other""","Quotation","Section Break","","","","","","other",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-shipment_schedule""","Quotation","Data","Shipment Schedule","","","","","shipment_schedule",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-other_info""","Quotation","Data","Other Info","","","","","other_info",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Others""",0,0,0,0,0,0
-"","""Quotation-temperature""","Quotation","Int","Temperature","","","","","temperature",0,0,0,0,"","",0,"eval:doc.fcl_detail == ""Controlled Temp""",0,0,0,0,0,0
-"","""Quotation-fcl_detail""","Quotation","Select","FCL Detail","","","20 ft Dry
-40 ft Dry
-20 ft Reefer
-40 ft Reefer
-Controlled Temp
-Others","","fcl_detail",0,0,0,0,"","",0,"eval:doc.loadability == ""FCL""",0,0,0,0,0,0
-"","""Quotation-loadability""","Quotation","Select","Loadability","","","LCL
-FCL","","loadability",0,0,0,0,"","LCL",0,"",0,0,0,0,0,0
-"","""Quotation-incoterms""","Quotation","Select","Incoterms","","","EXW
-FOR
-FAS
-FOB
-CFR
-CIF
-FCA
-DDP","","incoterms",0,0,0,0,"","CFR",0,"",0,0,0,0,0,0
-"","""Quotation-cb""","Quotation","Column Break","cb","","","","","cb",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-packing""","Quotation","Data","Packing","","","","","packing",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Quotation-crop_year""","Quotation","Select","Crop Year","ignore_pricing_rule","","2013
-2014
-2015","","crop_year",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-palletization""","Quotation","Select","Palletization","","","Yes
-No","","palletization",0,0,0,0,"","No",0,"",0,0,0,0,0,0
-"","""Quotation-empty_drums_return""","Quotation","Select","Empty Drums Return","","","Yes
-No","","empty_drums_return",0,0,0,0,"","No",0,"",0,0,0,0,0,0
-"","""Quotation-quote_expires_on""","Quotation","Date","Quote Expires On","","","","","quote_expires_on",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-quotation_detail""","Quotation","Section Break","Order Details","ignore_pricing_rule","","","","quotation_detail",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-payment_terms""","Quotation","Data","Payment Terms","","","","","payment_terms",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-total_commission""","Quotation","Data","Total Commission","","","","","total_commission",0,0,0,0,"","",0,"",0,0,0,0,0,0
-"","""Quotation-commission_agent""","Quotation","Data","Commission Agent","","","","","commission_agent",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Sales Invoice Item-rate_per_mt""","Sales Invoice Item","Currency","Rate per MT","","3","currency","","rate_per_mt",0,1,0,0,"","",0,"",0,0,0,0,0,0
 "","""Delivery Note Item-number_of_containers""","Delivery Note Item","Float","Number Of Containers","","2","","","number_of_containers",0,0,0,0,"","",0,"",1,0,0,0,0,0
 "","""Delivery Note Item-weight_uom""","Delivery Note Item","Link","Weight UOM","","","UOM","","weight_uom",0,0,1,0,"","",0,"",0,0,0,0,0,0
@@ -320,4 +316,3 @@ Purchase","","item_type",0,0,0,0,"","",0,"",0,0,0,0,0,0
 "","""Supplier-transporter_name""","Supplier","Data","Transporter Name","","","","","transporter_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
 "","""Supplier-cha_name""","Supplier","Data","CHA Name","","","","Custom Handling Agent Name","cha_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
 "","""Supplier-shipping_line_name""","Supplier","Data","Shipping Line Name","","","","","shipping_line_name",0,0,0,0,"","",0,"",1,0,0,0,0,0
-"","""Quotation-oanda""","Quotation","HTML","oanda","","","<p align=""right""><a href=""http://www.oanda.com"" target=""_blank"">www.oanda.com</a></p>","","oanda",0,0,0,0,"","",0,"",1,0,0,0,0,0

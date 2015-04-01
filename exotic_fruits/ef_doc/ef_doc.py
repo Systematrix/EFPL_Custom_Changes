@@ -25,7 +25,8 @@ def apply_documents_required(self, method):
 			doc_req = {
 				"doctype": "Documents Required",
 				"name_of_document": value.name_of_document,
-				"dispatch_address": value.dispatch_address
+				"dispatch_address": value.dispatch_address,
+                                "number_of_copies": value.number_of_copies
 			}
                         self.append("documents_required", doc_req) 
 

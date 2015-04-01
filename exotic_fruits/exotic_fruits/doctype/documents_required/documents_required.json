@@ -28,6 +28,7 @@
   {
    "fieldname": "dispatch_address", 
    "fieldtype": "Link", 
+   "in_list_view": 1, 
    "label": "Dispatch Address", 
    "options": "Address", 
    "permlevel": 0, 
@@ -36,6 +37,7 @@
   {
    "fieldname": "number_of_copies", 
    "fieldtype": "Int", 
+   "in_list_view": 1, 
    "label": "Number Of Copies", 
    "permlevel": 0, 
    "precision": ""
@@ -49,7 +51,7 @@
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 1, 
- "modified": "2015-04-01 13:47:24.849704", 
+ "modified": "2015-04-01 15:20:31.895229", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "Documents Required", 
