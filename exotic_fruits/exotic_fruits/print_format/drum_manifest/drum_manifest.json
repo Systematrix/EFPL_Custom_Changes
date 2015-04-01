@@ -5,7 +5,7 @@
  "docstatus": 0, 
  "doctype": "Print Format", 
  "html": "<p class=\"text-center\"><b>{{ _(\"DRUM MANIFEST\") }}</b></p>\n\n<br><br>\n<p class=\"text-center\"><b>REF: Our Invoice Number {{ doc.sales_order }} DT: {{ doc.get_formatted(\"delivery_date\") }} </b></p><br>\n\n<br><br>\n<p>Container No :  {{ doc.container_no }} </p><br>\n\n<p>Batch # :  {{ doc.batch }}  </p><br>\n\n<p>Prod. Date :  {{ doc.prod_date }}</p><br>\n\n<p>DRM Nos : {{ doc.drm_nos }} </p><br>\n\n<p>No Of DRMS : {{ doc.no_of_drms }} </p><br>\n\n<br>\n\n<p>NET WEIGHT PER DRUM: 220 KGS,      GROSS WEIGHT PER DRUM: 240 KGS, <br> TOTAL NET WEIGHT: 17000.00 KGS,\n     TOTAL GROSS WEIGHT 19200.00 KGS</p>\n\n<br>\n<br>\n<br>\n<p><b>For EXOTIC FRUITS PVT. LTD., </b></p>\n<br><br>\n<p><b> MANAGER (Q.A.) </b></p><br>", 
- "modified": "2015-02-12 15:15:03.526474", 
+ "modified": "2015-03-23 15:15:24.548854", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "DRUM MANIFEST", 

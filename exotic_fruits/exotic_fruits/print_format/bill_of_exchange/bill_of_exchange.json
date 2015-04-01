@@ -5,7 +5,7 @@
  "docstatus": 0, 
  "doctype": "Print Format", 
  "html": "<p class=\"text-center\">{{ _(\"DRAWN ON 75 DAYS AFTER DATE OF INVOICE THROUGH RABOBANK NEDERLAND OBS TRADE SERVICES GLIDENKWARTIER 199 3511 DH UTERECHT THE NETHERLANDS.\") }}</p>\n\n<br><br>\n<p> Invoice No. {{ doc.sales_order }} dt: {{ doc.get_formatted(\"delivery_date\") }} </p><br>\n<p>EXCHANGE FOR << USE 84,240 >> </p><br>\n\n<p>At  << 75>> days after << INVOICE >> date of this FIRST of exchange (Second of the same tenure date being unpaid) pay to the order of << ANDHRA BANK, 9/15, MAMA PARAMANAND MARG, QUEENS ROAD, OPERA HOUSE MUMBAI - 400 004, MAHARASHTRA INDIA - A/C NO. 0402111000001945 >> the sum of << US DOLLARS EIGHTY FOUR THOUSAND TWO HUNDREAD FOURTY ONLY >> value received and charge the same to the account of << 240 Drums >> shipped per vessel << CMA CGM BELLINI V- EPA14W >>  </p><br>\n\n\n<p>INVOICE NO<< INVOICE NO >> B/L No.  <<  >>  </p><br>\n\n<p>TO <<  >> </p><br>\n\n<p>M/s <<FRIESLANDCAMPINA RIEDL B.V. <br>\nFRANKENENG 12, <br>\nTHE NETHERLANDS >> </p><br>\n\n\n<br>\n<p class=\"text-right\"><b>For EXOTIC FRUITS PVT. LTD.</b></p>\n<br><br>\n<p class=\"text-right\"><b> AUTHORISED SIGNATORY </b></p><br>", 
- "modified": "2015-02-12 15:15:06.988653", 
+ "modified": "2015-03-23 15:15:25.063208", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "Bill Of exchange", 
