@@ -19,6 +19,14 @@
    "precision": ""
   }, 
   {
+   "fieldname": "number_of_copies", 
+   "fieldtype": "Int", 
+   "in_list_view": 1, 
+   "label": "Number Of Originals", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
    "fieldname": "cb", 
    "fieldtype": "Column Break", 
    "label": "cb", 
@@ -35,10 +43,9 @@
    "precision": ""
   }, 
   {
-   "fieldname": "number_of_copies", 
+   "fieldname": "number_of_copies_copy", 
    "fieldtype": "Int", 
-   "in_list_view": 1, 
-   "label": "Number Of Copies", 
+   "label": "Number of Copies", 
    "permlevel": 0, 
    "precision": ""
   }
@@ -51,7 +58,7 @@
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 1, 
- "modified": "2015-04-01 15:20:31.895229", 
+ "modified": "2015-04-16 14:32:14.548080", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "Documents Required", 

@@ -28,7 +28,8 @@ def apply_documents_required(self, method):
 				"dispatch_address": value.dispatch_address,
                                 "number_of_copies": value.number_of_copies
 			}
-                        self.append("documents_required", doc_req) 
+                        self.append("documents_required", doc_req)
+
 
 			
 

@@ -30,5 +30,35 @@ def apply_documents_required(self, method):
 			}
                         self.append("documents_required", doc_req) 
 
+@frappe.whitelist(allow_guest=True)
+def apply_buyer(source_name, target=None):
+    doc_m = frappe.get_doc("Sales Order", source_name)
+    doc_m.customer = "Sambhaji"
+    #doc_m.sales_order_details = "sod/19"
+
+    doc_m.set("customer","Sambhaji");
+    #doc_m.save();
+    #frappe.msgprint("hi from py");
+
+@frappe.whitelist()
+def make_sales_invoice(source_name, target=None):
+    doc_m = frappe.get_doc("Sales Order", source_name)
+    doc_m.customer = "Satish"
+    #doc_m.sales_order_details = "sod/19"
+
+    #doc_m.set("customer","Sambhaji");
+    #doc_m.save();
+    
+
+    frappe.msgprint(doc_m.name)	
+    bank=frappe.new_doc("Bank Set Of Documents")
+    bank.sales_order = doc_m.name
+    bank.rounded_total = doc_m.rounded_total,
+    bank.customer_name = doc_m.customer_name,
+    bank.payment_terms = doc_m.payment_terms
+    bank.insert()
+
+
+
 			
 
