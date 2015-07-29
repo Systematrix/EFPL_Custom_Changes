@@ -137,6 +137,13 @@
    "precision": ""
   }, 
   {
+   "fieldname": "truck_no", 
+   "fieldtype": "Data", 
+   "label": "Truck No", 
+   "permlevel": 0, 
+   "precision": ""
+  }, 
+  {
    "fieldname": "initial_amount", 
    "fieldtype": "Currency", 
    "label": "Initial Amount", 
@@ -480,7 +487,7 @@
  "is_submittable": 1, 
  "issingle": 0, 
  "istable": 0, 
- "modified": "2015-07-28 13:40:57.167709", 
+ "modified": "2015-07-28 14:00:00.759421", 
  "modified_by": "Administrator", 
  "module": "exotic_fruits", 
  "name": "Delivery Information", 
