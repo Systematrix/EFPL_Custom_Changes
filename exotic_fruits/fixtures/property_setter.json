@@ -1,6 +1,45 @@
 [
  {
   "default_value": null, 
+  "doc_type": "Item", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "naming_series", 
+  "modified": "2015-08-03 16:14:34.599260", 
+  "name": "Item-naming_series-options", 
+  "property": "options", 
+  "property_type": "Text", 
+  "value": "ITEM-"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Customer", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "naming_series", 
+  "modified": "2015-08-03 16:14:41.063366", 
+  "name": "Customer-naming_series-options", 
+  "property": "options", 
+  "property_type": "Text", 
+  "value": "CUST-"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Customer", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-04 20:43:23.682770", 
+  "name": "Customer-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -765,19 +804,6 @@
   "property": "width", 
   "property_type": null, 
   "value": "264"
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Address", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-06-18 12:02:45.722687", 
-  "name": "Address-_idx", 
-  "property": "_idx", 
-  "property_type": "Text", 
-  "value": "[\"address_details\", \"address_title\", \"address_type\", \"address_line1\", \"address_line2\", \"city\", \"state\", \"pincode\", \"country\", \"column_break0\", \"email_id\", \"phone\", \"fax\", \"is_primary_address\", \"is_shipping_address\", \"iban_account_no\", \"swift_code\", \"linked_with\", \"customer\", \"customer_name\", \"supplier\", \"supplier_name\", \"sales_partner\", \"column_break_22\", \"lead\", \"lead_name\"]"
  }, 
  {
   "default_value": null, 
@@ -9150,5 +9176,31 @@
   "property": "_idx", 
   "property_type": "Text", 
   "value": "[\"basic_info\", \"naming_series\", \"customer_name\", \"customer_type\", \"lead_name\", \"column_break0\", \"customer_group\", \"territory\", \"address_contacts\", \"address_html\", \"column_break1\", \"contact_html\", \"more_info\", \"column_break2\", \"customer_details\", \"pod\", \"sample_apporval\", \"palletised\", \"commission\", \"incoterm\", \"column_break3\", \"default_currency\", \"default_price_list\", \"default_taxes_and_charges\", \"documents_required_master\", \"credit_days\", \"credit_limit\", \"payment_terms\", \"website\", \"sales_team_section_break\", \"default_sales_partner\", \"default_commission_rate\", \"sales_team\", \"communications\", \"customer_information\", \"market_intelligence\", \"column_break\", \"required_quality_specifications\", \"com_req_sec\", \"commercial_requirements\", \"default_receivable_accounts\", \"accounts\", \"credit_days_based_on\"]"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Address", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-05 12:15:18.542902", 
+  "name": "Address-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Address", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-05 12:15:19.813100", 
+  "name": "Address-_idx", 
+  "property": "_idx", 
+  "property_type": "Text", 
+  "value": "[\"address_details\", \"address_title\", \"address_type\", \"address_line1\", \"address_line2\", \"city\", \"state\", \"pincode\", \"country\", \"column_break0\", \"attention_name\", \"email_id\", \"phone\", \"fax\", \"is_primary_address\", \"is_shipping_address\", \"account_no\", \"iban_account_no\", \"swift_code\", \"linked_with\", \"customer\", \"customer_name\", \"supplier\", \"supplier_name\", \"sales_partner\", \"column_break_22\", \"lead\", \"lead_name\"]"
  }
 ]
