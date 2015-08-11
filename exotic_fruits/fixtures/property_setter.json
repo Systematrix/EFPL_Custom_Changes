@@ -27,19 +27,6 @@
  }, 
  {
   "default_value": null, 
-  "doc_type": "Customer", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-08-04 20:43:23.682770", 
-  "name": "Customer-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
- }, 
- {
-  "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -726,19 +713,6 @@
   "property": "_idx", 
   "property_type": "Text", 
   "value": "[\"name1\", \"documents_required\"]"
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Documents Required Master", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-06-18 12:02:45.621316", 
-  "name": "Documents Required Master-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
  }, 
  {
   "default_value": null, 
@@ -2728,19 +2702,6 @@
   "property": "label", 
   "property_type": "Data", 
   "value": "Billing Address"
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Customer", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-06-18 12:02:47.059852", 
-  "name": "Customer-default_print_format", 
-  "property": "default_print_format", 
-  "property_type": "Data", 
-  "value": null
  }, 
  {
   "default_value": null, 
@@ -9527,5 +9488,57 @@
   "property": "precision", 
   "property_type": "Select", 
   "value": "3"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Customer", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-11 15:00:15.503229", 
+  "name": "Customer-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Customer", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-11 15:00:16.324145", 
+  "name": "Customer-default_print_format", 
+  "property": "default_print_format", 
+  "property_type": "Data", 
+  "value": ""
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Documents Required Master", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-11 15:32:55.230298", 
+  "name": "Documents Required Master-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Documents Required Master", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "cd_drm", 
+  "modified": "2015-08-11 15:32:55.398043", 
+  "name": "Documents Required Master-cd_drm-label", 
+  "property": "label", 
+  "property_type": "Data", 
+  "value": ""
  }
 ]
