@@ -690,19 +690,6 @@
  }, 
  {
   "default_value": null, 
-  "doc_type": "Documents Required Master", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-06-18 12:02:45.613198", 
-  "name": "Documents Required Master-_idx", 
-  "property": "_idx", 
-  "property_type": "Text", 
-  "value": "[\"name1\", \"documents_required\"]"
- }, 
- {
-  "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -8802,19 +8789,6 @@
  }, 
  {
   "default_value": null, 
-  "doc_type": "Customer", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-08-05 00:11:54.150386", 
-  "name": "Customer-_idx", 
-  "property": "_idx", 
-  "property_type": "Text", 
-  "value": "[\"basic_info\", \"naming_series\", \"customer_name\", \"customer_type\", \"lead_name\", \"column_break0\", \"customer_group\", \"territory\", \"address_contacts\", \"address_html\", \"column_break1\", \"contact_html\", \"more_info\", \"column_break2\", \"customer_details\", \"pod\", \"sample_apporval\", \"palletised\", \"commission\", \"incoterm\", \"column_break3\", \"default_currency\", \"default_price_list\", \"default_taxes_and_charges\", \"documents_required_master\", \"credit_days\", \"credit_limit\", \"payment_terms\", \"website\", \"sales_team_section_break\", \"default_sales_partner\", \"default_commission_rate\", \"sales_team\", \"communications\", \"customer_information\", \"market_intelligence\", \"column_break\", \"required_quality_specifications\", \"com_req_sec\", \"commercial_requirements\", \"default_receivable_accounts\", \"accounts\", \"credit_days_based_on\"]"
- }, 
- {
-  "default_value": null, 
   "doc_type": "Address", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -9431,37 +9405,11 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2015-08-11 15:00:15.503229", 
-  "name": "Customer-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Customer", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
   "modified": "2015-08-11 15:00:16.324145", 
   "name": "Customer-default_print_format", 
   "property": "default_print_format", 
   "property_type": "Data", 
   "value": ""
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Documents Required Master", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-08-11 15:32:55.230298", 
-  "name": "Documents Required Master-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
  }, 
  {
   "default_value": null, 
@@ -9540,5 +9488,57 @@
   "property": "read_only_onload", 
   "property_type": "Check", 
   "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Documents Required Master", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-12 16:24:47.024543", 
+  "name": "Documents Required Master-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Documents Required Master", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-12 16:24:47.919009", 
+  "name": "Documents Required Master-_idx", 
+  "property": "_idx", 
+  "property_type": "Text", 
+  "value": "[\"name1\", \"cd_drm\", \"customer\", \"sbdrm\", \"documents_required_master\"]"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Customer", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-12 17:34:55.615981", 
+  "name": "Customer-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Customer", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-12 17:34:58.490903", 
+  "name": "Customer-_idx", 
+  "property": "_idx", 
+  "property_type": "Text", 
+  "value": "[\"basic_info\", \"naming_series\", \"customer_name\", \"customer_type\", \"lead_name\", \"column_break0\", \"customer_group\", \"territory\", \"is_frozen\", \"address_contacts\", \"address_html\", \"column_break1\", \"contact_html\", \"more_info\", \"column_break2\", \"customer_details\", \"pod\", \"sample_apporval\", \"palletised\", \"commission\", \"incoterm\", \"column_break3\", \"default_currency\", \"default_price_list\", \"default_taxes_and_charges\", \"documents_required_master\", \"credit_days_based_on\", \"credit_days\", \"credit_limit\", \"payment_terms\", \"website\", \"sales_team_section_break\", \"default_sales_partner\", \"default_commission_rate\", \"sales_team\", \"communications\", \"customer_information\", \"market_intelligence\", \"column_break\", \"required_quality_specifications\", \"com_req_sec\", \"commercial_requirements\", \"default_receivable_accounts\", \"accounts\"]"
  }
 ]
