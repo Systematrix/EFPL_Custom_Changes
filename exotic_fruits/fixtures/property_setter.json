@@ -391,19 +391,6 @@
  }, 
  {
   "default_value": null, 
-  "doc_type": "Documents Required", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-06-18 12:02:44.630430", 
-  "name": "Documents Required-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
- }, 
- {
-  "default_value": null, 
   "doc_type": "Delivery Note", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -6098,19 +6085,6 @@
  }, 
  {
   "default_value": null, 
-  "doc_type": "Documents Required", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-06-18 12:02:49.693261", 
-  "name": "Documents Required-_idx", 
-  "property": "_idx", 
-  "property_type": "Text", 
-  "value": "[\"name_of_document\", \"number_of_copies\"]"
- }, 
- {
-  "default_value": null, 
   "doc_type": "Quotation", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -9540,5 +9514,31 @@
   "property": "label", 
   "property_type": "Data", 
   "value": ""
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Documents Required", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-12 11:58:39.528564", 
+  "name": "Documents Required-_idx", 
+  "property": "_idx", 
+  "property_type": "Text", 
+  "value": "[\"name_of_document\", \"number_of_copies\", \"cb\", \"dispatch_address\", \"number_of_copies_copy\", \"consignee_section\", \"buyer\", \"buyer_address\", \"consignee\", \"consignee_address\", \"consignee_cb\", \"notify_party_i\", \"notify_party_address_i\", \"notify_party_ii\", \"notify_party_address_ii\", \"notify_party_iii\", \"notify_party_address_iii\"]"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Documents Required", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2015-08-12 11:59:16.734137", 
+  "name": "Documents Required-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
  }
 ]
