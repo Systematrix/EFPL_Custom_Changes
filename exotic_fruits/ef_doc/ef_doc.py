@@ -36,7 +36,12 @@ def apply_documents_required(self, method):
                                 "notify_party_iii": value.notify_party_iii,
                                 "notify_party_address_i": value.notify_party_address_i,
                                 "notify_party_address_ii": value.notify_party_address_ii,
-				"notify_party_address_iii": value.notify_party_address_iii
+				"notify_party_address_iii": value.notify_party_address_iii,
+				"buyer_attention_name": value.buyer_attention_name,
+				"consignee_attention_name": value.consignee_attention_name,
+                                "notify_party_i_attention_name":value.notify_party_i_attention_name,
+                                "notify_party_ii_attention_name":value.notify_party_ii_attention_name,
+                                "notify_party_iii_attention_name":value.notify_party_iii_attention_name	
 			}
                         self.append("documents_required", doc_req)
 
