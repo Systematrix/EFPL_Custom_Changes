@@ -26,7 +26,17 @@ def apply_documents_required(self, method):
 				"doctype": "Documents Required",
 				"name_of_document": value.name_of_document,
 				"dispatch_address": value.dispatch_address,
-                                "number_of_copies": value.number_of_copies
+                                "number_of_copies": value.number_of_copies,
+                                "buyer": value.buyer,
+                                "buyer_address": value.buyer_address,
+				"consignee": value.consignee,
+				"consignee_address": value.consignee_address,
+                                "notify_party_i": value.notify_party_i,
+                                "notify_party_ii": value.notify_party_ii,
+                                "notify_party_iii": value.notify_party_iii,
+                                "notify_party_address_i": value.notify_party_address_i,
+                                "notify_party_address_ii": value.notify_party_address_ii,
+				"notify_party_address_iii": value.notify_party_address_iii
 			}
                         self.append("documents_required", doc_req)
 
