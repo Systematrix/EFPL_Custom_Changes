@@ -1,5 +1,38 @@
 [
  {
+  "css": null, 
+  "custom_format": 0, 
+  "disabled": 0, 
+  "doc_type": "Purchase Order", 
+  "docstatus": 0, 
+  "doctype": "Print Format", 
+  "font": "Default", 
+  "format_data": "[{\"fieldname\": \"print_heading_template\", \"fieldtype\": \"HTML\", \"options\": \"<h1 style=\\\"text-align: center;\\\">Purchase Order</h1><div style=\\\"text-align: center;\\\">{{doc.name}}</div><div style=\\\"text-align: center;\\\"><hr></div>\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"print_hide\": 0, \"fieldname\": \"title\"}, {\"print_hide\": 0, \"fieldname\": \"supplier\"}, {\"print_hide\": 0, \"fieldname\": \"supplier_name\"}, {\"print_hide\": 0, \"fieldname\": \"address_display\"}, {\"print_hide\": 0, \"fieldname\": \"contact_display\"}, {\"print_hide\": 0, \"fieldname\": \"contact_mobile\"}, {\"fieldtype\": \"Column Break\"}, {\"print_hide\": 0, \"fieldname\": \"transaction_date\"}, {\"print_hide\": 0, \"fieldname\": \"customer\"}, {\"print_hide\": 0, \"fieldname\": \"customer_name\"}, {\"print_hide\": 0, \"fieldname\": \"customer_address_display\"}, {\"print_hide\": 0, \"fieldname\": \"customer_contact_display\"}, {\"print_hide\": 0, \"fieldname\": \"customer_contact_mobile\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"visible_columns\": [{\"print_hide\": 0, \"fieldname\": \"item_code\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"description\", \"print_width\": \"300px\"}, {\"print_hide\": 0, \"fieldname\": \"image\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"qty\", \"print_width\": \"60px\"}, {\"print_hide\": 0, \"fieldname\": \"uom\", \"print_width\": \"100px\"}, {\"print_hide\": 0, \"fieldname\": \"discount_percentage\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"rate\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"amount\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"pricing_rule\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"supplier_quotation\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"supplier_quotation_item\", \"print_width\": \"\"}], \"print_hide\": 0, \"fieldname\": \"items\"}, {\"print_hide\": 0, \"fieldname\": \"get_last_purchase_rate\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldtype\": \"Column Break\"}, {\"print_hide\": 0, \"fieldname\": \"total\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"visible_columns\": [{\"print_hide\": 0, \"fieldname\": \"category\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"add_deduct_tax\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"charge_type\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"row_id\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"included_in_print_rate\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"account_head\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"cost_center\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"description\", \"print_width\": \"300px\"}, {\"print_hide\": 0, \"fieldname\": \"rate\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"tax_amount\", \"print_width\": \"\"}, {\"print_hide\": 0, \"fieldname\": \"total\", \"print_width\": \"\"}], \"print_hide\": 0, \"fieldname\": \"taxes\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldtype\": \"Column Break\"}, {\"print_hide\": 0, \"fieldname\": \"grand_total\"}, {\"print_hide\": 0, \"fieldname\": \"in_words\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"print_hide\": 0, \"fieldname\": \"terms\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"print_hide\": 0, \"fieldname\": \"customer_contact_person\"}, {\"fieldtype\": \"Section Break\"}, {\"fieldtype\": \"Column Break\"}, {\"fieldtype\": \"Column Break\"}, {\"print_hide\": 0, \"fieldname\": \"recurring_print_format\"}]", 
+  "html": null, 
+  "modified": "2015-10-20 17:21:45.810640", 
+  "name": "Drop Shipping", 
+  "print_format_builder": 1, 
+  "print_format_type": "Server", 
+  "standard": "No"
+ }, 
+ {
+  "css": null, 
+  "custom_format": 1, 
+  "disabled": 0, 
+  "doc_type": "Purchase Order", 
+  "docstatus": 0, 
+  "doctype": "Print Format", 
+  "font": "Default", 
+  "format_data": null, 
+  "html": "<div class=\"page-break\">\n    <div class=\"print-heading\">\n\t\t<h2>Purchase Order<br>\n\t        <small>{{doc.name}}</small>\n        </h2>\n    </div>\n    <div class=\"row section-break\">\n        <div class=\"col-xs-6 column-break\">\n                <div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t<label>Supplier Name</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t\t{{doc.supplier_name}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t{% if doc.address_display %}\n\t                <div class=\"row\">\n\t\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t\t<label>Address</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t\t\t{{doc.address_display}}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t{%- endif -%}\n\t\t\t\t{% if doc.contact_display %}\n\t                <div class=\"row\">\n\t\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t\t<label>Contact</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t\t\t{{doc.contact_display}}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t{%- endif -%}\n\t\t\t\t{% if doc.contact_mobile %}\n\t                <div class=\"row\">\n\t\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t\t<label>Mobile No</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t\t\t{{doc.contact_mobile}}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t{%- endif -%}\n        </div>\n        \n        <div class=\"col-xs-6 column-break\">\n            <div class=\"row\">\n\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t<label>Date</label>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t{{doc.transaction_date}}\n\t\t\t\t</div>\n\t\t\t</div>\n            <div class=\"row\">\n\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t<label>Customer Name</label>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t{{doc.customer_name}}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t{% if doc.customer_address_display %}\n\t            <div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t<label>Customer Address</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t\t{{doc.customer_address_display}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t{%- endif -%}\n\t\t\t{% if doc.customer_contact_display %}\n\t            <div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t<label>Customer Contact</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t\t{{doc.customer_contact_display}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t{%- endif -%}\n\t\t\t{% if doc.customer_contact_mobile %}\n\t            <div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t<label>Customer Mobile No</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-xs-7  value\">\n\t\t\t\t\t\t{{doc.customer_contact_mobile}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t{%- endif -%}\n        </div>\n    </div>\n\t<table class=\"table table-bordered\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<th>Sr</th>\n\t\t\t\t<th>Item Name</th>\n\t\t\t\t<th>Description</th>\n\t\t\t\t<th class=\"text-right\">Qty</th>\n\t\t\t\t<th class=\"text-right\">Rate</th>\n\t\t\t\t<th class=\"text-right\">Amount</th>\n\t\t\t</tr>\n\t\t\t{%- for row in doc.items -%}\n\t\t\t<tr>\n\t\t\t\t<td style=\"width: 3%;\">{{ row.idx }}</td>\n\t\t\t\t<td style=\"width: 20%;\">\n\t\t\t\t\t{{ row.item_name }}\n\t\t\t\t\t{% if row.item_code != row.item_name -%}\n\t\t\t\t\t<br>Item Code: {{ row.item_code}}\n\t\t\t\t\t{%- endif %}\n\t\t\t\t</td>\n\t\t\t\t<td style=\"width: 37%;\">\n\t\t\t\t\t<div style=\"border: 0px;\">{{ row.description }}</div></td>\n\t\t\t\t<td style=\"width: 10%; text-align: right;\">{{ row.qty }} {{ row.uom or row.stock_uom }}</td>\n\t\t\t\t<td style=\"width: 15%; text-align: right;\">{{\n\t\t\t\t\trow.get_formatted(\"rate\", doc) }}</td>\n\t\t\t\t<td style=\"width: 15%; text-align: right;\">{{\n\t\t\t\t\trow.get_formatted(\"amount\", doc) }}</td>\n\t\t\t</tr>\n\t\t\t{%- endfor -%}\n\t\t</tbody>\n\t</table>\n    <div class=\"row section-break\">\n        <div class=\"col-xs-6 column-break\">\n        </div>\n        <div class=\"col-xs-6 column-break\">\n                <div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t<label>Total</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-xs-7 text-right value\">\n\t\t\t\t\t\t{{doc.total}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n                <div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t<label>Grand Total</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-xs-7 text-right value\">\n\t\t\t\t\t\t{{doc.grand_total}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n                <div class=\"row\">\n\t\t\t\t\t<div class=\"col-xs-5 text-right\">\n\t\t\t\t\t\t<label>In Words</label>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-xs-7 text-right value\">\n\t\t\t\t\t\t{{doc.in_words}}\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n        </div>\n    </div>\n</div>", 
+  "modified": "2015-12-04 13:47:55.157482", 
+  "name": "Drop Shipping Format", 
+  "print_format_builder": 0, 
+  "print_format_type": "Server", 
+  "standard": "Yes"
+ }, 
+ {
+  "css": null, 
   "custom_format": 1, 
   "disabled": 0, 
   "doc_type": "Sales Invoice", 
@@ -15,6 +48,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 1, 
   "disabled": 0, 
   "doc_type": "Sales Invoice", 
@@ -30,6 +64,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 1, 
   "disabled": 0, 
   "doc_type": "Journal Entry", 
@@ -45,6 +80,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Journal Entry", 
@@ -60,6 +96,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Journal Entry", 
@@ -75,6 +112,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Bank Set Of Documents", 
@@ -90,6 +128,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Nutrition Certificate", 
@@ -105,6 +144,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Certificate Of Authenticity And Conformity", 
@@ -120,6 +160,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Certificate Of Naturalness", 
@@ -135,6 +176,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "GMO DECLARATION", 
@@ -150,6 +192,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Shelf Life Certificate", 
@@ -165,6 +208,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "DRUM MANIFEST", 
@@ -180,6 +224,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Health Certificate", 
@@ -195,6 +240,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "CARTON MANIFEST", 
@@ -210,6 +256,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Shipment Advice", 
@@ -225,6 +272,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Bill Of exchange", 
@@ -240,6 +288,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Invoice", 
@@ -255,6 +304,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Commercial Invoice", 
@@ -270,6 +320,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Excise Certificate", 
@@ -285,6 +336,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Excise Certificate", 
@@ -300,6 +352,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Loading Supervision Report", 
@@ -315,6 +368,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Certificate Of Analysis", 
@@ -330,6 +384,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Bill Of Loading", 
@@ -345,6 +400,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "ANNEXURE C1", 
@@ -360,6 +416,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Local Sale Invoice", 
@@ -375,6 +432,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Delivery Challan", 
@@ -390,6 +448,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "ANNEXTURE C1", 
@@ -405,6 +464,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 1, 
   "disabled": 0, 
   "doc_type": "Offer Letter", 
@@ -420,6 +480,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 1, 
   "disabled": 0, 
   "doc_type": "Sales Order", 
@@ -435,6 +496,7 @@
   "standard": "No"
  }, 
  {
+  "css": null, 
   "custom_format": 0, 
   "disabled": 0, 
   "doc_type": "Journal Voucher", 
@@ -450,6 +512,7 @@
   "standard": "Yes"
  }, 
  {
+  "css": null, 
   "custom_format": 1, 
   "disabled": 0, 
   "doc_type": "Delivery Note", 
@@ -465,6 +528,7 @@
   "standard": "No"
  }, 
  {
+  "css": null, 
   "custom_format": 1, 
   "disabled": 0, 
   "doc_type": "Sales Order", 
