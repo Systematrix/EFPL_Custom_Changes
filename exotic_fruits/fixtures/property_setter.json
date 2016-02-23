@@ -1,6 +1,19 @@
 [
  {
   "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "naming_series", 
+  "modified": "2016-01-12 11:38:44.431983", 
+  "name": "Employee-naming_series-options", 
+  "property": "options", 
+  "property_type": "Text", 
+  "value": "EMP/"
+ }, 
+ {
+  "default_value": null, 
   "doc_type": "Communication", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -196,19 +209,6 @@
  }, 
  {
   "default_value": null, 
-  "doc_type": "Feed", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocField", 
-  "field_name": "subject", 
-  "modified": "2015-09-25 15:44:22.500139", 
-  "name": "Feed-subject-width", 
-  "property": "width", 
-  "property_type": null, 
-  "value": "382"
- }, 
- {
-  "default_value": null, 
   "doc_type": "Purchase Order", 
   "docstatus": 0, 
   "doctype": "Property Setter", 
@@ -271,19 +271,6 @@
   "property": "length", 
   "property_type": "Int", 
   "value": "255"
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Feed", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocField", 
-  "field_name": "subject", 
-  "modified": "2015-11-25 12:16:00.278138", 
-  "name": "Feed-subject-length", 
-  "property": "length", 
-  "property_type": "Int", 
-  "value": "210"
  }, 
  {
   "default_value": null, 
@@ -9513,20 +9500,7 @@
   "name": "Sales Invoice Item-_idx", 
   "property": "_idx", 
   "property_type": "Text", 
-  "value": "[\"barcode\", \"item_code\", \"item_name\", \"col_break1\", \"customer_item_code\", \"description\", \"image_view\", \"image\", \"quantity_and_rate\", \"quantity_in_mt\", \"rate_per_mt\", \"qty\", \"price_list_rate\", \"discount_percentage\", \"col_break2\", \"net_weight\", \"weight_uom\", \"stock_uom\", \"number_of_containers\", \"base_price_list_rate\", \"section_break1\", \"rate\", \"amount\", \"col_break3\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"accounting\", \"income_account\", \"expense_account\", \"col_break4\", \"cost_center\", \"warehouse_and_reference\", \"warehouse\", \"serial_no\", \"batch_no\", \"item_group\", \"brand\", \"item_tax_rate\", \"col_break5\", \"actual_batch_qty\", \"actual_qty\", \"time_log_batch\", \"sales_order\", \"so_detail\", \"delivery_note\", \"dn_detail\", \"delivered_qty\", \"section_break_21\", \"net_rate\", \"net_amount\", \"column_break_24\", \"base_net_rate\", \"base_net_amount\", \"page_break\"]"
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Delivery Note Item", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
-  "modified": "2015-08-08 14:31:43.064295", 
-  "name": "Delivery Note Item-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
+  "value": "[\"barcode\", \"item_code\", \"item_name\", \"stuffing_date\", \"col_break1\", \"customer_item_code\", \"description\", \"image_view\", \"image\", \"quantity_and_rate\", \"quantity_in_mt\", \"rate_per_mt\", \"qty\", \"price_list_rate\", \"discount_percentage\", \"col_break2\", \"net_weight\", \"weight_uom\", \"stock_uom\", \"number_of_containers\", \"base_price_list_rate\", \"section_break1\", \"rate\", \"amount\", \"col_break3\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"accounting\", \"income_account\", \"expense_account\", \"col_break4\", \"cost_center\", \"warehouse_and_reference\", \"warehouse\", \"serial_no\", \"batch_no\", \"item_group\", \"brand\", \"item_tax_rate\", \"col_break5\", \"actual_batch_qty\", \"actual_qty\", \"time_log_batch\", \"sales_order\", \"so_detail\", \"delivery_note\", \"dn_detail\", \"delivered_qty\", \"section_break_21\", \"net_rate\", \"net_amount\", \"column_break_24\", \"base_net_rate\", \"base_net_amount\", \"page_break\"]"
  }, 
  {
   "default_value": null, 
@@ -9539,7 +9513,7 @@
   "name": "Delivery Note Item-_idx", 
   "property": "_idx", 
   "property_type": "Text", 
-  "value": "[\"barcode\", \"item_code\", \"item_name\", \"col_break1\", \"customer_item_code\", \"description\", \"image\", \"image_view\", \"quantity_and_rate\", \"quantity_in_mt\", \"rate_per_mt\", \"qty\", \"price_list_rate\", \"discount_percentage\", \"col_break2\", \"net_weight\", \"weight_uom\", \"stock_uom\", \"number_of_containers\", \"base_price_list_rate\", \"section_break_1\", \"rate\", \"amount\", \"col_break3\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"warehouse_and_reference\", \"warehouse\", \"serial_no\", \"batch_no\", \"item_group\", \"brand\", \"item_tax_rate\", \"col_break4\", \"actual_qty\", \"actual_batch_qty\", \"expense_account\", \"cost_center\", \"against_sales_order\", \"against_sales_invoice\", \"installed_qty\", \"section_break_6\", \"column_break_8\", \"section_break_25\", \"net_rate\", \"net_amount\", \"column_break_28\", \"base_net_rate\", \"base_net_amount\", \"so_detail\", \"si_detail\", \"page_break\"]"
+  "value": "[\"barcode\", \"item_code\", \"item_name\", \"stuffing_date\", \"col_break1\", \"customer_item_code\", \"description\", \"image\", \"image_view\", \"quantity_and_rate\", \"quantity_in_mt\", \"rate_per_mt\", \"qty\", \"price_list_rate\", \"discount_percentage\", \"col_break2\", \"net_weight\", \"weight_uom\", \"stock_uom\", \"number_of_containers\", \"base_price_list_rate\", \"section_break_1\", \"rate\", \"amount\", \"col_break3\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"warehouse_and_reference\", \"warehouse\", \"serial_no\", \"batch_no\", \"item_group\", \"brand\", \"item_tax_rate\", \"col_break4\", \"actual_qty\", \"actual_batch_qty\", \"expense_account\", \"cost_center\", \"against_sales_order\", \"against_sales_invoice\", \"installed_qty\", \"section_break_6\", \"column_break_8\", \"section_break_25\", \"net_rate\", \"net_amount\", \"column_break_28\", \"base_net_rate\", \"base_net_amount\", \"so_detail\", \"si_detail\", \"page_break\"]"
  }, 
  {
   "default_value": null, 
@@ -9591,7 +9565,7 @@
   "name": "Sales Order Item-_idx", 
   "property": "_idx", 
   "property_type": "Text", 
-  "value": "[\"item_code\", \"customer_item_code\", \"item_name\", \"col_break1\", \"description\", \"image\", \"image_view\", \"quantity_and_rate\", \"quantity_in_mt\", \"rate_per_mt\", \"qty\", \"price_list_rate\", \"discount_percentage\", \"col_break2\", \"net_weight\", \"weight_uom\", \"stock_uom\", \"base_price_list_rate\", \"number_of_containers\", \"section_break_simple1\", \"rate\", \"amount\", \"col_break3\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"warehouse_and_reference\", \"warehouse\", \"prevdoc_docname\", \"brand\", \"item_group\", \"col_break4\", \"projected_qty\", \"actual_qty\", \"delivered_qty\", \"billed_amt\", \"planned_qty\", \"produced_qty\", \"item_tax_rate\", \"transaction_date\", \"section_break_5\", \"column_break_7\", \"section_break_24\", \"net_rate\", \"net_amount\", \"column_break_27\", \"base_net_rate\", \"base_net_amount\", \"page_break\"]"
+  "value": "[\"item_code\", \"customer_item_code\", \"item_name\", \"stuffing_date\", \"col_break1\", \"description\", \"image\", \"image_view\", \"quantity_and_rate\", \"quantity_in_mt\", \"rate_per_mt\", \"qty\", \"price_list_rate\", \"discount_percentage\", \"col_break2\", \"net_weight\", \"weight_uom\", \"stock_uom\", \"base_price_list_rate\", \"number_of_containers\", \"section_break_simple1\", \"rate\", \"amount\", \"col_break3\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"warehouse_and_reference\", \"warehouse\", \"prevdoc_docname\", \"brand\", \"item_group\", \"col_break4\", \"projected_qty\", \"actual_qty\", \"delivered_qty\", \"billed_amt\", \"planned_qty\", \"produced_qty\", \"item_tax_rate\", \"transaction_date\", \"section_break_5\", \"column_break_7\", \"section_break_24\", \"net_rate\", \"net_amount\", \"column_break_27\", \"base_net_rate\", \"base_net_amount\", \"page_break\"]"
  }, 
  {
   "default_value": null, 
@@ -9964,19 +9938,6 @@
   "doctype": "Property Setter", 
   "doctype_or_field": "DocType", 
   "field_name": null, 
-  "modified": "2015-08-25 14:41:06.533153", 
-  "name": "Quotation-read_only_onload", 
-  "property": "read_only_onload", 
-  "property_type": "Check", 
-  "value": null
- }, 
- {
-  "default_value": null, 
-  "doc_type": "Quotation", 
-  "docstatus": 0, 
-  "doctype": "Property Setter", 
-  "doctype_or_field": "DocType", 
-  "field_name": null, 
   "modified": "2015-08-25 14:41:08.422671", 
   "name": "Quotation-_idx", 
   "property": "_idx", 
@@ -10086,5 +10047,174 @@
   "property": "_idx", 
   "property_type": "Text", 
   "value": "[\"item_code\", \"supplier_part_no\", \"item_name\", \"column_break_4\", \"supplier_name\", \"schedule_date\", \"section_break_5\", \"description\", \"col_break1\", \"image\", \"image_view\", \"quantity_and_rate\", \"qty\", \"stock_uom\", \"col_break2\", \"uom\", \"conversion_factor\", \"sec_break1\", \"price_list_rate\", \"discount_percentage\", \"col_break3\", \"base_price_list_rate\", \"sec_break2\", \"rate\", \"amount\", \"col_break4\", \"base_rate\", \"base_amount\", \"pricing_rule\", \"section_break_29\", \"net_rate\", \"net_amount\", \"column_break_32\", \"base_net_rate\", \"base_net_amount\", \"warehouse_and_reference\", \"warehouse\", \"project_name\", \"prevdoc_doctype\", \"prevdoc_docname\", \"prevdoc_detail_docname\", \"supplier_quotation\", \"supplier_quotation_item\", \"delivered_by_supplier\", \"col_break5\", \"item_group\", \"brand\", \"bom\", \"stock_qty\", \"received_qty\", \"returned_qty\", \"billed_amt\", \"item_tax_rate\", \"page_break\"]"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Delivery Note Item", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2016-01-12 16:17:43.874542", 
+  "name": "Delivery Note Item-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "gender", 
+  "modified": "2016-01-14 14:53:37.628437", 
+  "name": "Employee-gender-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "60"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "status", 
+  "modified": "2016-01-14 14:53:40.105821", 
+  "name": "Employee-status-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "68"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "employee_name", 
+  "modified": "2016-01-14 14:53:55.469350", 
+  "name": "Employee-employee_name-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "144"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "date_of_birth", 
+  "modified": "2016-01-14 14:54:05.029603", 
+  "name": "Employee-date_of_birth-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "87"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "employee_number", 
+  "modified": "2016-01-14 14:54:09.768417", 
+  "name": "Employee-employee_number-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "70"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "employment_type", 
+  "modified": "2016-01-14 14:54:12.606051", 
+  "name": "Employee-employment_type-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "98"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "scheduled_confirmation_date", 
+  "modified": "2016-01-14 14:54:15.810415", 
+  "name": "Employee-scheduled_confirmation_date-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "81"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Employee", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "designation", 
+  "modified": "2016-01-15 16:55:54.029097", 
+  "name": "Employee-designation-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "206"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Fruit Inward Register", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2016-02-02 11:48:51.555373", 
+  "name": "Fruit Inward Register-_idx", 
+  "property": "_idx", 
+  "property_type": "Text", 
+  "value": "[\"basic_info\", \"fruit\", \"date\", \"lot_number\", \"name_of_supplier\", \"origin\", \"cb\", \"gate_entry_number\", \"vehicle_number\", \"location\", \"challan_number\", \"challan_date\", \"quantity\", \"challan\", \"received\", \"accepted\", \"rejected\", \"cb2\", \"shortage\", \"days_cumulative\", \"total_cumulative\", \"other_details\", \"grn_number\", \"remarks\", \"cb3\", \"grn_date\", \"checked_by\", \"verified_by\", \"amended_from\"]"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Fruit Inward Register", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2016-02-02 11:48:51.445516", 
+  "name": "Fruit Inward Register-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Customer", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocField", 
+  "field_name": "customer_name", 
+  "modified": "2016-02-20 12:43:57.598909", 
+  "name": "Customer-customer_name-width", 
+  "property": "width", 
+  "property_type": null, 
+  "value": "161"
+ }, 
+ {
+  "default_value": null, 
+  "doc_type": "Quotation", 
+  "docstatus": 0, 
+  "doctype": "Property Setter", 
+  "doctype_or_field": "DocType", 
+  "field_name": null, 
+  "modified": "2016-02-20 13:24:43.193748", 
+  "name": "Quotation-read_only_onload", 
+  "property": "read_only_onload", 
+  "property_type": "Check", 
+  "value": null
  }
 ]
